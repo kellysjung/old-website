@@ -1,0 +1,126 @@
+html{
+	background-color: #dddddd;
+}
+footer{
+	text-align: center;
+	background-color: #4d5176;
+	padding: 5px;
+	color: white;
+	clear: left;
+	font-family: Futura, Arial, sans-serif;
+	padding: 10px;/
+}
+h1{
+	background-image: url('header.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 150px;
+	color: white;
+	clear: left;
+	font-family: Futura, Arial, sans-serif;
+	max-width: 100%;
+	background-color: #ffffff;
+}
+body{
+	font-family: Calibri, sans-serif;
+	font-size: 17px;
+	text-align: center;
+}
+img {
+	display: block;
+	margin: auto;
+	width: auto;
+	height: 250px;
+}
+table, th, td{
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin: auto;
+	text-align: center;
+}
+.nav {
+    background-color: #4d5176;
+    overflow: hidden;
+}
+.nav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.nav a:hover {
+    background-color: #eeeeee;
+    color: black;
+}
+.nav a.active {
+    background-color: #a4adff;
+    color: white;
+}
+
+.main{
+	max-width: 900px;
+	border-radius: 20px;
+	background-color: white;
+	margin: auto;
+	padding: 1em;
+}
+.links{
+	font-weight: bold;
+	text-decoration:  none;
+}
+
+.container{
+	display: flex;
+	justify-content: space-between;
+	max-width: 900px;
+	margin: auto;
+	padding: 1em;
+	border-radius: 20px;
+}
+.box1{
+	color: #F49EA1;
+	border-radius: 20px;
+	border-style: inset;
+	border-width: thick;
+	border-color: #F49EA1;
+	background-color: white;
+	width: 270px;
+	height: 170px;
+	text-align: center;
+}
+.box2{
+	color: #8298BC;
+	border-radius: 20px;
+	border-style: inset;
+	border-width: thick;
+	border-color: #8298BC;
+	background-color: white;
+	width: 270px;
+	height: 170px;
+	text-align: center;
+}
+.box3{
+	color: #5C5375;
+	border-radius: 20px;
+	border-style: inset;
+	border-width: thick;
+	border-color: #5C5375;
+	background-color: white;
+	width: 270px;
+	height: 170px;
+	text-align: center;
+}
+.contactInfo{
+	text-align: left;
+	margin: auto;
+}
+.contactForm{
+	margin: auto;
+	font-size: 25px;
+}
+.blogPosts{
+
+}
