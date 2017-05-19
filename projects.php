@@ -2,16 +2,16 @@
 <html>
 <head>
 	<title>Kelly's Site</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="style.css?Time=<?php echo microtime()?>"/>
 </head>
 <body>
-	<h1 align="center">Projects by Kelly</h1>
+	<header align="center">Projects by Kelly</header>
 	<div class="nav">
-		<a href="index.html">Home</a>
-		<a href="more-info.html">About Me</a>
-		<a href="blog-posts.html">Posts</a>
-		<a href="projects.html">Projects</a>
-		<a href="contact.html">Contact</a>
+		<a href="index.php">Home</a>
+		<a href="more-info.php">About Me</a>
+		<a href="blog-posts.php">Posts</a>
+		<a href="projects.php">Projects</a>
+		<a href="contact.php">Contact</a>
 	</div><br>
 	<div class="main">
 		<p>Here you can find the projects I have been working on.</p>

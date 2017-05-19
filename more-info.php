@@ -2,17 +2,16 @@
 <html>
 <head>
 	<title>Kelly's Site</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="style.css?Time=<?php echo microtime()?>"/>
 </head>
 <body>
-
-	<h1>More Info About Me</h1>
+	<header align="center">About Me</header>
 	<div class="nav">
-		<a href="index.html">Home</a>
-		<a href="more-info.html">About Me</a>
-		<a href="blog-posts.html">Posts</a>
-		<a href="projects.html">Projects</a>
-		<a href="contact.html">Contact</a>
+		<a href="index.php">Home</a>
+		<a href="more-info.php">About Me</a>
+		<a href="blog-posts.php">Posts</a>
+		<a href="projects.php">Projects</a>
+		<a href="contact.php">Contact</a>
 	</div><br>
 	<div class="main">
 		<p>Here is some basic information about me.</p>
@@ -31,8 +30,11 @@
 			</tr>
 		</table>
 		<br>
+
 		<img class="default" src="kelly-pic.png" alt="Picture of Kelly">
 		<br>
+		<a href="https://www.linkedin.com/in/kellysjung"><img src="LinkedIn-icon.png" alt="LinkedIn" style="height: 33px; width: 33px"></a>
+		<a href="https://www.instagram.com/?hl=en"><img src="Instagram-icon.jpg" alt="Instagram" style="height: 37px; width: 37px"></a>
 	</div>
 	<br>
 	<footer>LACRM Coding Bootcamp - 2017</footer>
