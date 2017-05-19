@@ -1,5 +1,5 @@
 html{
-	background-color: #dddddd;
+	background-color: #f0f0f5;
 }
 footer{
 	text-align: center;
@@ -11,7 +11,7 @@ footer{
 	padding: 10px;/
 }
 h1{
-	background-image: url('header.png');
+	background-image: url('blank-header.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding: 150px;
@@ -26,17 +26,25 @@ body{
 	font-size: 17px;
 	text-align: center;
 }
-img {
+img.default{
 	display: block;
 	margin: auto;
 	width: auto;
 	height: 250px;
 }
-table, th, td{
-	border: 1px solid black;
+table, td{
+	border: 3px solid;
+	border-color: #9D677F;
 	border-collapse: collapse;
 	margin: auto;
 	text-align: center;
+}
+th{
+	background-color: #9D677F;
+	color: white;
+	margin: auto;
+	text-align: center;
+	font-size: 22px;
 }
 .nav {
     background-color: #4d5176;
@@ -113,6 +121,11 @@ table, th, td{
 	height: 170px;
 	text-align: center;
 }
+.spacer{
+	background-color: white;
+	width: 200px;
+	text-align: center;
+}
 .contactInfo{
 	text-align: left;
 	margin: auto;
@@ -122,5 +135,5 @@ table, th, td{
 	font-size: 25px;
 }
 .blogPosts{
-
+	text-align: left;
 }
