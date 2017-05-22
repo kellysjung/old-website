@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Kelly's Site</title>
+	<title>Posts | Kelly's Site</title>
 	<link rel="stylesheet" href="style.css?Time=<?php echo microtime()?>"/>
 </head>
 <body>
-	<header align="center">Posts by Kelly</header>
+	<header>Posts by Kelly</header>
 	<div class="nav">
 		<a href="index.php">Home</a>
-		<a href="more-info.php">About Me</a>
+		<a href="about-me.php">About Me</a>
 		<a href="blog-posts.php">Posts</a>
 		<a href="projects.php">Projects</a>
 		<a href="contact.php">Contact</a>
