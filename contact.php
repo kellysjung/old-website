@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Contact | Kelly's Site</title>
-	<link rel="stylesheet" href="style.css?Time=<?php echo microtime()?>"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-	<header>Contact Kelly</header>
-	<div class="nav">
-		<a href="index.php">Home</a>
-		<a href="about-me.php">About Me</a>
-		<a href="blog-posts.php">Posts</a>
-		<a href="projects.php">Projects</a>
-		<a href="contact.php">Contact</a>
-	</div><br>
+<?php
+include('config/init.php');
+navbar('Contact | Kelly Jung','Contact Kelly');
+?>
+</div><br>
 	<div class="main">
 		<h2>Get in touch with me!</h2>
 		
@@ -39,7 +29,6 @@
 		<a href="https://www.instagram.com/?hl=en" target="_blank" class="fa fa-instagram"></a>
 		<a href="https://hatscripts.com/addskype/?kelly.jungg" target="_blank" class="fa fa-skype"></a>
 	</div>
-	<br>
-	<footer>LACRM Coding Bootcamp - 2017</footer>
+	<?php footer(); ?>
 </body>
 </html>
