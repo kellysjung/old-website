@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-navbar('Projects | Kelly Jung', 'PROJECTS BY KELLY', 'headerMain');
+navbar('Projects | Kelly Jung', 'Projects by Kelly', 'headerMain');
 ?>
 <div class="main">
 	<p>Here you can find the projects I have been working on.</p>

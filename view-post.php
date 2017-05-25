@@ -4,6 +4,6 @@ include('config/init.php');
 $postId = $_REQUEST['postId'];
 $specificPost = getPost($postId);
 
-navbar($specificPost['postHead'].' | Kelly Jung', $specificPost['postTitle'], 'headerMain');
+navbar($specificPost['tab'].' | Kelly Jung', $specificPost['title'], 'headerMain');
 viewPost($postId);
 footer();
