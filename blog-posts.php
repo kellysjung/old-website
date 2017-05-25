@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html>
 <?php
 include('config/init.php');
-navbar('Posts | Kelly Jung','Posts by Kelly');
+navbar('Posts | Kelly Jung', 'POSTS BY KELLY', 'headerMain');
 ?>
 <div class="main">
 	<div class="blogPosts">
 		<ul>
 			<?php
-			getPosts();
+			listPosts();
 			?>
 		</ul>
 	</div>
@@ -16,5 +14,3 @@ navbar('Posts | Kelly Jung','Posts by Kelly');
 <?php
 footer();
 ?>
-</body>
-</html>
