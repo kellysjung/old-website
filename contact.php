@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-navbar('Contact | Kelly Jung', 'GET IN TOUCH', 'headerMain');
+navbar('Contact | Kelly Jung', 'Get in Touch', 'headerMain');
 ?>
 <div class="main">
 	<div class="container">

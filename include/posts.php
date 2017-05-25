@@ -14,10 +14,8 @@ function listPosts() {
 }
 
 function getPost($postId) {
-	$getPost = dbQuery("
-		SELECT * FROM blog_posts WHERE postId = :postId
-		", array ("postId"=>$postId));
-	return $getPost->fetch();
+	$getSpecificPost = dbQuery("SELECT * FROM blog_posts WHERE postId = :postId", array ("postId"=>$postId));
+	return $getSpecificPost->fetch();
 }
 
 function viewPost($postId) {

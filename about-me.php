@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-navbar('About | Kelly Jung', 'ABOUT ME', 'headerMain');
+navbar('About | Kelly Jung', 'About Me', 'headerMain');
 ?>
 <div class="main">
 	<div class="container">
