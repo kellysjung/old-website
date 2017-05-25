@@ -13,7 +13,6 @@ function navbar($title, $h1, $headerClass) {
 			<div class='social-nav'>
 				<a href='https://www.linkedin.com/in/kellysjung' target='_blank' class='fa fa-linkedin'></a>
 				<a href='https://hatscripts.com/addskype/?kelly.jungg' target='_blank' class='fa fa-skype'></a>
-				<a href='https://www.instagram.com/?hl=en' target='_blank' class='fa fa-instagram'></a>
 				<a href='https://bitbucket.org/kellyjung/' target='_blank' class='fa fa-bitbucket' aria-hidden='true'></a>
 				<a href='https://github.com/kelly-jung' target='_blank' class='fa fa-github' aria-hidden='true'></a>
 			</div>
@@ -39,3 +38,4 @@ function navbar($title, $h1, $headerClass) {
 </html>
 ";
 }
+//<a href='https://www.instagram.com/?hl=en' target='_blank' class='fa fa-instagram'></a>

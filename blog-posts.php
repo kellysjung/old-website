@@ -11,6 +11,4 @@ navbar('Posts | Kelly Jung', 'Posts by Kelly', 'headerMain');
 		</ul>
 	</div>
 </div>
-<?php
-footer();
-?>
+<?php footer(); ?>

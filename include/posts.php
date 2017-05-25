@@ -1,15 +1,10 @@
 <?php
 include_once('config/init.php');
 
-function getPostsArray() {
-	$posts = dbQuery("SELECT * FROM blog_posts");
-	return $posts;
-}
-
 function listPosts() {
-	$posts = getPostsArray()->fetchAll();
+	$posts = dbQuery("SELECT * FROM blog_posts")->fetchAll();
 	foreach ($posts as $post) {
-		echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><hr>';
+		echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><p>'.$post['category'].'</p><hr>';
 	};
 }
 
@@ -20,6 +15,10 @@ function getPost($postId) {
 
 function viewPost($postId) {
 	$specificPost = getPost($postId);
-	echo '<div class="main">'.$specificPost['body'].'</div>'
+	echo '<div class="main"><div class="blogPosts">'.$specificPost['body'].'</div></div>'
 	;	
+}
+
+function listPostCategories($category) {
+	
 }
