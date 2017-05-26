@@ -4,7 +4,7 @@ navbar('About | Kelly Jung', 'About Me', 'headerMain');
 ?>
 <div class="main">
 	<div class="container">
-		<img class="profile" src="kelly-pic.png" alt="Picture of Kelly">
+		<img class="profile" src="kelly-pic-smaller.png" alt="Picture of Kelly">
 		<br>
 		<div class="aboutInfoBox">
 			<table>

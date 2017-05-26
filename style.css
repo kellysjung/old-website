@@ -52,8 +52,9 @@ img.default{
 img.profile{
 	display: block;
 	margin: auto;
-	height: 250px;
+	height: 200px;
 	margin-left: 3cm;
+	border-radius: 40%;
 }
 .aboutInfoBox{
 	margin: auto;

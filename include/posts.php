@@ -15,10 +15,17 @@ function getPost($postId) {
 
 function viewPost($postId) {
 	$specificPost = getPost($postId);
-	echo '<div class="main"><div class="blogPosts">'.$specificPost['body'].'</div></div>'
-	;	
+	echo '<div class="main"><div class="blogPosts">'.$specificPost['body'].'</div></div>';	
 }
 
-function listPostCategories($category) {
-	
+function listPostCategories() {
+	$posts = dbQuery("SELECT * FROM blog_posts ORDER BY category")->fetchAll();
+	$printed = array();
+	foreach ($posts as $post) {
+		if (!in_array($post['category'], $printed)) {
+			echo '<h4>'.$post['category'].'</h4>';
+			array_push($printed, $post['category']);
+		};
+		echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><hr>';
+	};
 }
