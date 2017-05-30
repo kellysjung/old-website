@@ -6,13 +6,13 @@ function navbar($title, $h1, $headerClass) {
 		<title>$title</title>
 		<link rel='stylesheet' href='style.css?Time=".microtime()."'/>
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>
 	</head>
 	<body>
 		<div class='$headerClass'><h1>$h1</h1>
 			<div class='social-nav'>
 				<a href='https://www.linkedin.com/in/kellysjung' target='_blank' class='fa fa-linkedin'></a>
-				<a href='https://hatscripts.com/addskype/?kelly.jungg' target='_blank' class='fa fa-skype'></a>
+				<a href='skype:kelly.jungg?userinfo' target='_blank' class='fa fa-skype'></a>
 				<a href='https://bitbucket.org/kellyjung/' target='_blank' class='fa fa-bitbucket' aria-hidden='true'></a>
 				<a href='https://github.com/kelly-jung' target='_blank' class='fa fa-github' aria-hidden='true'></a>
 			</div>

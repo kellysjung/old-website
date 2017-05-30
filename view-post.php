@@ -5,21 +5,25 @@ $postId = $_REQUEST['postId'];
 $specificPost = getPost($postId);
 
 navbar($specificPost['tab'].' | Kelly Jung', $specificPost['title'], 'headerMain');
-echo "
+?>
 <div class='main'>
 	<div class='blogPosts'>
-		<ul>";
-			viewPost($postId);
-			echo "
-		</ul>
-	</div>";
-	echo "
-	<hr><p>Add a comment:</p>
-	<div class='commentForm'>
-		<input class='commentUser' type='text' placeholder='Your Name' required name='Name'><br><br>
-		<textarea class='commentBody' type='text' placeholder='Your Comment' required name='Comment'></textarea><br><br>
-		<button class='commentButton' type='submit'>Add Comment</button>
-	</div>
-</div>";
+		<?php viewPost($postId); ?>
 
-footer();
+		<hr><hr>
+		<h4>Comments</h4>
+		<?php listComments($postId); ?>
+		<br>
+	</div>
+	<div class='commentForm'>
+		<form action="add-comment.php" method="POST">
+			<input type='hidden' name='postId' value='<?php echo $postId;?>'>
+			<input name='commentUser' placeholder='Name' required><br><br>
+			<textarea class='commentBody' name='commentBody' placeholder='Comment' required></textarea><br><br>
+			<input name='commentEmail' placeholder='Email Address (Not Displayed)'><br><br>
+			<input class='commentBtn' type="submit" value="Add Comment">
+		</form>
+	</div>
+</div>
+
+<?php footer();

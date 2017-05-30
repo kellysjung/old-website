@@ -6,11 +6,11 @@ echo "<div class='main'>";
 listTags();
 echo "
 <div class='blogPosts'>
-	<ul>";
+	";
 		echo "<hr><br>";
 		listPosts();
 		echo "
-	</ul>
+	
 </div>
 </div>";
 footer();

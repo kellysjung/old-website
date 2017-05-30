@@ -1,12 +1,14 @@
 html{
 	/*background-color: white;*/
 	background-color: #ecf4f8;
+	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 footer{
 	padding: 5px;
 	color: #1A5375;;
 	clear: left;
-	font-family: 'Raleway', sans-serif;
+
 	font-size: 10px;
 	padding: 10px;
 }
@@ -17,9 +19,8 @@ footer{
 	background-size: cover;
 	background-position: 50% 50%;
 	overflow: hidden;
-	/*height: 450px;*/
 }
-/*.headerHome{
+.headerHome{
 	position: relative;
 	background-image: url('ocean-home.jpg');
 	background-repeat: no-repeat;
@@ -27,19 +28,22 @@ footer{
 	background-position: 50% 43% ;
 	overflow: hidden;
 	padding: 100px;
-}*/
+}
 h1{
 	vertical-align: center;
 	color: white;
-	font-family: 'Raleway', sans-serif;
 	font-size: 40px;
 	font-weight: bold;
 	text-align: center;
 	padding-top: 20px;
 	padding-bottom: 35px;
 }
+h4{
+	text-align: center;
+	font-weight: bolder;
+	font-size: 20px;
+}
 body{
-	font-family: 'Raleway', sans-serif;
 	font-size: 17px;
 	text-align: center;
 }
@@ -106,9 +110,14 @@ th{
 	margin: auto;
 	padding: 1em;
 }
-.links{
-	font-weight: bold;
-	text-decoration:  none;
+.main a{
+	color: #123c54;
+}
+.main a:hover {
+	color: #8fc0d6;
+}
+.main a:visited {
+	color: gray;
 }
 .container{
 	display: flex;
@@ -157,50 +166,51 @@ th{
 	width: 300px;
 	/*text-align: right;*/
 	margin: auto;
-	font-size: 15px;
-	outline: none !important;
-	border:1px #9d677f;
-	box-shadow: 0 0 10px #91C7DA;
+	font-size: 14px;
+	border:1px solid #92ADB6;
 }
 .contactMsg{
 	width: 300px;
 	/*text-align: right;*/
 	margin: auto;
-	font-size: 15px;
-	outline: none !important;
-	border:1px #91C7DA;
-	box-shadow: 0 0 10px #91C7DA;
+	font-size: 14px;
+	border:1px solid #92ADB6;
 }
-
 .commentForm input{
 	width: 300px;
-	/*text-align: right;*/
 	margin: auto;
-	font-size: 12px;
-	/*outline: none !important;*/
+	font-size: 14px;
 	border:1px solid #92ADB6;
+	padding: 3px;
 }
 .commentBody{
 	width: 300px;
-	/*text-align: right;*/
 	margin: auto;
-	font-size: 12px;
-	/*outline: none !important;*/
+	font-size: 14px;
 	border:1px solid #92ADB6;
+	padding: 3px;
 }
-
+.commentBtn{
+	background-color: #92ADB6;
+	color: white;
+}
+.commentUserBox {
+	display: inline-block;
+	text-align: center;
+	width: 150px;
+	margin: 10px;
+	border-right:1px solid #92ADB6;
+	font-weight: bold;
+}
+.commentBodyBox {
+	display: inline-block;
+	margin: 10px;
+	font-size: 14px;
+}
 .blogPosts{
 	text-align: left;
 }
-.main a{
-	color: #123c54;
-}
-.main a:hover {
-	color: #8fc0d6;
-}
-.main a:visited {
-	color: gray;
-}
+
 .hoverBox{
 	position: relative;
 	display: inline-block;
