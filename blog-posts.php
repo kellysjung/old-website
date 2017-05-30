@@ -1,16 +1,16 @@
 <?php
 include('config/init.php');
 navbar('Posts | Kelly Jung', 'Posts by Kelly', 'headerMain');
-?>
-<div class='main'>
-	<div class='blogPosts'>
-	<!-- <form action='' name='categories' method='post'> -->
-		<ul>
-			<?php
-			// listPosts();
-			listPostCategories()
-			?>
-		</ul>
-	</div>
+
+echo "<div class='main'>";
+listTags();
+echo "
+<div class='blogPosts'>
+	<ul>";
+		echo "<hr><br>";
+		listPosts();
+		echo "
+	</ul>
 </div>
-<?php footer(); ?>
+</div>";
+footer();

@@ -19,7 +19,7 @@ footer{
 	overflow: hidden;
 	/*height: 450px;*/
 }
-.headerHome{
+/*.headerHome{
 	position: relative;
 	background-image: url('ocean-home.jpg');
 	background-repeat: no-repeat;
@@ -27,7 +27,7 @@ footer{
 	background-position: 50% 43% ;
 	overflow: hidden;
 	padding: 100px;
-}
+}*/
 h1{
 	vertical-align: center;
 	color: white;
@@ -171,16 +171,34 @@ th{
 	border:1px #91C7DA;
 	box-shadow: 0 0 10px #91C7DA;
 }
+
+.commentForm input{
+	width: 300px;
+	/*text-align: right;*/
+	margin: auto;
+	font-size: 12px;
+	/*outline: none !important;*/
+	border:1px solid #92ADB6;
+}
+.commentBody{
+	width: 300px;
+	/*text-align: right;*/
+	margin: auto;
+	font-size: 12px;
+	/*outline: none !important;*/
+	border:1px solid #92ADB6;
+}
+
 .blogPosts{
 	text-align: left;
 }
-.blogPosts a{
+.main a{
 	color: #123c54;
 }
-.blogPosts a:hover {
-    color: #8fc0d6;
+.main a:hover {
+	color: #8fc0d6;
 }
-.blogPosts a:visited {
+.main a:visited {
 	color: gray;
 }
 .hoverBox{
@@ -218,7 +236,12 @@ th{
 	text-align: right;
 	color: #1A5375;
 }
-.fa:hover{
+.social-nav .fa{
+	background: white;
+	color: #1A5375;
+	opacity: 0.9;
+}
+.social-nav .fa:hover{
 	opacity: 0.5;
 }
 .fa{
@@ -227,29 +250,4 @@ th{
 	text-align: center;
 	text-decoration: none;
 	border-radius: 50%;
-}
-.fa-linkedin{
-	background: white;
-	color: #1A5375;
-	opacity: 0.9;
-}
-.fa-instagram{
-	background: white;
-	color: #1A5375;
-	opacity: 0.9;
-}
-.fa-skype{
-	background: white;
-	color: #1A5375;
-	opacity: 0.9;
-}
-.fa-github{
-	background: white;
-	color: #1A5375;
-	opacity: 0.9;
-}
-.fa-bitbucket{
-	background: white;
-	color: #1A5375;
-	opacity: 0.9;
 }
