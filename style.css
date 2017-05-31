@@ -1,5 +1,4 @@
 html{
-	/*background-color: white;*/
 	background-color: #ecf4f8;
 	font-family: 'Roboto', sans-serif;
 	font-family: 'Open Sans', sans-serif;
@@ -159,15 +158,8 @@ th{
 	text-align: left;
 	margin: auto;
 }
-.contactForm {
+.defaultForm {
 	margin: auto;
-}
-.contactForm input{
-	width: 300px;
-	/*text-align: right;*/
-	margin: auto;
-	font-size: 14px;
-	border:1px solid #92ADB6;
 }
 .contactMsg{
 	width: 300px;
@@ -176,41 +168,65 @@ th{
 	font-size: 14px;
 	border:1px solid #92ADB6;
 }
-.commentForm input{
+.editForm input{
+	width: 600px;
+	margin: auto;
+	font-size: 14px;
+	border:1px solid #92ADB6;
+	padding: 3px;
+}
+.editFormBody{
+	width: 600px;
+	margin: auto;
+	font-size: 14px;
+	border:1px solid #92ADB6;
+	padding: 3px;
+}
+.defaultForm input{
 	width: 300px;
 	margin: auto;
 	font-size: 14px;
 	border:1px solid #92ADB6;
 	padding: 3px;
 }
-.commentBody{
+.defaultFormBody{
 	width: 300px;
 	margin: auto;
 	font-size: 14px;
 	border:1px solid #92ADB6;
 	padding: 3px;
 }
-.commentBtn{
+.defaultFormBtn{
 	background-color: #92ADB6;
+	color: white;
+}
+.deleteBtn{
+	background-color: #ff6666;
 	color: white;
 }
 .commentUserBox {
 	display: inline-block;
 	text-align: center;
-	width: 150px;
-	margin: 10px;
-	border-right:1px solid #92ADB6;
+	width: 16%;
+	margin: 12px;
 	font-weight: bold;
+	float: left;
+	/*word-wrap: break-word;*/
+}
+.datetime{
+	font-size: 10px;
 }
 .commentBodyBox {
+	border-left:1px solid gray;
+	padding-left: 15px; 
 	display: inline-block;
 	margin: 10px;
 	font-size: 14px;
+	width: 74%;
 }
 .blogPosts{
 	text-align: left;
 }
-
 .hoverBox{
 	position: relative;
 	display: inline-block;

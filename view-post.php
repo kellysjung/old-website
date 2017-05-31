@@ -9,19 +9,21 @@ navbar($specificPost['tab'].' | Kelly Jung', $specificPost['title'], 'headerMain
 <div class='main'>
 	<div class='blogPosts'>
 		<?php viewPost($postId); ?>
-
-		<hr><hr>
-		<h4>Comments</h4>
-		<?php listComments($postId); ?>
-		<br>
 	</div>
-	<div class='commentForm'>
+</div>
+<br>
+<div class='main'>
+	<h4>Comments</h4>
+	<div class='blogPosts'>
+		<?php listComments($postId); ?>
+	</div>
+	<div class='defaultForm'>
 		<form action="add-comment.php" method="POST">
 			<input type='hidden' name='postId' value='<?php echo $postId;?>'>
-			<input name='commentUser' placeholder='Name' required><br><br>
-			<textarea class='commentBody' name='commentBody' placeholder='Comment' required></textarea><br><br>
+			<input name='commentUser' maxlength='254' placeholder='Name' required><br><br>
+			<textarea class='defaultFormBody' name='commentBody' placeholder='Comment' required></textarea><br><br>
 			<input name='commentEmail' placeholder='Email Address (Not Displayed)'><br><br>
-			<input class='commentBtn' type="submit" value="Add Comment">
+			<input class='defaultFormBtn' type="submit" value="Add Comment">
 		</form>
 	</div>
 </div>

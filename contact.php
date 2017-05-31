@@ -10,13 +10,13 @@ navbar('Contact | Kelly Jung', 'Get in Touch', 'headerMain');
 			<i class="fa fa-envelope"></i> kelly.jung@lessannoyingcrm.com
 		</div>
 
-		<div class="contactForm">
+		<div class="defaultForm">
 			<form action="mailto:kellyjung96@gmail.com" method="POST" enctype="text/plain">
 				<input type="text" placeholder="Name" required name="Name"><br><br>
 				<input type="text" placeholder="Email Address" required name="Email"><br><br>
 				<input type="text" placeholder="Subject" required name="Subject"><br><br>
-				<textarea class="contactMsg" type="text" placeholder="Message" required name="Message"></textarea><br><br>
-				<input class='commentBtn' type="submit" value="Send Email">
+				<textarea class="defaultFormBody" type="text" placeholder="Message" required name="Message"></textarea><br><br>
+				<input class='defaultFormBtn' type="submit" value="Send Email">
 			</form>
 		</div>
 	</div>

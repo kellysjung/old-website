@@ -8,7 +8,7 @@ navbar($specificTag['tagName'].' | Kelly Jung', $specificTag['tagName'].' Posts'
 echo "
 <div class='main'>".
 	$specificTag['tagDescription']
-	."<div class='blogPosts'>
+	."<hr><div class='blogPosts'>
 		<ul>";
 			listTagPosts($tagId);
 			echo"

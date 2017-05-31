@@ -26,16 +26,37 @@ function navbar($title, $h1, $headerClass) {
 		";
 	}
 
-	function footer() {
+	function adminNavbar($title, $h1, $headerClass) {
 		echo "
-		<br><div class='hoverBox'>
-		<a href='' class='fa fa-arrow-up'></a>
-		<span class='hoverText'>Back To Top</span>
-	</div>
-	<br>
-	<footer>LACRM Coding Bootcamp - 2017</footer>
-</body>
-</html>
-";
+		<html>
+		<head>
+			<title>$title</title>
+			<link rel='stylesheet' href='style.css?Time=".microtime()."'/>
+			<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+			<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>
+		</head>
+		<body>
+			<div class='$headerClass'><h1>$h1</h1>
+				<div class='nav'>
+					<a href='index.php'>HOME</a> /
+					<a href='create-post.php'>NEW POST</a> /
+					<a href='admin.php'>POSTS</a> /
+					<a href='view-tag.php'>TAGS</a>
+				</div>
+			</div><br>
+			";
+		}
+
+		function footer() {
+			echo "
+			<br><div class='hoverBox'>
+			<a href='#' class='fa fa-arrow-up'></a>
+			<span class='hoverText'>Back To Top</span>
+		</div>
+		<br>
+		<footer>LACRM Coding Bootcamp - 2017</footer>
+	</body>
+	</html>
+	";
 }
 //<a href='https://www.instagram.com/?hl=en' target='_blank' class='fa fa-instagram'></a>

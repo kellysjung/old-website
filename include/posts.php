@@ -42,15 +42,50 @@ function listTags() {
 // LISTS ALL POSTS PERTAINING TO TAG; USED IN view-tag.php
 function listTagPosts($tagId) {
 	$taggedPosts = dbQuery("SELECT * FROM blog_posts INNER JOIN blogPost_tag_link ON blogPost_tag_link.postId = blog_posts.postId INNER JOIN tags ON tags.tagId = blogPost_tag_link.tagId WHERE tags.tagId = :tagId", array ("tagId"=>$tagId))->fetchAll();
+	if(!$taggedPosts) {
+		echo("No tagged posts found.");
+		exit;
+	}
 	foreach ($taggedPosts as $post) {
 		echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br>';
 	}
 }
 
+// LISTS ALL COMMENTS FOR A POST; USED IN view-post.php
 function listComments($postId) {
 	$comments = dbQuery("SELECT * FROM comments INNER JOIN blog_posts ON blog_posts.postId = comments.postId WHERE comments.postId = :postId ORDER BY commentId DESC" , array ("postId"=>$postId))->fetchAll();
-	echo '<hr>';
+	echo '<hr><br>';
+	if(!$comments) {
+		echo "No comments yet.<hr><br>";
+	}
+
 	foreach ($comments as $comment) {
-		echo '<div class="commentUserBox">'.$comment['commentUser'].'</div>'.'<div class="commentBodyBox">'.$comment['commentBody'].'</div><br><hr>';
+		echo '<div class="commentUserBox">'.$comment['commentUser'].'<div class="datetime">'.$comment['commentDate'].' @ '.$comment['commentTime'].'</div></div><div class="commentBodyBox">'.$comment['commentBody'].'</div><br><hr>';
 	}
 }
+
+function listAdminPosts() {
+	$posts = dbQuery("SELECT * FROM blog_posts ORDER BY postId DESC")->fetchAll();
+	foreach ($posts as $post) {
+		echo '<a href = edit-post.php?postId='.$post['postId'].' type="button"> Edit / Delete Post</a>' . ':';
+		echo '   ';
+		echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
+	};
+}
+
+function editPost($postId) {
+	$editPost = dbQuery("SELECT * FROM blog_posts WHERE postId = :postId", array ("postId"=>$postId))->fetch();
+	return $editPost;
+}
+
+
+// DATE AND TIME FUNCTIONS
+	function returnDateTime() {
+		return date("n\-j\-y \@ h:i A");
+	}
+	function returnDate() {
+		return date("n\-j\-y");
+	}
+	function returnTime() {
+		return date("h:i A");
+	}
