@@ -23,7 +23,7 @@ navbar($specificPost['tab'].' | Kelly Jung', $specificPost['title'], 'headerMain
 			<input name='commentUser' maxlength='254' placeholder='Name' required><br><br>
 			<textarea class='defaultFormBody' name='commentBody' placeholder='Comment' required></textarea><br><br>
 			<input name='commentEmail' placeholder='Email Address (Not Displayed)'><br><br>
-			<input class='defaultFormBtn' type="submit" value="Add Comment">
+			<input class='defaultBtn' type="submit" value="Add Comment">
 		</form>
 	</div>
 </div>

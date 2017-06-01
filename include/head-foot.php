@@ -38,10 +38,11 @@ function navbar($title, $h1, $headerClass) {
 		<body>
 			<div class='$headerClass'><h1>$h1</h1>
 				<div class='nav'>
-					<a href='index.php'>HOME</a> /
+					<a href='index.php'>PUBLIC HOME</a> /
 					<a href='create-post.php'>NEW POST</a> /
 					<a href='admin.php'>POSTS</a> /
-					<a href='view-tag.php'>TAGS</a>
+					<a href='draft-posts.php'>DRAFTS</a> /
+					<a href='edit-tags.php'>TAGS</a>
 				</div>
 			</div><br>
 			";

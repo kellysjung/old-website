@@ -196,13 +196,20 @@ th{
 	border:1px solid #92ADB6;
 	padding: 3px;
 }
-.defaultFormBtn{
+.defaultBtn{
 	background-color: #92ADB6;
 	color: white;
+	border:1px solid white;
 }
-.deleteBtn{
+.redBtn{
 	background-color: #ff6666;
 	color: white;
+	border:1px solid white;
+}
+.greenBtn{
+	background-color: #66cc66;
+	color: white;
+	border:1px solid white;
 }
 .commentUserBox {
 	display: inline-block;

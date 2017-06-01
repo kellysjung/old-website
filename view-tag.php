@@ -10,7 +10,7 @@ echo "
 	$specificTag['tagDescription']
 	."<hr><div class='blogPosts'>
 		<ul>";
-			listTagPosts($tagId);
+			listTaggedPosts($tagId);
 			echo"
 		</ul>
 	</div>

@@ -10,15 +10,17 @@ function getPost($postId) {
 // VIEW INDIVIDUAL POSTS; CAN COME FROM view-tag.php OR blog-posts.php; USED IN view-post.php
 function viewPost($postId) {
 	$specificPost = getPost($postId);
-	echo $specificPost['body'];	
+	echo "<p>".$specificPost['body']."</p>";	
 }
 
 // LISTS ALL THE POSTS REGARDLESS OF TAG; USED IN blog-posts.php
 function listPosts() {
 	$posts = dbQuery("SELECT * FROM blog_posts ORDER BY postId DESC")->fetchAll();
 	foreach ($posts as $post) {
-		echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
-	};
+		if ($post['draft'] == 0) {
+			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
+		}
+	}
 }
 
 // GETS THE SPECIFIC TAG AND POSTS ASSOCIATED; USED IN view-tag.php
@@ -40,14 +42,16 @@ function listTags() {
 }
 
 // LISTS ALL POSTS PERTAINING TO TAG; USED IN view-tag.php
-function listTagPosts($tagId) {
+function listTaggedPosts($tagId) {
 	$taggedPosts = dbQuery("SELECT * FROM blog_posts INNER JOIN blogPost_tag_link ON blogPost_tag_link.postId = blog_posts.postId INNER JOIN tags ON tags.tagId = blogPost_tag_link.tagId WHERE tags.tagId = :tagId", array ("tagId"=>$tagId))->fetchAll();
 	if(!$taggedPosts) {
 		echo("No tagged posts found.");
 		exit;
 	}
 	foreach ($taggedPosts as $post) {
-		echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br>';
+		if ($post['draft'] == 0) {
+			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br>';
+		}
 	}
 }
 
@@ -67,10 +71,25 @@ function listComments($postId) {
 function listAdminPosts() {
 	$posts = dbQuery("SELECT * FROM blog_posts ORDER BY postId DESC")->fetchAll();
 	foreach ($posts as $post) {
-		echo '<a href = edit-post.php?postId='.$post['postId'].' type="button"> Edit / Delete Post</a>' . ':';
-		echo '   ';
-		echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
-	};
+		if ($post['draft'] == 0) {
+			echo '<a href = edit-post.php?postId='.$post['postId'].' name="edit" type="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+			// echo '<a href = update-post.php?postId='.$post['postId'].' name="delete" type="button"><i class="fa fa-tags" aria-hidden="true"></i></a>';
+			echo '<a href = update-post.php?postId='.$post['postId'].' name="delete" type="button"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
+		}
+	}
+}
+
+function listAdminDrafts() {
+	$posts = dbQuery("SELECT * FROM blog_posts ORDER BY postId DESC")->fetchAll();
+	foreach ($posts as $post) {
+		if ($post['draft'] == 1) {
+			echo '<a href = edit-post.php?postId='.$post['postId'].' name="edit" type="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+			// echo '<a href = update-post.php?postId='.$post['postId'].' name="delete" type="button"><i class="fa fa-tags" aria-hidden="true"></i></a>';
+			echo '<a href = update-post.php?postId='.$post['postId'].' name="delete" type="button"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
+		}
+	}
 }
 
 function editPost($postId) {
@@ -78,14 +97,18 @@ function editPost($postId) {
 	return $editPost;
 }
 
+function postBtns() {
+
+}
+
 
 // DATE AND TIME FUNCTIONS
-	function returnDateTime() {
-		return date("n\-j\-y \@ h:i A");
-	}
-	function returnDate() {
-		return date("n\-j\-y");
-	}
-	function returnTime() {
-		return date("h:i A");
-	}
+function returnDateTime() {
+	return date("n\-j\-y \@ h:i A");
+}
+function returnDate() {
+	return date("n\-j\-y");
+}
+function returnTime() {
+	return date("h:i A");
+}
