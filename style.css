@@ -1,13 +1,13 @@
 html{
 	background-color: #ecf4f8;
-	font-family: 'Roboto', sans-serif;
-	font-family: 'Open Sans', sans-serif;
+	font-family: Arial, sans-serif;
+/*	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;*/
 }
 footer{
 	padding: 5px;
 	color: #1A5375;;
 	clear: left;
-
 	font-size: 10px;
 	padding: 10px;
 }
@@ -45,6 +45,10 @@ h4{
 body{
 	font-size: 17px;
 	text-align: center;
+}
+.smallText{
+	font-size: 12px;
+	text-align: right;
 }
 img.default{
 	display: block;
@@ -115,9 +119,9 @@ th{
 .main a:hover {
 	color: #8fc0d6;
 }
-.main a:visited {
+/*.main a:visited {
 	color: gray;
-}
+}*/
 .container{
 	display: flex;
 	justify-content: space-between;
@@ -241,7 +245,7 @@ th{
 }
 .hoverBox .hoverText{
 	visibility: hidden;
-	width: 120px;
+	width: 110px;
 	background-color: #123c54;
 	color: white;
 	text-align: center;
@@ -251,7 +255,7 @@ th{
 	z-index: 1;
 	bottom: 100%;
 	left: 50%;
-	margin-left: -60px;
+	margin-left: -20px;
 }
 .hoverBox:hover .hoverText{
 	visibility: visible;

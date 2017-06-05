@@ -21,8 +21,4 @@ navbar('Home | Kelly Jung', "Kelly Jung", 'headerMain');
 </div>
 <?php 
 
-getTime();
-
-
-
 footer(); ?>

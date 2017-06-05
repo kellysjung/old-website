@@ -40,9 +40,9 @@ function navbar($title, $h1, $headerClass) {
 				<div class='nav'>
 					<a href='index.php'>PUBLIC HOME</a> /
 					<a href='create-post.php'>NEW POST</a> /
-					<a href='admin.php'>POSTS</a> /
+					<a href='admin-page.php'>POSTS</a> /
 					<a href='draft-posts.php'>DRAFTS</a> /
-					<a href='edit-tags.php'>TAGS</a>
+					<a href='view-tags.php'>TAGS</a>
 				</div>
 			</div><br>
 			";
@@ -50,14 +50,15 @@ function navbar($title, $h1, $headerClass) {
 
 		function footer() {
 			echo "
-			<br><div class='hoverBox'>
-			<a href='#' class='fa fa-arrow-up'></a>
-			<span class='hoverText'>Back To Top</span>
-		</div>
-		<br>
-		<footer>LACRM Coding Bootcamp - 2017</footer>
-	</body>
-	</html>
-	";
-}
+			<br>
+			<div class='hoverBox'>
+				<a href='#' class='fa fa-arrow-up'></a>
+				<span class='hoverText'>Back To Top</span>
+			</div>
+			<br>
+			<footer>LACRM Coding Bootcamp - 2017</footer>
+		</body>
+		</html>
+		";
+	}
 //<a href='https://www.instagram.com/?hl=en' target='_blank' class='fa fa-instagram'></a>

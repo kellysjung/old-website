@@ -1,31 +1,41 @@
 <?php
 include_once('config/init.php');
 
-$link = mysqli_connect('localhost', 'cf', 'password', 'cf');
+$created = getPostCreated();
+// $draft;
 
-$tab = mysql_real_escape_string($_POST['tab']);
-$title = mysql_real_escape_string($_POST['title']);
-$body = mysql_real_escape_string($_POST['body']);
-// $datetime = returnDateTime();
-$date = returnDate();
-$time = returnTime();
-$draft;
+// if (isset($_POST['publish'])) {
+$draft = 0;
+// }
+// if (isset($_POST['save'])) {
+// 	$draft = 1;
+// }
 
-if (isset($_POST['publish'])) {
-	$draft = 0;
-}
-if (isset($_POST['save'])) {
-	$draft = 1;
-}
+$addPost = dbQuery(
+	"INSERT INTO blog_posts (tab, title, body, created, draft) 
+	VALUES (:tab, :title, :body, :created, :draft)",
+	array("tab"=>$_POST['tab'], "title"=>$_POST['title'], "body"=>$_POST['body'], "created"=>$created, "draft"=>$draft)
+	);
 
-$addPost = "INSERT INTO blog_posts (tab, title, body, createdDate, createdTime, draft) VALUES ('$tab', '$title', '$body', '$date', '$time', '$draft')";
+$getId = dbQuery("SELECT MAX(postId) FROM blog_posts")->fetchAll(); 
+$postId = $getId[0]['MAX(postId)'];
 
-if (mysqli_query($link, $addPost)) {
-	echo "<script type='text/javascript'>alert('Blog post added.');</script>";
-	// header('Location:view-post.php?postId='.$postId);
+if (!isset($_POST['tagId'])) {
+	$tagId = 2;
+
 } else {
-	echo "Error. Could not add post. Please try again. <br>" . mysqli_error($link);
+	$tagId = $_POST['tagId'];
 }
-exit;
+
+if (isset($_POST['newTagName'])) {
+	$newTag = dbQuery("INSERT INTO tags (tagName, tagDescription) VALUES (:tagName, :tagDescription)", array("tagName"=>$_POST['newTagName'], "tagDescription"=>$_POST['newTagDescription']));
+	
+	$getId = dbQuery("SELECT MAX(tagId) FROM tags")->fetchAll();
+
+	$tagId = $getId[0]['MAX(tagId)'];
+	$addTag = dbQuery("INSERT INTO blogPost_tag_link (postId, tagId) VALUES (:postId, :tagId)", array("postId"=>$postId, "tagId"=>$tagId));
+} else {
+	$addTag = dbQuery(
+		"INSERT INTO blogPost_tag_link (postId, tagId) VALUES (:postId, :tagId)", array("postId"=>$postId, "tagId"=>$tagId));
+}
 ?>
-<a href="admin.php">click</a>

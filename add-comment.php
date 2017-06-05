@@ -1,22 +1,18 @@
 <?php
 include_once('config/init.php');
 
-$link = mysqli_connect('localhost', 'cf', 'password', 'cf');
-
 $postId = $_REQUEST['postId'];
-$commentUser = mysql_real_escape_string($_POST['commentUser']);
-$commentEmail = mysql_real_escape_string($_POST['commentEmail']);
-$commentBody = mysql_real_escape_string($_POST['commentBody']);
-// $datetime = returnDateTime();
-$date = returnDate();
-$time = returnTime();
+$created = getCommentCreated();
 
-$addComment = "INSERT INTO comments (postId, commentUser, commentEmail, commentBody, commentDate, commentTime) VALUES ('$postId', '$commentUser', '$commentEmail', '$commentBody', '$date', '$time')";
+$addComment = dbQuery(
+	"INSERT INTO comments (postId, commentUser, commentEmail, commentBody, commentCreated)
+	VALUES (:postId, :cUser, :cEmail, :cBody, :cCreated)",
+	array("postId"=>$postId, "cUser"=>$_POST['commentUser'], "cEmail"=>$_POST['commentEmail'], "cBody"=>$_POST['commentBody'], "cCreated"=>$created));
 
-if (mysqli_query($link, $addComment)) {
+if ($addComment) {
 	// echo "<script type='text/javascript'>alert('Comment added.');</script>";
-	header('Location:view-post.php?postId='.$postId);
+	header('Location:view-post.php?postId='.$postId.'#comments');
 } else {
-	echo "Error. Could not add comment. Please try again. <br>".mysqli_error($link);
+	echo "Error. Could not add comment. Please try again. <br>";
 }
 exit;
