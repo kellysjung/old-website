@@ -12,17 +12,12 @@ adminNavbar('New Post | Kelly Jung', "New Post", 'headerMain');
 			<p>TAB - This will be part of the tab title. (Character limit: 24)</p>
 			<input name='tab' type='text' maxlength='24' placeholder='Tab Title' required><br>
 			<p>BODY - Remember to put in '< p >< / p >' whenever you want a new paragraph.</p>
-			<textarea class='editFormBody' name='body' placeholder='Post Body' required></textarea><br>
-		<br>
+			<textarea class='editFormBody' name='body' placeholder='Post Body' required></textarea>
+			<br><br>
 			<hr>
 			<h3>Add tag:</h3>
-			<?php
-			tagsDropdown();
-			?>
-			<!-- <input type='hidden' name='postId' value='<?php echo $postId;?>'> -->
+			<?php tagsDropdown(); ?>
 			<br><br>
-			<!-- <input class='defaultBtn' type="submit" name='exists' value="Add"> -->
-			
 			<h3>Add a new tag:</h3>
 			<input type='hidden' name='postId' value='<?php echo $postId;?>'>
 			<p>TAG NAME - Up to 250 characters.</p>
@@ -35,5 +30,6 @@ adminNavbar('New Post | Kelly Jung', "New Post", 'headerMain');
 		</form>
 	</div>
 </div>
-
-<?php footer(); ?>
+<?php
+footer();
+?>

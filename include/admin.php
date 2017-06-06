@@ -23,8 +23,18 @@ function listAdminDrafts() {
 
 function listAdminTags() {
 	$tags = dbQuery("SELECT * FROM tags ORDER BY tagId DESC")->fetchAll();
+	echo '<ul class="columns">';
 	foreach($tags as $tag) {
-		echo '<div class="hoverBox"><a href="update-tags.php?tagId='.$tag['tagId'].'name="delete" type="button" class="fa fa-trash"></a><span class="hoverText">Delete Tag</span></div>';
+		echo '<li><a href="update-tags.php?tagId='.$tag['tagId'].'" name="delete" type="button" class="fa fa-trash"></a>';
+		echo '<a href="view-tagged-posts.php?tagId='.$tag['tagId'].'">'.$tag['tagName'].'</a></li>';
+	}
+	echo '</ul>';
+}
+
+function listPostsTagsForEdit($postId) {
+	$tags = dbQuery("SELECT * FROM tags INNER JOIN blogPost_tag_link ON blogPost_tag_link.tagId = tags.tagId INNER JOIN blog_posts ON blog_posts.postId=blogPost_tag_link.postId WHERE blog_posts.postId = :postId", array ("postId"=>$postId))->fetchAll();
+	foreach ($tags as $tag) {
+		echo '<a href="update-post.php?postId='.$postId.'&tagId='.$tag['tagId'].'&del=0" name="removeTag" type="button" class="fa fa-times"></a>';
 		echo '<a href="view-tagged-posts.php?tagId='.$tag['tagId'].'">'.$tag['tagName'].'</a>';
 	}
 }
@@ -51,6 +61,7 @@ function postsDropdown() {
 	}
 	echo '</select>';
 }
+
 
 function editPostForm() {
 

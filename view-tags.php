@@ -4,7 +4,7 @@ adminNavbar('Admin Tags | Kelly Jung', "Admin Tags", 'headerMain');
 ?>
 
 <div class='main'>
-	<?php listAdminTags(); ?>
+
 </div>
 
 <?php

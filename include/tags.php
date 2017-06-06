@@ -28,7 +28,7 @@ function listTaggedPosts($tagId) {
 	}
 	foreach ($taggedPosts as $post) {
 		if ($post['draft'] == 0) {
-			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br>';
+			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
 		}
 	}
 }

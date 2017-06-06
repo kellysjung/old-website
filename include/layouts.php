@@ -42,7 +42,7 @@ function navbar($title, $h1, $headerClass) {
 					<a href='create-post.php'>NEW POST</a> /
 					<a href='admin-page.php'>POSTS</a> /
 					<a href='draft-posts.php'>DRAFTS</a> /
-					<a href='view-tags.php'>TAGS</a>
+					<a href='admin-view-tags.php'>TAGS</a>
 				</div>
 			</div><br>
 			";

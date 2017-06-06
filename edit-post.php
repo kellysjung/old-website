@@ -11,7 +11,7 @@ $post = editPost($postId);
 	<div class='blogPosts'>
 		<form class='editForm' action='update-post.php' method='POST'>
 			<input type='hidden' name='postId' value='<?php echo $postId;?>'>
-			<input type='hidden' name='del' value=0>
+			<input type='hidden' name='del' value=2>
 			<p>EDIT TITLE - This will be part header image. (Character limit: 250)</p>
 			<input name='title' type='text' maxlength='250' value='<?php echo $post['title']; ?>' required><br>
 			<p>EDIT TAB - This will be part of the tab title. (Character limit: 24)</p>
@@ -27,4 +27,6 @@ $post = editPost($postId);
 		<?php listPostsTags($postId); ?>
 	</div>
 </div>
-<?php footer(); ?>
+<?php
+footer();
+?>

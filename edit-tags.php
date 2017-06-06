@@ -7,11 +7,12 @@ $post = getPost($postId);
 
 <div class='main'>
 	<div class='blogPosts'>
+		<h4><?php echo $post['title']; ?></h4>
 
-		<h3>Already tagged onto this post: </h3>
-		<?php listPostsTags($postId); ?>
+		<h3>Already tagged:</h3>
+		<?php listPostsTagsForEdit($postId); ?>
 		<hr>
-		<h3>Add tag to: <?php echo $post['title']; ?></h3>
+		<h3>Add existing tag:</h3>
 		<form action='add-tag.php' method='POST'>
 			<?php
 			tagsDropdown();
@@ -33,3 +34,6 @@ $post = getPost($postId);
 		</form>
 	</div>
 </div>
+<?php
+footer();
+?>
