@@ -29,9 +29,8 @@ function listComments($postId) {
 	$comments = dbQuery("SELECT * FROM comments INNER JOIN blog_posts ON blog_posts.postId = comments.postId WHERE comments.postId = :postId ORDER BY commentId DESC" , array ("postId"=>$postId))->fetchAll();
 	echo '<hr><br>';
 	if(!$comments) {
-		echo "- - No comments yet. - -<hr><br>";
+		echo "(No comments yet.)<hr><br>";
 	}
-
 	foreach ($comments as $comment) {
 		echo '<div class="commentUserBox">'.$comment['commentUser'].'<div class="datetime">'.$comment['commentCreated'].'</div></div><div class="commentBodyBox">'.$comment['commentBody'].'</div><br><hr>';
 	}

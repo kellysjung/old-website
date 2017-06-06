@@ -5,7 +5,7 @@ $postId = $_REQUEST['postId'];
 
 $del = $_REQUEST['del'];
 
-if (isset($_POST['delete']) or $del == 1) {
+if (isset($_REQUEST['delete']) or $del == 1) {
 	$deleteComments = dbQuery("DELETE FROM comments WHERE postId = :postId", array ("postId"=>$postId));
 	$deleteTags = dbQuery("DELETE FROM blogPost_tag_link WHERE postId = :postId", array ("postId"=>$postId));
 	$deletePost = dbQuery("DELETE FROM blog_posts WHERE postId = :postId", array ("postId"=>$postId));
@@ -18,7 +18,7 @@ if (isset($_POST['delete']) or $del == 1) {
 	exit;
 }
 
-if (isset($_POST['update']) or $del == 2) {
+if (isset($_REQUEST['update']) or $del == 2) {
 	$postId = $_REQUEST['postId'];
 
 	$updatePost = dbQuery("UPDATE blog_posts SET tab = :updatedTab, title = :updatedTitle, body = :updatedBody WHERE postId = :postId", array ("updatedTab"=>$_POST['tab'], "updatedTitle"=>$_POST['title'], "updatedBody"=>$_POST['body'], "postId"=>$postId));
@@ -31,7 +31,7 @@ if (isset($_POST['update']) or $del == 2) {
 	exit;
 }
 
-if (isset($_POST['removeTag']) or $del == 0) {
+if (isset($_REQUEST['removeTag']) or $del == 0) {
 	$tagId = $_REQUEST['tagId'];
 
 	$removeTag = dbQuery("DELETE FROM blogPost_tag_link WHERE postId = :postId AND tagId = :tagId", array("postId"=>$postId, "tagId"=>$tagId));

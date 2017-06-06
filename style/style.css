@@ -13,7 +13,7 @@ footer{
 }
 .headerMain{
 	position: relative;
-	background-image: url('ocean-blank-lines.png');
+	background-image: url('/img/ocean-blank-lines.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 50%;
@@ -21,7 +21,7 @@ footer{
 }
 .headerHome{
 	position: relative;
-	background-image: url('ocean-home.jpg');
+	background-image: url('/img/ocean-home.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 43% ;
@@ -172,14 +172,14 @@ th{
 		font-size: 14px;
 		border:1px solid #92ADB6;
 	}
-	.editForm input{
+	.postForm input{
 		width: 600px;
 		margin: auto;
 		font-size: 14px;
 		border:1px solid #92ADB6;
 		padding: 3px;
 	}
-	.editFormBody{
+	.postFormBody{
 		width: 600px;
 		max-width: 600px;
 		margin: auto;

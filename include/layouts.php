@@ -4,7 +4,7 @@ function navbar($title, $h1, $headerClass) {
 	<html>
 	<head>
 		<title>$title</title>
-		<link rel='stylesheet' href='style.css?Time=".microtime()."'/>
+		<link rel='stylesheet' href='/style/style.css?Time=".microtime()."'/>
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>
 	</head>
@@ -31,7 +31,7 @@ function navbar($title, $h1, $headerClass) {
 		<html>
 		<head>
 			<title>$title</title>
-			<link rel='stylesheet' href='style.css?Time=".microtime()."'/>
+			<link rel='stylesheet' href='/style/style.css?Time=".microtime()."'/>
 			<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>
 		</head>
@@ -39,7 +39,7 @@ function navbar($title, $h1, $headerClass) {
 			<div class='$headerClass'><h1>$h1</h1>
 				<div class='nav'>
 					<a href='index.php'>PUBLIC HOME</a> /
-					<a href='create-post.php'>NEW POST</a> /
+					<a href='new-post.php'>NEW POST</a> /
 					<a href='admin-page.php'>POSTS</a> /
 					<a href='draft-posts.php'>DRAFTS</a> /
 					<a href='admin-view-tags.php'>TAGS</a>
