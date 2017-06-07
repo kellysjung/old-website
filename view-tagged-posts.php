@@ -9,10 +9,10 @@ echo "
 <div class='main'>".
 	$specificTag['tagDescription']
 	."<hr><div class='blogPosts'>
-		<ul>";
-			listTaggedPosts($tagId);
-			echo"
-		</ul>
-	</div>
+	<ul>";
+		listTaggedPosts($tagId);
+		echo"
+	</ul>
+</div>
 </div>";
 footer();
