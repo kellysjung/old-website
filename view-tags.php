@@ -1,12 +1,16 @@
 <?php
 include('config/init.php');
-adminNavbar('Admin Tags | Kelly Jung', "Admin Tags", 'headerMain');
-?>
+navbar('All Tags | Kelly Jung', "All Tags", 'headerMain');
 
+echo "
 <div class='main'>
-
+	<div class='blogPosts'>";
+	listTags();
+	echo "<hr>";
+	returnTagList();
+	echo "
+	</div>
 </div>
+";
 
-<?php
 footer();
-?>

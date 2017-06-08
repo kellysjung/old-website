@@ -4,15 +4,17 @@ adminNavbar('Edit Post | Kelly Jung', 'Edit Post', 'headerMain');
 
 $postId = $_REQUEST['postId'];
 $post = editPost($postId);
-$d = $_REQUEST['d'];
+// $d = $_REQUEST['d'];
 
 if (isset($_REQUEST['update'])) {
 	updatePost();
 }
-if (isset($_REQUEST['delete']) or $d == 1) {
-	deletePost();
+if (isset($_REQUEST['delete'])) {
+	//deletePost();
+	var_dump($_REQUEST);
+	die("we're here");
 }
-if (isset($_REQUEST['removeTag']) or $d == 2) {
+if (isset($_REQUEST['removeTag'])) {
 	removeTag();
 }
 

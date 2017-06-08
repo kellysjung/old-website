@@ -6,3 +6,4 @@ include('include/layouts.php');
 include('admin/posts.php');
 include('admin/tags.php');
 include('admin/admin.php');
+include('admin/inputs.php');

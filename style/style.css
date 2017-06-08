@@ -112,6 +112,7 @@ th{
 	background-color: white;
 	margin: auto;
 	padding: 1em;
+	text-overflow: wrap;
 }
 .main a{
 	color: #123c54;

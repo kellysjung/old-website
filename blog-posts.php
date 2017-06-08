@@ -4,12 +4,13 @@ navbar('Posts | Kelly Jung', 'Posts by Kelly', 'headerMain');
 
 echo "<div class='main'>";
 listTags();
-echo "
-<div class='blogPosts'>
-	";
-		echo "<hr><br>";
-		listPosts();
-		echo "
+echo "<br><br><a href='view-tags.php'>All Tags</a>
+
+<div class='blogPosts'>";
+
+	echo "<hr><br>";
+	listPosts();
+	echo "
 	
 </div>
 </div>";

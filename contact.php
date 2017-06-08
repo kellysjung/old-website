@@ -16,7 +16,7 @@ navbar('Contact | Kelly Jung', 'Get in Touch', 'headerMain');
 				<input type="text" placeholder="Email Address" required name="Email"><br><br>
 				<input type="text" placeholder="Subject" required name="Subject"><br><br>
 				<textarea class="defaultFormBody" type="text" placeholder="Message" required name="Message"></textarea><br><br>
-				<input class='defaultFormBtn' type="submit" value="Send Email">
+				<input class='defaultBtn' type="submit" value="Send Email">
 			</form>
 		</div>
 	</div>

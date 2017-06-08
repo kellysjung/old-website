@@ -22,10 +22,11 @@ function navbar($title, $h1, $headerClass) {
 				<a href='https://github.com/kelly-jung' target='_blank' class='fa fa-github' aria-hidden='true'></a>
 			</div>
 			<div class='nav'>
-				<a href='index.php'>HOME</a> /
-				<a href='blog-posts.php'>POSTS</a> /
-				<a href='about-me.php'>ABOUT</a> /
-				<a href='contact.php'>CONTACT</a>
+				<a href='/index.php'>HOME</a> /
+				<a href='/blog-posts.php'>POSTS</a> /
+				<a href='/about-me.php'>ABOUT</a> /
+				<a href='/contact.php'>CONTACT</a> /
+				<a href='/login/login.php'>LOGIN</a>
 			</div>
 		</div><br>
 		";
