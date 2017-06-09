@@ -36,6 +36,15 @@ if (isset($_REQUEST['register'])) {
 	}
 }
 
+// formTextInput('username', 'text', '25', 'Username');
+// formTextInput('password', 'password', '', 'Password');
+// inputBtn('defaultBtn', 'login', 'submit', 'Login');
+// echo "<br><hr><br>";
+// formTextInput('newUsername', 'text', '25', 'Enter New Username');
+// formTextInput('newPassword1', 'password', '', 'Enter New Passwordd');
+// formTextInput('newPassword2', 'password', '', 'Enter Password Again');
+// inputBtn('defaultBtn', 'register', 'submit', 'Register');
+
 echo "
 <div class='main'>
 	<div class='blogPosts'>
@@ -84,9 +93,20 @@ function login() {
 		session_start();
 		$_SESSION['username'] = $username;
 		$_SESSION['logged'] = true;
+		// 
+		// 
+		// 
+		// $userId = $_SESSION['userId'];
 		header("Location:/admin-page.php");
 	}
 }
+
+
+
+
+
+
+
 
 function register() {
 	$username = $_POST['newUsername'];
@@ -112,8 +132,8 @@ function register() {
 		exit;
 	}
 
-	// $hashedPassword = password_hash($pw1, PASSWORD_DEFAULT);
-	// echo $hashedPassword;
+	$hashedPassword = password_hash($pw1, PASSWORD_DEFAULT);
+	echo $hashedPassword;
 
 	$addUser = dbQuery("
 		INSERT INTO users (username, password)

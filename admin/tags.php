@@ -38,20 +38,12 @@ function listTags() {
 
 function returnTagList() {
 	$count = dbQuery("
-		SELECT COUNT(*), blog_tag.* FROM blogPost_tag_link INNER JOIN JFKDLSJAKFD WHERE tagId = :tagId",
+		SELECT COUNT(*), tags.* FROM tags
+		INNER JOIN blogPost_tag_link
+		WHERE blogPost_tag_link.tagId = :tags.tagId",
 		array("tagId"=>$tag['tagId']))->fetchAll();
 	var_dump($count);
-
-	// RETURNS THIS:
-	// array(1) {
-	// 	[0]=> array(2) {
-	// 		["tagId"]=> string(1) "1" ["COUNT(*)"]=> string(1) "7"
-	// 	}
-	// }
 }
-
-
-
 
 
 

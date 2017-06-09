@@ -1,8 +1,8 @@
 <?php
 include('config/init.php');
-session_start();
 $username = $_SESSION['username'];
-
+session_start();
+verifyUser();
 adminNavbar('Admin | Kelly Jung', "Admin", 'headerMain');
 
 echo "

@@ -1,5 +1,14 @@
 <?php
 include_once('config/init.php');
+
+function verifyUser() {
+	if (!isset($_SESSION['userId'])) {
+		header("Location:/login/login.php");
+	}
+	$verify = dbQuery("SELECT * FROM users WHERE userId = :userId",
+		array("userId"=>$_SESSION['userId']))->fetchAll();
+}
+
 // LISTS ALL POSTS FOR ADMIN TO EDIT; USED IN admin-page.php
 function listAdminPosts() {
 	$posts = dbQuery("
