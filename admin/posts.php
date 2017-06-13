@@ -12,7 +12,7 @@ function getPost($postId) {
 // VIEW INDIVIDUAL POSTS; CAN COME FROM view-tagged-posts.php OR blog-posts.php; USED IN view-post.php
 function viewPost($postId) {
 	$specificPost = getPost($postId);
-	echo "<div class='smallText'>Posted: ".$specificPost['created']."</div>";
+	echo "<div class='smallRight'>Posted: ".$specificPost['created']."</div>";
 	echo "<p>".$specificPost['body']."</p>";	
 }
 

@@ -2,6 +2,7 @@
 include('config/init.php');
 navbar('Home | Kelly Jung', "Kelly Jung", 'headerMain');
 ?>
+
 <div class="main">
 	<p>Welcome and thanks for visiting my site. Here, you can find out a little more information about me, read some of my blog posts, and view my projects.</p>
 </div>

@@ -21,10 +21,6 @@ function listTags() {
 	}
 }
 
-
-
-
-
 // function returnTagList() {
 // 	$tags = dbQuery("SELECT * FROM tags")->fetchAll();
 // 	foreach ($tags as $tag) {

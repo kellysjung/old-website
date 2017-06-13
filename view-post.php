@@ -25,9 +25,9 @@ if(isset($_REQUEST['newCommentForm'])) {
 echo "
 <div class='main'>
 	<div class='blogPosts'>";
-	viewPost($postId);
-	echo "
-		<div class='smallText'>
+		viewPost($postId);
+		echo "
+		<div class='smallRight'>
 			Tags:"; 
 			listPostsTags($postId);
 			echo "
@@ -37,24 +37,22 @@ echo "
 <br>
 <div class='main'>
 	<h4 id='comments'>Comments</h4>
-	<a href='view-post.php?postId=".$postId."#newcomment'><input class='defaultBtn' type='submit' value='+'></a>
+	<a href='view-post.php?postId=".$postId."#newcomment'><input class='defaultBtn' type='submit' value='Add Comment' onclick='showForm();'></a>
 	<div class='blogPosts'>";
 		listComments($postId);
-		echo "
+		echo "<br>
 
-		<br>
 		<form class='defaultForm' action='' method='POST'>
-			<input type='hidden' name='postId' value='".$postId."'>
-			<input name='commentUser' maxlength='254' placeholder='Name' value='".(@$_REQUEST['commentUser'] ? $_REQUEST['commentUser'] : "")."'/><br>
-			".(@$errors['commentUser'] ? "<span class='error'>".$errors['commentUser']."</span>" : "")."<br>
-
-			<textarea class='defaultFormBody' name='commentBody' placeholder='Comment' value='".(@$_REQUEST['commentBody'] ? $_REQUEST['commentBody'] : "")."'></textarea>
-			".(@$errors['commentBody'] ? "<span class='error'>".$errors['commentBody']."</span>" : "")."<br><br>
-			<input type='email' name='commentEmail' placeholder='Email Address (Not Displayed)'><br><br>
-			<input class='defaultBtn' name='newCommentForm' type='submit' value='Add Comment'>
+			<input type='hidden' name='postId' value='".$postId."'>";
+			formTextInput('commentUser', 'text', '250', 'Name');
+			formTextArea('defaultFormBody', 'commentBody', 'Comment');
+			formTextInput("commentEmail", 'email', '', 'Email Address (Not Displayed)');
+			inputBtn('defaultBtn', 'newCommentForm', 'Add Comment');
+			echo "
 		</form>
 	</div>
 </div>";
+
 footer();
 
 function addComment() {

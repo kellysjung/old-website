@@ -1,14 +1,15 @@
 <?php
 include('config/init.php');
-$username = $_SESSION['username'];
-session_start();
-verifyUser();
+$userId = $_SESSION['userId'];
+$user = getUserInfo($userId);
+verifyLogged();
+
 adminNavbar('Admin | Kelly Jung', "Admin", 'headerMain');
 
 echo "
 <div class='main'>
 	<div class='blogPosts'>";
-	echo "Welcome ".$username."<br><br>";
+	echo "<div class='smallRight'> Welcome ".$user['firstName']."</div><br><br>";
 		listAdminPosts();
 		echo "
 		<br>

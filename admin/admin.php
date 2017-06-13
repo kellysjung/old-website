@@ -1,14 +1,6 @@
 <?php
 include_once('config/init.php');
 
-function verifyUser() {
-	if (!isset($_SESSION['userId'])) {
-		header("Location:/login/login.php");
-	}
-	$verify = dbQuery("SELECT * FROM users WHERE userId = :userId",
-		array("userId"=>$_SESSION['userId']))->fetchAll();
-}
-
 // LISTS ALL POSTS FOR ADMIN TO EDIT; USED IN admin-page.php
 function listAdminPosts() {
 	$posts = dbQuery("
@@ -16,7 +8,7 @@ function listAdminPosts() {
 	foreach ($posts as $post) {
 		if ($post['draft'] == 0) {
 			echo '<div class="hoverBox">
-			<a href="edit-post.php?postId='.$post['postId'].'&d=0" name="edit" type="button" class="fa fa-pencil"></a>
+			<a href="edit-post.php?postId='.$post['postId'].' name="edit" type="button" class="fa fa-pencil"></a>
 			<span class="hoverText">Edit Post</span></div>';
 			echo '<div class="hoverBox">
 			<a href="edit-post.php?postId='.$post['postId'].'&delete=1" type="button" class="fa fa-trash"></a>
@@ -58,7 +50,7 @@ function listPostsTagsForEdit($postId) {
 		WHERE blog_posts.postId = :postId",
 		array ("postId"=>$postId))->fetchAll();
 	foreach ($tags as $tag) {
-		echo '<a href="edit-post.php?postId='.$postId.'&tagId='.$tag['tagId'].'&d=2" name="removeTag" type="button" class="fa fa-times"></a>';
+		echo '<a href="edit-post.php?postId='.$postId.'&tagId='.$tag['tagId'].'&removeTag=1" name="removeTag" type="button" class="fa fa-times"></a>';
 		echo '<a href="view-tagged-posts.php?tagId='.$tag['tagId'].'">'.$tag['tagName'].'</a>';
 	}
 }

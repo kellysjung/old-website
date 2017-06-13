@@ -1,5 +1,8 @@
 <?php
 include('config/init.php');
+$userId = $_SESSION['userId'];
+$user = getUserInfo($userId);
+verifyLogged();
 adminNavbar('Edit Tags | Kelly Jung', "Edit Tags", 'headerMain');
 $postId = $_REQUEST['postId'];
 $post = getPost($postId);

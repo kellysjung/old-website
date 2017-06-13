@@ -6,7 +6,7 @@
 <script type='text/javascript'>
 
 function ShowText() {
-    $('.HiddenText').toggle();
+  $('.HiddenText').toggle();
     // $('.HiddenText').css('background-color', 'red');
 }
 
@@ -15,9 +15,9 @@ function changeColor() {
 	// so endpoint knows to save the correct comment
 	// passing the post function in a call back function
 	$.post('endpoint.php', {}, function(Data){
-		  $('.HiddenText').html(Data);
+    $('.HiddenText').html(Data);
     // $('.HiddenText').css('background-color', 'red');
-	});
+  });
 }
 
 // $(function(){
@@ -27,9 +27,9 @@ function changeColor() {
 </script>
 
 <div>
-    <a href='#' onclick='ShowText();'>Click here</a><br>
-     <a href='#' onclick='changeColor();'>Click here again</a>
+  <a href='#' onclick='ShowText();'>Click here</a><br>
+  <a href='#' onclick='changeColor();'>Click here again</a>
 </div>
 <div class='HiddenText' style='display:none;'>
-    this is some text
+  this is some text
 </div>

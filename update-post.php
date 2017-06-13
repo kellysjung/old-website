@@ -1,5 +1,8 @@
 <?php
 include('config/init.php');
+$userId = $_SESSION['userId'];
+$user = getUserInfo($userId);
+verifyLogged();
 
 $postId = $_REQUEST['postId'];
 

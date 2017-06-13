@@ -1,5 +1,8 @@
 <?php
 include('config/init.php');
+$userId = $_SESSION['userId'];
+$user = getUserInfo($userId);
+verifyLogged();
 adminNavbar('Admin Tags | Kelly Jung', "Admin Tags", 'headerMain');
 
 // $d = $_REQUEST['d'];
@@ -19,7 +22,7 @@ if (isset($_REQUEST['delete'])) {
 }
 
 echo "
-<div class='main'>
+<div class='main'>  
 	<div class='blogPosts'>";
 		listAdminTags();
 		echo "

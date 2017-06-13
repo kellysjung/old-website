@@ -1,18 +1,18 @@
 <?php
 include('config/init.php');
+$userId = $_SESSION['userId'];
+$user = getUserInfo($userId);
+verifyLogged();
 adminNavbar('Edit Post | Kelly Jung', 'Edit Post', 'headerMain');
 
 $postId = $_REQUEST['postId'];
 $post = editPost($postId);
-// $d = $_REQUEST['d'];
 
 if (isset($_REQUEST['update'])) {
 	updatePost();
 }
 if (isset($_REQUEST['delete'])) {
-	//deletePost();
-	var_dump($_REQUEST);
-	die("we're here");
+	deletePost();
 }
 if (isset($_REQUEST['removeTag'])) {
 	removeTag();
@@ -22,7 +22,6 @@ echo "
 <div class='main'>
 	<div class='blogPosts'>
 		<form class='postForm' action='' method='POST'>
-			<input type='hidden' name='postId' value='".$postId."'>
 			<p>EDIT TITLE - This will be part header image. (Character limit: 250)</p>
 			<input name='title' type='text' maxlength='250' value='".$post['title']."' required><br>
 			<p>EDIT TAB - This will be part of the tab title. (Character limit: 24)</p>
@@ -44,7 +43,10 @@ footer();
 function updatePost() {
 	$postId = $_REQUEST['postId'];
 
-	$updatePost = dbQuery("UPDATE blog_posts SET tab = :updatedTab, title = :updatedTitle, body = :updatedBody WHERE postId = :postId", array ("updatedTab"=>$_POST['tab'], "updatedTitle"=>$_POST['title'], "updatedBody"=>$_POST['body'], "postId"=>$postId));
+	$updatePost = dbQuery("UPDATE blog_posts
+		SET tab = :updatedTab, title = :updatedTitle, body = :updatedBody 
+		WHERE postId = :postId",
+		array ("updatedTab"=>$_POST['tab'], "updatedTitle"=>$_POST['title'], "updatedBody"=>$_POST['body'], "postId"=>$postId));
 
 	if ($updatePost) {
 		header('Location:admin-page.php');
@@ -56,10 +58,13 @@ function updatePost() {
 
 function deletePost() {
 	$postId = $_REQUEST['postId'];
-	$deleteComments = dbQuery("DELETE FROM comments WHERE postId = :postId", array ("postId"=>$postId));
-	$deleteTags = dbQuery("DELETE FROM blogPost_tag_link WHERE postId = :postId", array ("postId"=>$postId));
-	$deletePost = dbQuery("DELETE FROM blog_posts WHERE postId = :postId", array ("postId"=>$postId));
-	
+	$deleteComments = dbQuery("DELETE FROM comments WHERE postId = :postId",
+		array ("postId"=>$postId));
+	$deleteTags = dbQuery("DELETE FROM blogPost_tag_link WHERE postId = :postId",
+		array ("postId"=>$postId));
+	$deletePost = dbQuery("DELETE FROM blog_posts WHERE postId = :postId",
+		array ("postId"=>$postId));
+
 	if ($deletePost and $deleteComments and $deleteTags) {
 		header('Location:admin-page.php');
 	} else {
@@ -72,10 +77,12 @@ function removeTag() {
 	$tagId = $_REQUEST['tagId'];
 	$postId = $_REQUEST['postId'];
 
-	$removeTag = dbQuery("DELETE FROM blogPost_tag_link WHERE postId = :postId AND tagId = :tagId", array("postId"=>$postId, "tagId"=>$tagId));
+	$removeTag = dbQuery("DELETE FROM blogPost_tag_link
+		WHERE postId = :postId AND tagId = :tagId",
+		array("postId"=>$postId, "tagId"=>$tagId));
 
 	if ($removeTag) {
-		header('Location:edit-tags.php?postId='.$postId.'&d=0');
+		header('Location:edit-tags.php?postId='.$postId);
 	} else {
 		echo "Error. Could not update post. <br>";
 	}
