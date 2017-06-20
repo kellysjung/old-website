@@ -2,6 +2,7 @@
 include('config/init.php');
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
+$username = $user['username'];
 verifyLogged();
 
 adminNavbar('Admin | Kelly Jung', "Admin", 'headerMain');
@@ -10,7 +11,7 @@ echo "
 <div class='main'>
 	<div class='blogPosts'>";
 	echo "<div class='smallRight'> Welcome ".$user['firstName']."</div><br><br>";
-		listAdminPosts();
+		listAdminPosts($username);
 		echo "
 		<br>
 	</div>

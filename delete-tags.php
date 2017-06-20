@@ -11,6 +11,7 @@ $deleteTagLinks = dbQuery("DELETE FROM blogPost_tag_link
 $deleteTag = dbQuery("DELETE FROM tags
 	WHERE tagId = :tagId", array ("tagId"=>$tagId));
 
+
 if ($deleteTagLinks and $deleteTag) {
 	header('Location:admin-view-tags.php');
 } else {

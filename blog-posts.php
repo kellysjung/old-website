@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-navbar('Posts | Kelly Jung', 'Posts by Kelly', 'headerMain');
+navbar('Posts | Kelly Jung', 'Posts', 'headerMain');
 
 echo "<div class='main'>";
 listTags();

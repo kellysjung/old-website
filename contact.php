@@ -1,6 +1,23 @@
 <?php
 include('config/init.php');
 navbar('Contact | Kelly Jung', 'Get in Touch', 'headerMain');
+
+if (isset($_REQUEST['msg'])) {
+	$errors = array();
+
+	if (!@$_REQUEST['msgName']) {
+		$errors['msgName'] = "Required";
+	}
+	if (!@$_REQUEST['msgEmail']) {
+		$errors['msgEmail'] = "Required";
+	}
+	if (sizeof($errors) == 0) {
+		email();
+	} else {
+		echo "<span class='error'>Please fill out required fields.</span>";
+	}
+}
+
 ?>
 <div class="main">
 	<div class="container">
@@ -9,16 +26,19 @@ navbar('Contact | Kelly Jung', 'Get in Touch', 'headerMain');
 			<i class="fa fa-phone"></i><span style="display:inline-block; width: 2px;"></span> (314) 123 - 4567<br>
 			<i class="fa fa-envelope"></i> kelly.jung@lessannoyingcrm.com
 		</div>
-
-		<div class="defaultForm">
-			<form action="mailto:kellyjung96@gmail.com" method="POST" enctype="text/plain">
-				<input type="text" placeholder="Name" required name="Name"><br><br>
-				<input type="text" placeholder="Email Address" required name="Email"><br><br>
-				<input type="text" placeholder="Subject" required name="Subject"><br><br>
-				<textarea class="defaultFormBody" type="text" placeholder="Message" required name="Message"></textarea><br><br>
-				<input class='defaultBtn' type="submit" value="Send Email">
-			</form>
-		</div>
+		<form class="defaultForm" action="" method="POST">
+			<?php
+			formTextInput('msgName', 'text', '250', 'Your Name');
+			formTextInput('msgEmail', 'email', '', 'Email Address');
+			formTextInput('msgSubject', 'text', '250', 'Subject');
+			formTextArea('defaultFormBody', 'msgBody', 'Message');
+			inputBtn('defaultBtn', 'msg', 'Send Message');
+			?>
+		</form>
 	</div>
 </div>
-<?php footer(); ?>
+<?php footer();
+
+function email() {
+	echo "here";
+}

@@ -35,21 +35,24 @@ echo "
 	</div>
 </div>
 <br>
+";
+// echo "<button onclick='popUpForm_show()' class='defaultBtn'>Add Comment</button>";
+echo "
 <div class='main'>
-	<h4 id='comments'>Comments</h4>
-	<a href='view-post.php?postId=".$postId."#newcomment'><input class='defaultBtn' type='submit' value='Add Comment' onclick='showForm();'></a>
-	<div class='blogPosts'>";
+	<div class='blogPosts'>
+		<h4 id='comments'>Comments</h4>";
 		listComments($postId);
 		echo "<br>
-
-		<form class='defaultForm' action='' method='POST'>
-			<input type='hidden' name='postId' value='".$postId."'>";
-			formTextInput('commentUser', 'text', '250', 'Name');
-			formTextArea('defaultFormBody', 'commentBody', 'Comment');
-			formTextInput("commentEmail", 'email', '', 'Email Address (Not Displayed)');
-			inputBtn('defaultBtn', 'newCommentForm', 'Add Comment');
-			echo "
-		</form>
+		<div id='popUpForm'>
+			<form class='defaultForm' action='' method='POST'>
+				<input type='hidden' name='postId' value='".$postId."'>";
+				formTextInput('commentUser', 'text', '100', 'Name');
+				formTextArea('defaultFormBody', 'commentBody', 'Comment');
+				formTextInput("commentEmail", 'email', '', 'Email Address (Not Displayed)');
+				inputBtn('defaultBtn', 'newCommentForm', 'Add Comment');
+				echo "
+			</form>
+		</div>
 	</div>
 </div>";
 
@@ -57,12 +60,13 @@ footer();
 
 function addComment() {
 	$postId = $_REQUEST['postId'];
-	$created = getCommentCreated();
+	$created = getTimeCreated();
+	$createdString = getTimeCreatedString();
 
 	$addComment = dbQuery(
-		"INSERT INTO comments (postId, commentUser, commentEmail, commentBody, commentCreated)
-		VALUES (:postId, :cUser, :cEmail, :cBody, :cCreated)",
-		array("postId"=>$postId, "cUser"=>$_POST['commentUser'], "cEmail"=>$_POST['commentEmail'], "cBody"=>$_POST['commentBody'], "cCreated"=>$created));
+		"INSERT INTO comments (postId, commentUser, commentEmail, commentBody, commentCreated, commentCreatedString)
+		VALUES (:postId, :cUser, :cEmail, :cBody, :cCreated, :cCreatedString)",
+		array("postId"=>$postId, "cUser"=>htmlspecialchars($_POST['commentUser']), "cEmail"=>htmlspecialchars($_POST['commentEmail']), "cBody"=>htmlspecialchars($_POST['commentBody']), "cCreated"=>$created, "cCreatedString"=>$createdString));
 
 	if ($addComment) {
 		header('Location:view-post.php?postId='.$postId.'#comments');

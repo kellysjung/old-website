@@ -50,7 +50,7 @@ function createNewTag() {
 	if (!$checkExists) {
 		$newTag = dbQuery("
 			INSERT INTO tags (tagName, tagDescription) VALUES (:tagName, :tagDescription)",
-			array("tagName"=>$_POST['tagName'], "tagDescription"=>$_POST['tagDescription']));
+			array("tagName"=>htmlspecialchars($_POST['tagName']), "tagDescription"=>htmlspecialchars($_POST['tagDescription'])));
 	} else {
 		echo "<span class='error'>Tag already exists.</span>";
 	}

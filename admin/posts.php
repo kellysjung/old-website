@@ -12,7 +12,7 @@ function getPost($postId) {
 // VIEW INDIVIDUAL POSTS; CAN COME FROM view-tagged-posts.php OR blog-posts.php; USED IN view-post.php
 function viewPost($postId) {
 	$specificPost = getPost($postId);
-	echo "<div class='smallRight'>Posted: ".$specificPost['created']."</div>";
+	echo "<div class='smallRight'>Posted: ".$specificPost['createdString']."</div>";
 	echo "<p>".$specificPost['body']."</p>";	
 }
 
@@ -22,7 +22,9 @@ function listPosts() {
 		SELECT * FROM blog_posts ORDER BY postId DESC")->fetchAll();
 	foreach ($posts as $post) {
 		if ($post['draft'] == 0) {
-			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
+			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a>';
+			echo " by ".$post['author'];
+			echo "<br><br>";
 		}
 	}
 }
@@ -34,14 +36,14 @@ function listComments($postId) {
 		INNER JOIN blog_posts ON blog_posts.postId = comments.postId
 		WHERE comments.postId = :postId ORDER BY commentId DESC",
 		array ("postId"=>$postId))->fetchAll();
-	echo '<hr><br>';
+	// echo '<hr><br>';
 	if(!$comments) {
 		echo "(No comments yet.)<hr><br>";
 	}
-	foreach ($comments as $comment) {
-		echo '<div class="commentUserBox">'.$comment['commentUser'].
-		// '<div class="datetime">'.$comment['commentCreated'].'</div>'.
-		'</div><div class="commentBodyBox">'.$comment['commentBody'].
-		'</div><br><hr>';
+	foreach ($comments as $c) {
+		echo "<div class='newCommentUser'>".$c['commentUser']."</div>";
+		echo "<div class='datetime'>".$c['commentCreatedString']."</div>";
+		echo "<div class='newCommentBody'>".$c['commentBody']."</div>";
+		echo "<div style='height:10px;'>&nbsp;</div>";
 	}
 }

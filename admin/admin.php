@@ -2,16 +2,19 @@
 include_once('config/init.php');
 
 // LISTS ALL POSTS FOR ADMIN TO EDIT; USED IN admin-page.php
-function listAdminPosts() {
+function listAdminPosts($username) {
 	$posts = dbQuery("
-		SELECT * FROM blog_posts ORDER BY postId DESC")->fetchAll();
+		SELECT * FROM blog_posts WHERE author = :username ORDER BY postId DESC",
+		array("username"=>$username))->fetchAll();
 	foreach ($posts as $post) {
 		if ($post['draft'] == 0) {
 			echo '<div class="hoverBox">
 			<a href="edit-post.php?postId='.$post['postId'].' name="edit" type="button" class="fa fa-pencil"></a>
 			<span class="hoverText">Edit Post</span></div>';
 			echo '<div class="hoverBox">
-			<a href="edit-post.php?postId='.$post['postId'].'&delete=1" type="button" class="fa fa-trash"></a>
+
+			<a href="#" class="fa fa-trash" onclick="confirmDeletePost('.$post['postId'].')"></a>
+
 			<span class="hoverText">Delete Post</span></div>';
 			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
 		}
@@ -35,7 +38,7 @@ function listAdminTags() {
 		SELECT * FROM tags ORDER BY tagId DESC")->fetchAll();
 	echo '<ul class="columns">';
 	foreach($tags as $tag) {
-		echo '<li><a href="update-tags.php?tagId='.$tag['tagId'].'" name="delete" type="button" class="fa fa-trash"></a>';
+		echo '<li><a href="#" name="delete" type="button" class="fa fa-trash" onclick="confirmDeleteTag('.$tag['tagId'].')"></a>';
 		echo '<a href="view-tagged-posts.php?tagId='.$tag['tagId'].'">'.$tag['tagName'].'</a></li>';
 	}
 	echo '</ul>';
@@ -83,17 +86,14 @@ function tagsDropdown() {
 // }
 
 // DATE AND TIME FUNCTIONS
-function getPostCreated() {
+function getTimeCreated() {
 	$dbCreated = date('Y-m-d H:i:s');
-	$viewCreated = date('F jS, Y', strtotime($dbCreated));
 	return $dbCreated;
-	// return $viewCreated;
 }
-function getCommentCreated() {
-	$dbCreated = date('Y-m-d H:i:s');
-	$viewCreated = date('n\-j\-y \@ h:i A', strtotime($dbCreated));
-	return $dbCreated;
-	// return $viewCreated;
+function getTimeCreatedString() {
+	$dbTime = getTimeCreated();
+	$viewCreated = date('n\/j\/y \a\t h:i A', strtotime($dbTime));
+	return $viewCreated;
 }
 function returnDate() {
 	return date("n\-j\-y");

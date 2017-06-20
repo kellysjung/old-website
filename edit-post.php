@@ -46,7 +46,7 @@ function updatePost() {
 	$updatePost = dbQuery("UPDATE blog_posts
 		SET tab = :updatedTab, title = :updatedTitle, body = :updatedBody 
 		WHERE postId = :postId",
-		array ("updatedTab"=>$_POST['tab'], "updatedTitle"=>$_POST['title'], "updatedBody"=>$_POST['body'], "postId"=>$postId));
+		array ("updatedTab"=>htmlspecialchars($_POST['tab']), "updatedTitle"=>htmlspecialchars($_POST['title']), "updatedBody"=>htmlspecialchars($_POST['body']), "postId"=>$postId));
 
 	if ($updatePost) {
 		header('Location:admin-page.php');
@@ -58,12 +58,15 @@ function updatePost() {
 
 function deletePost() {
 	$postId = $_REQUEST['postId'];
+
+
 	$deleteComments = dbQuery("DELETE FROM comments WHERE postId = :postId",
 		array ("postId"=>$postId));
 	$deleteTags = dbQuery("DELETE FROM blogPost_tag_link WHERE postId = :postId",
 		array ("postId"=>$postId));
 	$deletePost = dbQuery("DELETE FROM blog_posts WHERE postId = :postId",
 		array ("postId"=>$postId));
+	
 
 	if ($deletePost and $deleteComments and $deleteTags) {
 		header('Location:admin-page.php');

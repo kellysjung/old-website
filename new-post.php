@@ -18,7 +18,7 @@ if (isset($_REQUEST['newPostForm'])) {
 		$errors['body'] = "Required";
 	}
 	if(sizeof($errors) == 0) {
-		addPost();
+		addPost($user['username']);
 	} else {
 		echo "<span class='error'>Please fill out required fields.</span>";
 	}
@@ -29,10 +29,11 @@ echo "<div class='main'>
 	<h3>Create a new post:</h3>
 	<form class='postForm' action='' method='POST'>
 		TITLE - This will be part header image. (Character limit: 250)<br>";
+		echo "<input type='hidden' name='userId' value='".$userId."'>";
 		formTextInput('title', 'text', '250', 'Post Title');
 		echo "TAB - This will be part of the tab title. (Character limit: 24)<br>";
 		formTextInput('tab', 'text', '24', 'Tab Title');
-		echo "BODY - Remember to put in '< p >< / p >' whenever you want a new paragraph.";
+		echo "BODY - Remember to put in '&lt;p&gt&lt;/p&gt' whenever you want a new paragraph.";
 		formTextArea('postFormBody', 'body', 'Post Body');
 
 		echo "<br><hr><h3>Add tag:</h3>";
@@ -48,14 +49,15 @@ echo "<div class='main'>
 </div>";
 footer();
 
-function addPost() {
-	$created = getPostCreated();
+function addPost($user) {
+	$created = getTimeCreated();
+	$createdString = getTimeCreatedString();
 	$draft = 0;
 
 	$addPost = dbQuery("
-		INSERT INTO blog_posts (tab, title, body, created, draft)
-		VALUES (:tab, :title, :body, :created, :draft)",
-		array("tab"=>$_POST['tab'], "title"=>$_POST['title'], "body"=>$_POST['body'], "created"=>$created, "draft"=>$draft)
+		INSERT INTO blog_posts (author, tab, title, body, created, createdString, draft)
+		VALUES (:author, :tab, :title, :body, :created, :createdString, :draft)",
+		array("author"=>$user, "tab"=>htmlspecialchars($_POST['tab']), "title"=>htmlspecialchars($_POST['title']), "body"=>htmlspecialchars($_POST['body']), "created"=>$created, "createdString"=>$createdString, "draft"=>$draft)
 		);
 
 	$getId = dbQuery("SELECT MAX(postId) FROM blog_posts")->fetchAll(); 
@@ -65,7 +67,7 @@ function addPost() {
 		$newTag = dbQuery("
 			INSERT INTO tags (tagName, tagDescription)
 			VALUES (:tagName, :tagDescription)",
-			array("tagName"=>$_POST['newTagName'], "tagDescription"=>$_POST['newTagDescription'])
+			array("tagName"=>htmlspecialchars($_POST['newTagName']), "tagDescription"=>htmlspecialchars($_POST['newTagDescription']))
 			);
 
 		$getId = dbQuery("SELECT MAX(tagId) FROM tags")->fetchAll();
