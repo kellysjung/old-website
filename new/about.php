@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-newHeader();
+newHeader('About');
 ?>
 <script type='text/javascript'>
 	var TxtRotate = function(el, toRotate, period) {

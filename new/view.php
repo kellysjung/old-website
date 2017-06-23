@@ -1,15 +1,14 @@
 <?php
 include('config/init.php');
-newHeader();
-
-$postId = 1;
+newHeader('Blog');
+$cityId = $_REQUEST['cityId'];
 ?>
-<
+
 <div class='med-break'><br></div><br>
 <div class='main'>
 	<div class='view'>
 		<?php
-		newviewPost($postId);
+		viewCity($cityId);
 		?>
 	</div>
 </div>

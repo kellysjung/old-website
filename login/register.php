@@ -8,12 +8,20 @@ if (isset($_REQUEST['register'])) {
 	if (!@$_REQUEST['newUsername']) {
 		$errors['newUsername'] = "Required";
 	}
+	if (!@$_REQUEST['newEmail']) {
+		$errors['newEmail'] = "Required";
+	}
 	if (!@$_REQUEST['newPassword1']) {
 		$errors['newPassword1'] = "Required";
 	}
 	if (!@$_REQUEST['newPassword2']) {
 		$errors['newPassword2'] = "Required";
-
+	}
+	if (!@$_REQUEST['firstName']) {
+		$errors['firstName'] = "Required";
+	}
+	if (!@$_REQUEST['lastName']) {
+		$errors['lastName'] = "Required";
 	}
 	if (isset($_REQUEST['newUsername']) and isset($_REQUEST['newPassword1']) and isset($_REQUEST['newPassword2'])) {
 		$checkUserExists = dbQuery("
@@ -79,7 +87,6 @@ function register() {
 	echo "New account created! You can now login.";
 	// header('Location:/login/login.php');
 }
-
 
 function hashPassword($pw1) {
 	$salt = bin2hex(openssl_random_pseudo_bytes(255));

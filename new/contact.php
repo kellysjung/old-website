@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-newHeader();
+newHeader('Contact');
 ?>
 <div class='large-break'><br></div><br>
 <div class='main'>

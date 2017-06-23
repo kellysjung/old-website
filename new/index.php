@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-newHeader();
+newHeader('Hello');
 ?>
 <style type="text/css">
 	.homePage {

@@ -15,7 +15,7 @@ if (isset($_REQUEST['login'])) {
 		login();
 	} else {
 		echo "<span class='error'>Login unsuccessful. Please try again.</span>";
-		var_dump($errors);
+		// var_dump($errors);
 	}
 }
 

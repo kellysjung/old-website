@@ -1,10 +1,12 @@
 <?php
 include('config/init.php');
-newHeader();
+newHeader('Blog');
 ?>
 <div class='large-break'><br></div><br>
 <div class='main'>
-	blog
+	<?php
+		listCities();
+	?>
 </div>
 <?php
 newFooter();

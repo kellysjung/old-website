@@ -14,13 +14,9 @@ function navbar($title, $h1, $headerClass) {
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>
 		
 		<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
-		<script type='text/javascript' src='javascript/javascript.php'></script>
-
-		<script src='javascript/popup.js'></script>
 
 		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
 		<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
-		<script type='text/javascript' src='js/dialog.js'></script>
 
 	</head>
 	<body>
@@ -73,11 +69,9 @@ function navbar($title, $h1, $headerClass) {
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>
 			
 			<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
-			<script type='text/javascript' src='javascript/javascript.php'></script>
 
 			<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
 			<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
-			<script type='text/javascript' src='js/dialog.js'></script>
 
 		</head>
 		<body>
@@ -86,7 +80,7 @@ function navbar($title, $h1, $headerClass) {
 					<a href='index.php'>PUBLIC HOME</a> /
 					<a href='new-post.php'>NEW POST</a> /
 					<a href='admin-page.php'>POSTS</a> /
-					<a href='draft-posts.php'>DRAFTS</a> /
+					<a href='task-list.php'>TASKS</a> /
 					<a href='admin-view-tags.php'>TAGS</a>
 				</div>
 			</div><br>
@@ -131,11 +125,11 @@ function navbar($title, $h1, $headerClass) {
 
 
 
-	function newHeader() {
+	function newHeader($title) {
 		echo "
 		<html>
 		<head>
-			<title>New Home</title>";
+			<title>$title | Kelly Jung</title>";
 
 			echo "<link rel='stylesheet' href='/css/new.css?Time=".microtime()."'/>";
 			echo "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>

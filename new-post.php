@@ -27,7 +27,7 @@ if (isset($_REQUEST['newPostForm'])) {
 echo "<div class='main'>
 <div class='blogPosts'>
 	<h3>Create a new post:</h3>
-	<form class='postForm' action='' method='POST'>
+	<form class='postForm' action='' autocomplete='off' method='POST'>
 		TITLE - This will be part header image. (Character limit: 250)<br>";
 		echo "<input type='hidden' name='userId' value='".$userId."'>";
 		formTextInput('title', 'text', '250', 'Post Title');

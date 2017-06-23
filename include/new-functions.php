@@ -2,17 +2,23 @@
 include_once('config/init.php');
 
 // 
-// POSTS
+// CITIES
 // 
-function newgetPost($postId) {
-	$post = dbQuery("SELECT * FROM posts WHERE postId = :postId",
-		array("postId"=>$postId));
-	return $post->fetch();
+function listCities() {
+	$cities = dbQuery("SELECT * FROM cities ORDER BY name")->fetchAll();
+	foreach ($cities as $city) {
+		echo "<a href=view.php?cityId=".$city['cityId']."'>".$city['name']."</a>";
+		echo "<br>";
+	}
 }
-
-function newviewPost($postId) {
-	$post = newgetPost($postId);
-	echo "<h1>".$post['title']."<h2>";
+function getCity($cityId) {
+	$city = dbQuery("SELECT * FROM cities WHERE cityId = :cityId",
+		array("cityId"=>$cityId));
+	return $city->fetch();
+}
+function viewCity($cityId) {
+	$city = getCity($cityId);
+	echo "<h1>".$city['name']."<h2>";
 }
 
 // 
@@ -29,5 +35,5 @@ function errorMsg($id) {
 // .(@$errors['$id'] ? $errors['$id'] : "")."<br>"
 
 function imageSlider() {
-	
+
 }

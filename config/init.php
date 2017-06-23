@@ -11,7 +11,8 @@ include('admin/tags.php');
 include('admin/admin.php');
 include('admin/inputs.php');
 include('admin/users.php');
-include('js/javascript.php');
+include('admin/tasks.php');
+// include('js/javascript.php');
 // include('login/login.php');
 
 
