@@ -1,24 +1,29 @@
+<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
+
+<link rel='stylesheet' href='/css/task-list.css'>
+
 <?php
+// var_dump($_REQUEST);
+// exit;
 
-var_dump($_REQUEST);
-exit;
+// $Test = array(
+// 	"Thing 1"=>5,
+// 	"Thing 2"=>"something else"
+// );
 
-$Test = array(
-	"Thing 1"=>5,
-	"Thing 2"=>"something else"
-);
+// echo json_encode($Test);
 
-echo json_encode($Test);
+// exit;
 
-exit;
+// if(true){
 
-if(true){
-
-	echo "a bunch of html";
-}
-else{
-	echo "FALSE";
-}
+// 	echo "a bunch of html";
+// }
+// else{
+// 	echo "FALSE";
+// }
 
 ?>
 
@@ -46,3 +51,25 @@ else{
 }
 
 </script> -->
+
+<ul>
+    <div>
+        <li onclick='check(1)' id='1'>task</li><span class='close' onclick='close(1)'>x</span>
+    </div>
+</ul>
+
+<script type="text/javascript">
+
+    function check(id) {
+        console.log('check');
+    }
+
+    function close(id) {
+        console.log('close');
+    }
+
+    $('span.close').click(function() {
+        console.log('close');
+    });
+
+</script>

@@ -14,7 +14,6 @@ function navbar($title, $h1, $headerClass) {
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>
 		
 		<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
-
 		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
 		<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
 

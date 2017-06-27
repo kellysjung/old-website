@@ -1,9 +1,14 @@
 .task-list {
-  margin: 0;
+  /*margin: 0;*/
+  /*width: 200px;*/
   max-width: 400px;
-  vertical-align: middle;
-  margin-left: auto;
-  margin-right: auto; 
+  /*vertical-align: middle;*/
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+
+  /*border: 3px solid black;*/
+  /*width: 90%;*/
+  padding: 10px;
 }
 
 * {
@@ -18,7 +23,7 @@ ul {
 ul li {
   cursor: pointer;
   position: relative;
-  padding: 12px 8px 12px 40px;
+  padding: 12px 40px 12px 40px;
   background: #eee;
   font-size: 14px;
   transition: 0.2s;
@@ -26,6 +31,8 @@ ul li {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  word-wrap: break-word;
 }
 
 ul li:nth-child(odd) {
@@ -37,15 +44,16 @@ ul li:hover {
 }
 
 ul li.checked {
-  /*background: #888;*/
-  /*color: #fff;*/
+  background: #888;
+  color: #fff;
   text-decoration: line-through;
 }
 
 ul li.checked::before {
   content: '';
   position: absolute;
-  border-color: #888;
+  /*border-color: #888;*/
+  border-color: #fff;
   border-style: solid;
   border-width: 0 2px 2px 0;
   top: 10px;
@@ -67,14 +75,14 @@ ul li.checked::before {
   color: white;
 }
 
-.header {
+.list-header {
   background-color: #284E64;
   padding: 10px 10px;
   color: white;
   text-align: center;
 }
 
-.header:after {
+.list-header:after {
   content: "";
   display: table;
   clear: both;
@@ -88,7 +96,7 @@ input {
   font-size: 14px;
 }
 
-.addTask {
+.add-task {
   padding: 8.5px;
   width: 25%;
   background: #d9d9d9;
@@ -100,6 +108,21 @@ input {
   transition: 0.3s;
 }
 
-.addTask:hover {
+.add-task:hover {
   background-color: #bbb;
+}
+
+/*
+*/
+/*
+*/
+
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+.container-box{
+ border: 3px solid black;
+ width: 90%;
+ padding: 20px;
 }
