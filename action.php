@@ -24,11 +24,13 @@ if ($action == 'add-task') {
 	}
 }
 
-if ($action == 'delete-tag') {
+if ($action == 'delete-task') {
+	$getListId = dbQuery("SELECT listId FROM tasks WHERE taskId = :taskId",
+		array("taskId"=>$taskId))->fetch();
 	$deleteTask = dbQuery("DELETE FROM tasks WHERE taskId = :taskId",
 		array("taskId"=>$taskId));
-	if ($deleteTask) {
-		echo "task deleted";
+	if ($deleteTask and $getListId) {
+		echo $getListId['listId'];
 	}
 }
 
@@ -40,29 +42,61 @@ if ($action == 'add-check') {
 	if ($checked == 0) {
 		$addCheck = dbQuery("UPDATE tasks SET checked = 1 WHERE taskId = :taskId",
 			array("taskId"=>$taskId));
-		if ($addCheck) {
-			echo "check-added";
-		}
+		// if ($addCheck) {
+		// 	echo "check-added";
+		// }
 	}
 	if ($checked == 1) {
 		$removeCheck = dbQuery("UPDATE tasks SET checked = 0 WHERE taskId = :taskId",
 			array("taskId"=>$taskId));
-		if ($removeCheck) {
-			echo "check-removed";
-		} 
+		// if ($removeCheck) {
+		// 	echo "check-removed";
+		// } 
 	} 
 }
 
+if (($action == 'add-list') and ($list != '')) {
+	$addList = dbQuery("INSERT INTO lists (list) VALUES (:list)",
+		array("list"=>$list));
+	if ($addList) {
+		$lastList = dbQuery("SELECT * FROM lists ORDER BY listId DESC LIMIT 1")->fetch();
 
-
-
-if ($action == 'add-list') {
-
-	if ($list != '') {
-		$addList = dbQuery("INSERT INTO lists (name) VALUES (:name)",
-			array("name"=>$list));
-		if ($addList) {
-			echo "list added";
-		}
+		echo "
+		<div class='list-header'>
+			<h2>".$lastList['list']."</h2>
+			<input type='text' id='newTask_".$lastList['listId']."' placeholder='Add a new item...'>
+			<a href='javascript://' onclick='addTask(".$lastList['listId'].");'><button class='add-btn'>Add</button></a>
+		</div>
+		<ul id='".$lastList['listId']."' class='list'>".
+			getTasks($lastList['listId'])."
+		</ul>";
 	}
+}
+
+if ($action == 'delete-list') {
+	$deleteTasks = dbQuery("DELETE FROM tasks WHERE listId = :listId",
+		array("listId"=>$listId));
+	$deleteList = dbQuery("DELETE FROM lists WHERE listId = :listId",
+		array("listId"=>$listId));
+}
+
+if ($action == 'collapsed') {
+	$getBoolean = dbQuery("SELECT collapsed FROM lists WHERE listId = :listId",
+		array("listId"=>$listId))->fetch();
+	$collapsed = $getBoolean['collapsed'];
+
+	if ($collapsed == 0) {
+		$hide = dbQuery("UPDATE lists SET collapsed = 1 WHERE listId = :listId",
+			array("listId"=>$listId));
+	// 	if ($hide) {
+	// 		echo "hide-list";
+	// 	}
+	}
+	if ($collapsed == 1) {
+		$show = dbQuery("UPDATE lists SET collapsed = 0 WHERE listId = :listId",
+			array("listId"=>$listId));
+	// 	if ($show) {
+	// 		echo "show-list";
+	// 	} 
+	} 
 }
