@@ -35,9 +35,10 @@ if ($action == 'delete-task') {
 }
 
 if ($action == 'add-check') {
-	$getBoolean = dbQuery("SELECT checked FROM tasks WHERE taskId = :taskId",
+	$getBoolean = dbQuery("SELECT checked, listId FROM tasks WHERE taskId = :taskId",
 		array("taskId"=>$taskId))->fetch();
 	$checked = $getBoolean['checked'];
+	echo $getBoolean['listId'];
 
 	if ($checked == 0) {
 		$addCheck = dbQuery("UPDATE tasks SET checked = 1 WHERE taskId = :taskId",
@@ -60,16 +61,24 @@ if (($action == 'add-list') and ($list != '')) {
 		array("list"=>$list));
 	if ($addList) {
 		$lastList = dbQuery("SELECT * FROM lists ORDER BY listId DESC LIMIT 1")->fetch();
-
 		echo "
-		<div class='list-header'>
-			<h2>".$lastList['list']."</h2>
-			<input type='text' id='newTask_".$lastList['listId']."' placeholder='Add a new item...'>
-			<a href='javascript://' onclick='addTask(".$lastList['listId'].");'><button class='add-btn'>Add</button></a>
-		</div>
-		<ul id='".$lastList['listId']."' class='list'>".
-			getTasks($lastList['listId'])."
-		</ul>";
+		<div class='' id='".$lastList['listId']."'>
+			<div class='list-header' id='list-header-".$list['listId']."' style='background-color: #284E64;'>";
+				dropdownMenus($list['listId']);
+				echo "
+				<h2>".$lastList['list']."</h2>
+				<input type='text' id='newTask_".$lastList['listId']."' placeholder='Add a new item...'>
+				<a href='javascript://' onclick='addTask(".$lastList['listId'].");'><button class='add-btn'>Add</button></a>
+			</div>
+			<ul id='ul_".$lastList['listId']."' class='list'>".
+				getTasks($lastList['listId'])."
+			</ul>
+			<ul id='ul_done_".$lastList['listId']."' class='list'>
+				<hr>";
+				getCheckedTasks($list['listId']);
+				echo "
+			</ul>
+		</div>";
 	}
 }
 
@@ -99,4 +108,28 @@ if ($action == 'collapsed') {
 	// 		echo "show-list";
 	// 	} 
 	} 
+}
+
+if ($action == 'archived') {
+	$getBoolean = dbQuery("SELECT archived FROM lists WHERE listId = :listId",
+		array("listId"=>$listId))->fetch();
+	$archived = $getBoolean['archived'];
+
+	if ($archived == 0) {
+		$archive = dbQuery("UPDATE lists SET archived = 1 WHERE listId = :listId",
+			array("listId"=>$listId));
+		echo "archived";
+	}
+	if ($archived == 1) {
+		$unarchive = dbQuery("UPDATE lists SET archived = 0 WHERE listId = :listId",
+			array("listId"=>$listId));
+	}
+}
+
+if ($action == 'change-color') {
+	$color = $_REQUEST['color'];
+	
+	$changeColor = dbQuery("UPDATE lists SET color = :color WHERE listId = :listId",
+		array("color"=>$color, "listId"=>$listId));
+	echo "color updated";
 }
