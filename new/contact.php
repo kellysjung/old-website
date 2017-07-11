@@ -6,7 +6,19 @@ newHeader('Contact');
 <div class='main'>
 	<div class='container'>
 		<div class='contact-form'>
-			
+			<div id='contact-container'>
+				<div id='left-block'>
+					<p>Email</p>
+					<p></p>
+					<p>aaaaaaaaaaaaaaaaaa</p>
+				</div>
+				<div id='middle-block'></div>
+				<div id='right-block'>
+					<p>bbb</p>
+					<p>bbb</p>
+					<p>bbb</p>
+				</div>
+			</div>	
 		</div>
 
 		<div class='contact-form'>
@@ -16,10 +28,16 @@ newHeader('Contact');
 					<label class='smallLabel' for='firstName'>First</label>
 				</div>
 				<div class='field-form'>
+					<pre>     </pre>
+				</div>
+				<div class='field-form'>
 					<div class='med-break'><br></div>
-					<input class='longInput' type='text' name='lastName' id='lastName'><br>
+					<input class='shortInput' type='text' name='lastName' id='lastName'><br>
 					<label class='smallLabel' for='lastName'>Last</label><br>
 				</div>
+
+
+
 				<div class='large-break'><br></div>
 				<label class='largeLabel' for='email'>Email Address *</label><br>
 				<input class='longInput' type='email' name='email' id='email'><br>
@@ -30,9 +48,10 @@ newHeader('Contact');
 
 				<div class='med-break'><br></div>
 				<label class='largeLabel' for='message'>Message *</label><br>
-				<textarea class='longInput' name='message' id='message'></textarea>
-				<br>
-				<input type='submit' name='sendEmail'>
+				<textarea class='longInput' name='message' id='message' rows='7'></textarea>
+				
+				<div class='med-break'><br></div>
+				<button class='submitBtn' align='center'><span>Send Message </span></button>
 			</form>
 		</div>
 	</div>

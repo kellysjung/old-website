@@ -60,20 +60,24 @@ if (($action == 'add-list') and ($list != '')) {
 	$addList = dbQuery("INSERT INTO lists (list) VALUES (:list)",
 		array("list"=>$list));
 	if ($addList) {
-		$lastList = dbQuery("SELECT * FROM lists ORDER BY listId DESC LIMIT 1")->fetch();
+		$list = dbQuery("SELECT * FROM lists ORDER BY listId DESC LIMIT 1")->fetch();
 		echo "
-		<div class='' id='".$lastList['listId']."'>
-			<div class='list-header' id='list-header-".$list['listId']."' style='background-color: #284E64;'>";
-				dropdownMenus($list['listId']);
+		<div class='' id='".$list['listId']."'>
+			<div class='list-header' id='list-header-".$list['listId']."' style='background-color: #284E64;'>
+				<span class='del-list fa fa-times' onclick='deleteList(".$list['listId'].");'></span>
+				<span style='display: none;' class='hide-list fa fa-plus' onclick='hideList(".$list['listId'].");'></span>
+				<span class='hide-list fa fa-minus' onclick='hideList(".$list['listId'].");'></span>
+				<span class='drop-down fa fa-bars' onclick='dropdownList(".$list['listId'].");'></span>";
+				dropdownMenus($list['listId'], '#284E64');
 				echo "
-				<h2>".$lastList['list']."</h2>
-				<input type='text' id='newTask_".$lastList['listId']."' placeholder='Add a new item...'>
-				<a href='javascript://' onclick='addTask(".$lastList['listId'].");'><button class='add-btn'>Add</button></a>
+				<h2>".$list['list']."</h2>
+				<input type='text' id='newTask_".$list['listId']."' placeholder='Add a new item...'>
+				<button class='add-btn'  onclick='addTask(".$list['listId'].");'>Add</button>
 			</div>
-			<ul id='ul_".$lastList['listId']."' class='list'>".
-				getTasks($lastList['listId'])."
+			<ul id='ul_".$list['listId']."' class='list'>".
+				getTasks($list['listId'])."
 			</ul>
-			<ul id='ul_done_".$lastList['listId']."' class='list'>
+			<ul id='ul_done_".$list['listId']."' class='list'>
 				<hr>";
 				getCheckedTasks($list['listId']);
 				echo "
@@ -97,17 +101,16 @@ if ($action == 'collapsed') {
 	if ($collapsed == 0) {
 		$hide = dbQuery("UPDATE lists SET collapsed = 1 WHERE listId = :listId",
 			array("listId"=>$listId));
-	// 	if ($hide) {
-	// 		echo "hide-list";
-	// 	}
-	}
-	if ($collapsed == 1) {
+		if ($hide) {
+			echo "list is hidden";
+		}
+	} elseif ($collapsed == 1) {
 		$show = dbQuery("UPDATE lists SET collapsed = 0 WHERE listId = :listId",
 			array("listId"=>$listId));
-	// 	if ($show) {
-	// 		echo "show-list";
-	// 	} 
-	} 
+		if ($show) {
+			echo "list is shown";
+		} 
+	}
 }
 
 if ($action == 'archived') {
@@ -131,5 +134,4 @@ if ($action == 'change-color') {
 	
 	$changeColor = dbQuery("UPDATE lists SET color = :color WHERE listId = :listId",
 		array("color"=>$color, "listId"=>$listId));
-	echo "color updated";
 }

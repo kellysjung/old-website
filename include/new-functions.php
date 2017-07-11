@@ -11,11 +11,13 @@ function listCities() {
 		echo "<br>";
 	}
 }
+
 function getCity($cityId) {
 	$city = dbQuery("SELECT * FROM cities WHERE cityId = :cityId",
 		array("cityId"=>$cityId));
 	return $city->fetch();
 }
+
 function viewCity($cityId) {
 	$city = getCity($cityId);
 	echo "<h1>".$city['name']."<h2>";
@@ -28,6 +30,7 @@ function formInput($id, $type, $class, $length, $holder) {
 	echo "<input id='$id' name='$id' type='$type' class='$class' maxlength='$length' placeholder='$holder' value='".(@$_REQUEST['$id'] ? $_REQUEST['$id'] : "")."'>";
 	echo (@$errors['$id'] ? $errors['$id'] : "")."<br>";
 }
+
 function errorMsg($id) {
 
 }

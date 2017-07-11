@@ -1,4 +1,4 @@
-<link rel='stylesheet' href='/css/task-list.css'>
+<link rel='stylesheet' href='/css/tast-test.css'>
 <link rel='styleSheet' href='/css/custom-color-picker.css'>
 <script src="js/customColorPicker.js" type="text/javascript"></script>
 
@@ -9,48 +9,40 @@ $user = getUserInfo($userId);
 $username = $user['username'];
 verifyLogged();
 adminNavbar('Tasks | Kelly Jung', 'Tasks', 'headerMain');
-
-echo "
-<div id='new-list'>
-    <input type='text' id='newList' placeholder='New List'>
-    <a href = 'javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>
-</div>
-<br><br>
-";
-
-echo "
-<div id='all-lists' class='task-container'>";
-    getAllLists();
-    echo"
-</div>
-<br><br>
-
-<h4><a href='task-archive.php'>View Archived Lists</a></h4>
-
-
-";
-
-footer();
 ?>
+<!-- INPUT TO CREATE A NEW LIST -->
+<body onload='setuplists();'>
+    <div id='new-list'>
+        <input type='text' id='newList' placeholder='New List'>
+        <a href = 'javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>
+    </div>
+    <br><br>
+
+    <!-- LISTING ALL THE LISTS -->
+    <div id='all-lists' class='task-container'>
+        <!-- <div id='all-lists' class='test-wrapper'> -->
+        <?php getAllLists(); ?>
+    </div>
+</body>
+<br><br>
+<h4><a href='task-archive.php'>View Archived Lists</a></h4>
+<?php footer(); ?>
 
 <script>
 // FUNCTIONS WILL RUN ONCE PAGE FINISHES LOADING
 $(function() {
-    // var colors = document.getElementsByClassName('colorpicker');
-    // for (var i = 0; 1 < colors.length; i++) {
-        // colors.style.display = 'none';
-        // console.log(colors);
-    // }
-
     deleteTask();
     deleteList();
     hideList();
     dropdownList();
+    $('span.colorpicker').css('visibility', 'hidden');
+
+    setuplists();
 });
 
 // EDITTING TASKS
 function addCheck(taskId) {
-    var action = 'add-check'; 
+    var action = 'add-check';
 
     $.post('action.php', {taskId:taskId, action:action}, function(data) {
         var task = document.getElementById(taskId);
@@ -58,24 +50,22 @@ function addCheck(taskId) {
 
         $(task).toggleClass('checked');
         var checked = task.getAttribute('class');
-        
+
         if (checked == 'checked') {
             var list = document.getElementById('ul_done_'+listId);
-            task.remove();
-            list.appendChild(task);
         }
         if (checked == '') {
          var list = document.getElementById('ul_'+listId);
-         task.remove();
-         list.appendChild(task);
      }
+     task.remove();
+     list.appendChild(task);
  });
 }
 
 function deleteTask() {
-    $('span.close').unbind().click(function(data) {
+    $('span.close').unbind().click(function(event) {
 
-        var taskId = data.target.id;
+        var taskId = event.target.id;
         var action = 'delete-task';
 
         $.post('action.php', {taskId:taskId, action:action}, function(data) {
@@ -118,8 +108,6 @@ function addTask(listId) {
             // ADD TO THE LIST
             var list = document.getElementById('ul_'+listId);
             list.appendChild(newItem);
-            // console.log('item', newItem);
-            // console.log('list', list)
 
             // CLEAR TEXTBOX AND ADD DELETE TO TASK
             $('#newTask_'+listId).val('');
@@ -128,7 +116,6 @@ function addTask(listId) {
         });
     }
 }
-
 
 // TO ADD NEW LISTS
 function addList() {
@@ -139,77 +126,19 @@ function addList() {
         $.post('action.php', {list:list, action:action}, function(data) {
             var div = document.getElementById('all-lists');
             var div_task_list = document.createElement('DIV');
-            div_task_list.setAttribute('class', 'task-list');
-            
+            div_task_list.setAttribute('class', 'tast-test');
+
             div_task_list.innerHTML = data;
             div.prepend(div_task_list);
 
             $('#newList').val('');
-            
+
             deleteTask();
             deleteList();
             hideList();
             dropdownList();
         });
     }
-}
-
-// function Foo(Element){
-//     console.log($(Element).attr('ListId'));
-// }
-
-
-// 
-// 
-// TODO:
-// - CHANGE ALL THE ID TO SET ATTRIBUTE
-// - OBTAIN BY DATA?
-// - ALSO NEED TO CHANGE THE CLICKS SO ERRORS WON'T OCCUR CONSTANTLY
-// 
-// 
-
-
-function deleteList() {
-    $('span.del-list').unbind().click(function(data) {
-
-        var confirm = window.confirm('Delete list?');
-        if (confirm) {
-            var listId = data.target.id;
-            var action = 'delete-list'
-            // var listId = $('i').data('listId');
-            // var listId = $
-            // console.log('listId', listId);
-
-            $.post('action.php', {listId:listId, action:action}, function(data) {
-                var listToDelete = document.getElementById(listId);
-                listToDelete.remove();
-            });
-        }
-    });
-}
-
-function hideList() {
-    $('span.hide-list').unbind().click(function(data) {
-        var listId = data.target.id;
-        var action = 'collapsed';
-
-        $.post('action.php', {listId:listId, action:action}, function(data) {
-            var list = document.getElementById(listId);
-            $(list).toggleClass('collapsed');
-        });
-    });
-}
-
-function dropdownList() {
-// $('span.drop-down').hover(function(data) {
-    $('span.drop-down').unbind().click(function(data) {
-        var listId = data.target.id;
-        $('#drop-menu-'+listId).toggle();
-    });
-}
-
-function dropColorList(listId) {
-    $('#color-menu-'+listId).toggle();
 }
 
 function archiveList(listId) {
@@ -220,26 +149,90 @@ function archiveList(listId) {
     });
 }
 
-function changeColor(listId) {
-    var header = document.getElementById('list-header-'+listId);
-    var action = 'change-color';
-    var color =  '#ff4d4d';
+function deleteList(listId) {
+    if (listId) {
+        var confirm = window.confirm('Delete list?');
+        var action = 'delete-list';
+        if (confirm) {
+            $.post('action.php', {listId:listId, action:action}, function(data) {
+                var listToDelete = document.getElementById(listId).parentElement;
+                listToDelete.remove();
+            });
+        }
+    }
+}
 
-    var chosen = document.getElementsByClassName('selected');
-    console.log(chosen);
+function hideList(listId) {
+    if (listId) {
+        var action = 'collapsed';
+
+        $.post('action.php', {listId:listId, action:action}, function(data) {
+            var list = document.getElementById(listId);
+
+            if (data == 'list is hidden') {
+                var hideBtn = document.getElementById(listId).getElementsByClassName('hide-list')[1];
+                var showBtn = document.getElementById(listId).getElementsByClassName('hide-list')[0];
+            }
+            if (data == 'list is shown') {
+                var hideBtn = document.getElementById(listId).getElementsByClassName('hide-list')[0];
+                var showBtn = document.getElementById(listId).getElementsByClassName('hide-list')[1];
+            }
+
+            $(list).toggleClass('collapsed');
+            hideBtn.style.display = 'none';
+            showBtn.style.display = '';
+        });
+    }
+}
+
+function dropdownList(listId) {
+    if (listId) {
+        $('#drop-menu-'+listId).toggle();
+    }
+}
+
+function dropColorList(listId) {
+    if ($('#color-menu-'+listId).css('visibility') == 'hidden') {
+        $('#color-menu-'+listId).css('visibility', 'visible');
+    } else {
+        $('#color-menu-'+listId).css('visibility', 'hidden');
+    }
+}
+
+// TO HIDE THE MENUS WHEN CLICKED ELSEWHERE
+$(function() {
+    $(".drop-down").click(function(event) {
+        $(".drop-menu").click(function(event) {
+            event.stopPropagation();
+        });
+        event.stopPropagation();
+    });
+
+    $(document).click(function(event) {
+        var clicked = $(event.target)
+        $('.colorpicker').css('visibility', 'hidden');
+        $('.drop-menu').hide();
+    });
+});
+
+// ALL COLOR FUNCTIONS
+function changeColor(color, listId) {
+    var action = 'change-color';
+    var header = document.getElementById('list-header-'+listId);
 
     $.post('action.php', {listId:listId, action:action, color:color}, function(data) {
         header.style.backgroundColor = color;
-        console.log(data);
-    })
+    });
 }
 
-function OnCustomColorChanged(selectedColor, colorPickerIndex) {
-    var hex = rgb2hex(selectedColor);
-    // changeColor(hex);
-};
+function OnCustomColorChanged(selectedColor, selectedColorTitle, colorPickerIndex) {
+    var color = rgb2hex(selectedColor);
+    var listId =  matchColorIndexAndListId(colorPickerIndex);
 
-function rgb2hex(rgb){
+    changeColor(color, listId);
+}
+
+function rgb2hex(rgb) {
     rgb = rgb.match(/^rgb?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
     return (rgb && rgb.length === 4) ? "#" +
     ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
@@ -247,4 +240,117 @@ function rgb2hex(rgb){
     ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
 }
 
+function matchColorIndexAndListId(colorPickerIndex) {
+    var array = [];
+    var lists = document.getElementsByClassName('tast-test');
+
+    for (var i = 0; i < lists.length; i++) {
+        array[i] = lists[i];
+    }
+
+    var listId = array[colorPickerIndex].firstElementChild.id;
+    return listId;
+}
+//
+
+
+
+
+//
+// FOR THE COLUMNS
+//
+
+var margin = 20;
+var lists = [];
+
+$(function() {
+    $(window).resize(setUpBlocks);
+});
+
+function setColumns() {
+    console.log('in setColumns');
+    var colWidth = $('.tast-test').outerWidth();
+    var colCount = 2;
+
+    for (var i = 0; i < colCount; i ++) {
+        lists.push(margin);
+    }
+    positionLists();
+}
+
+function positionLists() {
+    console.log('in positionLists');
+    $('.tast-test').each(function() {
+        var min = Array.min(lists);
+        var index = $.inArray(min, lists);
+        var leftPosition = margin + (index * (colWidth + margin));
+        $(this).css({
+            'left': leftPosition + 'px',
+            'top': min + 'px'
+        });
+        lists[index] = min + $(this.outerHeight() + margin;)
+    });
+}
+
+Array.min = function(array) {
+    return Math.min.apply(Math, array);
+};
+
 </script>
+
+
+<!-- <style type="text/css">
+    .tast-test {
+        position: absolute;
+        background: lightgray;
+        padding: 20px;
+        width: 300px;
+        border: 1px solid #ddd;
+        color: white;
+    }
+
+</style> -->
+
+
+
+<script type="text/javascript">
+    var colCount = 0;
+    var colWidth = 0;
+    var margin = 20;
+    var lists = [];
+
+    $(function(){
+        $(window).resize(setuplists);
+    });
+
+    function setuplists() {
+        colWidth = $('.task-list').outerWidth();
+        colCount = 2
+        for(var i=0;i<colCount;i++){
+            lists.push(margin);
+        }
+        positionlists();
+    }
+
+    function positionlists() {
+        $('.task-list').each(function(){
+            var min = Array.min(lists);
+            var index = $.inArray(min, lists);
+            var leftPos = margin+(index*(colWidth+margin));
+            $(this).css({
+                'left':leftPos+'px',
+                'top':min+'px'
+            });
+            lists[index] = min+$(this).outerHeight()+margin;
+        }); 
+    }
+
+    Array.min = function(array) {
+        return Math.min.apply(Math, array);
+    };
+
+</script>
+
+
+
+

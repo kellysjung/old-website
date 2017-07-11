@@ -1,7 +1,4 @@
 <?php
-function debug($input) {
-	echo "<pre>".$input."</pre";
-}
 
 function navbar($title, $h1, $headerClass) {
 	echo "
@@ -11,7 +8,7 @@ function navbar($title, $h1, $headerClass) {
 		<link rel='stylesheet' href='/css/style.css?Time=".microtime()."'/>
 		<link rel='stylesheet' href='/css/class.css?Time=".microtime()."'/>
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>		
 		
 		<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
@@ -129,13 +126,13 @@ function navbar($title, $h1, $headerClass) {
 		<html>
 		<head>
 			<title>$title | Kelly Jung</title>";
-
+			echo "<link rel='stylesheet' type='text/css' href='/css/square-hover.css'/>";
 			echo "<link rel='stylesheet' href='/css/new.css?Time=".microtime()."'/>";
 			echo "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 			<link href='https://fonts.googleapis.com/css?family=Pacifico|Rubik' rel='stylesheet'>
 			<link href='https://fonts.googleapis.com/css?family=Lato:100i|Roboto:100' rel='stylesheet'>
 
-			<script type='text/javascript' src='jquery-1.8.3.js'></script>
+			
 		</head>
 		<body>
 			<div class='header'>
@@ -146,7 +143,7 @@ function navbar($title, $h1, $headerClass) {
 				<div class='nav'>
 					<a href='/new/about.php'>ABOUT</a> /
 					<a href='/new/blog.php'>BLOG</a> /
-					<a href='/new/'>PROJECTS</a> /
+					<a href='/new/projects.php'>PROJECTS</a> /
 					<a href='/new/'>MAP</a> /
 					<a href='/new/contact.php'>CONTACT</a><span style='display: inline-block; width: 16px;''></span>
 				</div>
