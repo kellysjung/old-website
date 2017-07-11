@@ -1,4 +1,4 @@
-<link rel='stylesheet' href='/css/tast-test.css'>
+<link rel='stylesheet' href='/css/task-list.css'>
 <link rel='styleSheet' href='/css/custom-color-picker.css'>
 <script src="js/customColorPicker.js" type="text/javascript"></script>
 
@@ -11,19 +11,19 @@ verifyLogged();
 adminNavbar('Tasks | Kelly Jung', 'Tasks', 'headerMain');
 ?>
 <!-- INPUT TO CREATE A NEW LIST -->
-<body onload='setuplists();'>
-    <div id='new-list'>
-        <input type='text' id='newList' placeholder='New List'>
-        <a href = 'javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>
-    </div>
-    <br><br>
+<!-- <body onload='setuplists();'> -->
+<div id='new-list'>
+    <input type='text' id='newList' placeholder='New List'>
+    <a href = 'javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>
+</div>
+<br><br>
 
-    <!-- LISTING ALL THE LISTS -->
-    <div id='all-lists' class='task-container'>
-        <!-- <div id='all-lists' class='test-wrapper'> -->
-        <?php getAllLists(); ?>
-    </div>
-</body>
+<!-- LISTING ALL THE LISTS -->
+<!-- <div id='all-lists' class='task-container'> -->
+<div id='all-lists' class='test-wrapper'>
+    <?php getAllLists(); ?>
+</div>
+<!-- </body> -->
 <br><br>
 <h4><a href='task-archive.php'>View Archived Lists</a></h4>
 <?php footer(); ?>
@@ -55,11 +55,11 @@ function addCheck(taskId) {
             var list = document.getElementById('ul_done_'+listId);
         }
         if (checked == '') {
-         var list = document.getElementById('ul_'+listId);
-     }
-     task.remove();
-     list.appendChild(task);
- });
+           var list = document.getElementById('ul_'+listId);
+       }
+       task.remove();
+       list.appendChild(task);
+   });
 }
 
 function deleteTask() {
@@ -76,6 +76,7 @@ function deleteTask() {
             // var list = document.getElementById(listId);
             // list.removeChild(taskToDelete);
             taskToDelete.remove();
+
         });
     });
 }
@@ -126,7 +127,7 @@ function addList() {
         $.post('action.php', {list:list, action:action}, function(data) {
             var div = document.getElementById('all-lists');
             var div_task_list = document.createElement('DIV');
-            div_task_list.setAttribute('class', 'tast-test');
+            div_task_list.setAttribute('class', 'task-list');
 
             div_task_list.innerHTML = data;
             div.prepend(div_task_list);
@@ -146,6 +147,8 @@ function archiveList(listId) {
     $.post('action.php', {listId:listId, action:action}, function(data) {
         var list = document.getElementById(listId);
         list.remove();
+
+        setuplists();
     });
 }
 
@@ -157,6 +160,8 @@ function deleteList(listId) {
             $.post('action.php', {listId:listId, action:action}, function(data) {
                 var listToDelete = document.getElementById(listId).parentElement;
                 listToDelete.remove();
+
+                setuplists();
             });
         }
     }
@@ -181,6 +186,8 @@ function hideList(listId) {
             $(list).toggleClass('collapsed');
             hideBtn.style.display = 'none';
             showBtn.style.display = '';
+
+            setuplists();
         });
     }
 }
@@ -242,7 +249,7 @@ function rgb2hex(rgb) {
 
 function matchColorIndexAndListId(colorPickerIndex) {
     var array = [];
-    var lists = document.getElementsByClassName('tast-test');
+    var lists = document.getElementsByClassName('task-list');
 
     for (var i = 0; i < lists.length; i++) {
         array[i] = lists[i];
@@ -259,98 +266,50 @@ function matchColorIndexAndListId(colorPickerIndex) {
 //
 // FOR THE COLUMNS
 //
-
+var colCount = 0;
+var colWidth = 0;
 var margin = 20;
 var lists = [];
 
-$(function() {
-    $(window).resize(setUpBlocks);
-});
+// $(function(){
+//     $(window).resize(setuplists);
+// });
 
-function setColumns() {
-    console.log('in setColumns');
-    var colWidth = $('.tast-test').outerWidth();
-    var colCount = 2;
-
-    for (var i = 0; i < colCount; i ++) {
+function setuplists() {
+    colWidth = $('.task-list').outerWidth();
+    colCount = 2
+    for(var i=0;i<colCount;i++){
         lists.push(margin);
     }
-    positionLists();
+    positionlists();
 }
 
-function positionLists() {
-    console.log('in positionLists');
-    $('.tast-test').each(function() {
+function positionlists() {
+    $('.task-list').each(function(){
         var min = Array.min(lists);
         var index = $.inArray(min, lists);
-        var leftPosition = margin + (index * (colWidth + margin));
+        var leftPos = margin+(index*(colWidth+margin));
         $(this).css({
-            'left': leftPosition + 'px',
-            'top': min + 'px'
+            'left':leftPos+'px',
+            'top':min+'px'
         });
-        lists[index] = min + $(this.outerHeight() + margin;)
-    });
+        lists[index] = min+$(this).outerHeight()+margin;
+    }); 
 }
 
 Array.min = function(array) {
     return Math.min.apply(Math, array);
 };
 
-</script>
-
-
-<!-- <style type="text/css">
-    .tast-test {
-        position: absolute;
-        background: lightgray;
-        padding: 20px;
-        width: 300px;
-        border: 1px solid #ddd;
-        color: white;
-    }
-
-</style> -->
 
 
 
-<script type="text/javascript">
-    var colCount = 0;
-    var colWidth = 0;
-    var margin = 20;
-    var lists = [];
 
-    $(function(){
-        $(window).resize(setuplists);
-    });
 
-    function setuplists() {
-        colWidth = $('.task-list').outerWidth();
-        colCount = 2
-        for(var i=0;i<colCount;i++){
-            lists.push(margin);
-        }
-        positionlists();
-    }
 
-    function positionlists() {
-        $('.task-list').each(function(){
-            var min = Array.min(lists);
-            var index = $.inArray(min, lists);
-            var leftPos = margin+(index*(colWidth+margin));
-            $(this).css({
-                'left':leftPos+'px',
-                'top':min+'px'
-            });
-            lists[index] = min+$(this).outerHeight()+margin;
-        }); 
-    }
 
-    Array.min = function(array) {
-        return Math.min.apply(Math, array);
-    };
+
+
+
 
 </script>
-
-
-
-

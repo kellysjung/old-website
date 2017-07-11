@@ -2,19 +2,22 @@
   text-align: left;
 }
 .task-list {
-  max-width: 400px;
-  padding: 10px;
+  /*max-width: 400px;
+  padding: 10px;*/
+  position: absolute;
+  padding: 20px;
+  width: 400px;
+  display: block;
 }
 .test-wrapper {
   position: relative;
+  margin: auto;
+  float: left;
 }
-.task-test {
+/*.task-test {
   position: absolute;
-  background: lightgray;
   padding: 20px;
   width: 400px;
-  border: 1px solid #ddd;
-  color: white;
 }
 .task-container {
   display: flex;
@@ -27,8 +30,7 @@
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
-
-}
+}*/
 
 * {
   box-sizing: border-box;
