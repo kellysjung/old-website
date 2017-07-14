@@ -6,7 +6,7 @@ function getAllLists() {
 	foreach ($lists as $list) {
 		if ($list['collapsed'] == 0) {
 			echo "
-			<div class='task-list'>
+			<div class='task-list draggable'>
 				<div class='' id='".$list['listId']."'>
 					<div class='list-header' id='list-header-".$list['listId']."' style='background-color: ".$list['color'].";'>
 						<span class='del-list fa fa-times' onclick='deleteList(".$list['listId'].");'></span>
@@ -34,7 +34,7 @@ function getAllLists() {
 		}
 		if ($list['collapsed'] == 1) {
 			echo "
-			<div class='task-list' >
+			<div class='task-list draggable'>
 				<div class='collapsed' id='".$list['listId']."'>
 					<div class='list-header' id='list-header-".$list['listId']."' style='background-color: ".$list['color'].";'>
 						<span class='del-list fa fa-times' onclick='deleteList(".$list['listId'].");'></span>
@@ -115,16 +115,20 @@ function getArchivedLists() {
 	$archived = dbQuery("SELECT * FROM lists WHERE archived = 1 ORDER BY listId DESC")->fetchAll();
 
 	if (!$archived) {
-		echo "<h3>You don't have any archived lists.</h3>";
+		echo "
+		<div class='center'>
+			<h3>There are no archived lists!</h3>
+			<div class='med-break'><br></div>
+			<h4><a href='task-list.php'>Create lists here.</a></h4>
+		</div>";
 	}
 
 	foreach ($archived as $list) {
 		echo "
-		<div class='blogPosts'>
-			<p id='".$list['listId']."'>".$list['list']." &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-				<a href='javascript://' onclick='unarchiveList(".$list['listId'].");'>Unarchive</a>
-			</p>
-		</div>
-		";
+		<p id='".$list['listId']."'>
+			<a href='javascript://' onclick='unarchiveList(".$list['listId'].");'>Unarchive &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>"
+			.$list['list']." 
+		</p>";
+		echo "<div class='med-break'><br></div><div class='center'><h4><a href='task-list.php'>Create lists here.</a></h4></div>";
 	}
 }

@@ -5,7 +5,7 @@ newHeader('Blog');
 <div class='large-break'><br></div><br>
 <div class='main'>
 	<?php
-		listCities();
+		// listCities();
 	?>
 </div>
 <?php

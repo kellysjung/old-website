@@ -4,29 +4,39 @@
 
 <?php
 include('config/init.php');
-$userId = $_SESSION['userId'];
-$user = getUserInfo($userId);
-$username = $user['username'];
-verifyLogged();
-adminNavbar('Tasks | Kelly Jung', 'Tasks', 'headerMain');
+// $userId = $_SESSION['userId'];
+// $user = getUserInfo($userId);
+// $username = $user['username'];
+// verifyLogged();
+// adminNavbar('Tasks | Kelly Jung', 'Tasks', 'headerMain');
+newHeader('Lists');
 ?>
-<!-- INPUT TO CREATE A NEW LIST -->
-<!-- <body onload='setuplists();'> -->
-<div id='new-list'>
-    <input type='text' id='newList' placeholder='New List'>
-    <a href = 'javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>
-</div>
-<br><br>
+<div class='med-break'><br><br><br><br></div>
+<div class='center'>
+    <div id='new-list'>
+        <input type='text' id='newList' placeholder='New List'>
+        <a href='javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>
+    </div><div class='med-break'><br></div>
 
-<!-- LISTING ALL THE LISTS -->
-<!-- <div id='all-lists' class='task-container'> -->
-<div id='all-lists' class='test-wrapper'>
-    <?php getAllLists(); ?>
-</div>
-<!-- </body> -->
+
+    <div class='list-col origin drop'>
+        <?php getAllLists(); ?>
+    </div>
+    <div class='list-col origin drop'>
+
+    </div>
+
+
+<!-- <div id='all-lists' class='task-container'>
+
+</div> -->
+
 <br><br>
 <h4><a href='task-archive.php'>View Archived Lists</a></h4>
-<?php footer(); ?>
+</div>
+<div class='med-break'><br></div>
+<?php newFooter(); ?>
+
 
 <script>
 // FUNCTIONS WILL RUN ONCE PAGE FINISHES LOADING
@@ -37,7 +47,6 @@ $(function() {
     dropdownList();
     $('span.colorpicker').css('visibility', 'hidden');
 
-    setuplists();
 });
 
 // EDITTING TASKS
@@ -64,19 +73,12 @@ function addCheck(taskId) {
 
 function deleteTask() {
     $('span.close').unbind().click(function(event) {
-
         var taskId = event.target.id;
         var action = 'delete-task';
 
         $.post('action.php', {taskId:taskId, action:action}, function(data) {
             var taskToDelete = document.getElementById(taskId);
-            // var listId = data;
-            // var jsonItem = JSON.parse(data);
-            // var listId = jsonItem['listId'];
-            // var list = document.getElementById(listId);
-            // list.removeChild(taskToDelete);
             taskToDelete.remove();
-
         });
     });
 }
@@ -128,6 +130,7 @@ function addList() {
             var div = document.getElementById('all-lists');
             var div_task_list = document.createElement('DIV');
             div_task_list.setAttribute('class', 'task-list');
+            div_task_list.setAttribute('draggable', 'true');
 
             div_task_list.innerHTML = data;
             div.prepend(div_task_list);
@@ -147,8 +150,6 @@ function archiveList(listId) {
     $.post('action.php', {listId:listId, action:action}, function(data) {
         var list = document.getElementById(listId);
         list.remove();
-
-        setuplists();
     });
 }
 
@@ -160,8 +161,6 @@ function deleteList(listId) {
             $.post('action.php', {listId:listId, action:action}, function(data) {
                 var listToDelete = document.getElementById(listId).parentElement;
                 listToDelete.remove();
-
-                setuplists();
             });
         }
     }
@@ -186,8 +185,6 @@ function hideList(listId) {
             $(list).toggleClass('collapsed');
             hideBtn.style.display = 'none';
             showBtn.style.display = '';
-
-            setuplists();
         });
     }
 }
@@ -231,14 +228,12 @@ function changeColor(color, listId) {
         header.style.backgroundColor = color;
     });
 }
-
 function OnCustomColorChanged(selectedColor, selectedColorTitle, colorPickerIndex) {
     var color = rgb2hex(selectedColor);
     var listId =  matchColorIndexAndListId(colorPickerIndex);
 
     changeColor(color, listId);
 }
-
 function rgb2hex(rgb) {
     rgb = rgb.match(/^rgb?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
     return (rgb && rgb.length === 4) ? "#" +
@@ -246,67 +241,70 @@ function rgb2hex(rgb) {
     ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
     ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
 }
-
 function matchColorIndexAndListId(colorPickerIndex) {
     var array = [];
     var lists = document.getElementsByClassName('task-list');
-
     for (var i = 0; i < lists.length; i++) {
         array[i] = lists[i];
     }
-
     var listId = array[colorPickerIndex].firstElementChild.id;
     return listId;
 }
-//
 
 
+// DRAG AND DROP
+// function allowDrop(event) {
+//     console.log('in allowDrop');
+//     event.preventDefault();
+// }
 
+// function drag(event) {
+//     console.log('in drag');
+//     event.dataTransfer.setData('list', event.target.id);
+// }
 
-//
-// FOR THE COLUMNS
-//
-var colCount = 0;
-var colWidth = 0;
-var margin = 20;
-var lists = [];
+// function drop(event) {
+//     console.log('in drop');
+//     var data = event.dataTransfer.getData('list');
+//     event.target.appendChild(document.getElementById(data));
+//     event.preventDefault();
+// }
 
-// $(function(){
-//     $(window).resize(setuplists);
+$('.draggable').draggable({cursor: 'move', revert: 'invalid'});
+// $('.drop').draggable({accept: '.draggable',
+//     drop: function(event, ui) {
+
+//     }
 // });
 
-function setuplists() {
-    colWidth = $('.task-list').outerWidth();
-    colCount = 2
-    for(var i=0;i<colCount;i++){
-        lists.push(margin);
+
+
+$('.drop').droppable({accept: '.draggable', 
+    drop: function(event, ui) {
+        var foo = this;
+        console.log(foo);
+        $(this).removeClass('border').removeClass('over');
+        var dropped = ui.draggable;
+        var droppedOn = $(this);
+        $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
+    }, 
+    over: function(event, elem) {
+        $(this).addClass('over');
+
+    },
+    out: function(event, elem) {
+        $(this).removeClass('over');
     }
-    positionlists();
-}
+});
+$('.drop').sortable();
 
-function positionlists() {
-    $('.task-list').each(function(){
-        var min = Array.min(lists);
-        var index = $.inArray(min, lists);
-        var leftPos = margin+(index*(colWidth+margin));
-        $(this).css({
-            'left':leftPos+'px',
-            'top':min+'px'
-        });
-        lists[index] = min+$(this).outerHeight()+margin;
-    }); 
-}
+$('.origin').droppable({ accept: '.draggable', drop: function(event, ui) {
 
-Array.min = function(array) {
-    return Math.min.apply(Math, array);
-};
-
-
-
-
-
-
-
+    $(this).removeClass('border').removeClass('over');
+    var dropped = ui.draggable;
+    var droppedOn = $(this);
+    $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
+}});
 
 
 

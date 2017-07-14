@@ -1,4 +1,4 @@
-font-family: 'Rubik', sans-serif;
+/*font-family: 'Rubik', sans-serif;
 font-family: 'Pacifico', cursive;
 font-family: 'Roboto', sans-serif;
 font-family: 'Lato', sans-serif;*/
@@ -6,11 +6,20 @@ font-family: 'Lato', sans-serif;*/
 html {
   /*background-color: #fcfafc;*/
   /*background: #141414 url(https://source.unsplash.com/OGeyUVT_p3U);*/
+  height: 100%;
+  box-sizing: border-box;
 }
+
 body {
  font-family: 'Rubik', sans-serif;
+ /*flex-direction: column;*/
+ position: relative;
+ margin: 0;
+ padding-bottom: 6rem;
+ min-height: 100%;
 }
-/*HEADER*/
+
+/***HEADER***/
 .header {
   /*position: fixed;*/
   position: absolute;
@@ -23,7 +32,7 @@ body {
   -ms-transition: height 0.3s;
   -o-transition: height 0.3s;
   transition: height 0.3s;
-  background-color: white; 
+  background-color: white;
   opacity: 0.5;
 }
 .header a {
@@ -54,19 +63,21 @@ body {
   float: right;
   display:inline-block;
 }
-/**/
+/****/
 
-/*FOOTER*/
+/***FOOTER***/
 .footer {
  position: absolute;
- /*position: relative;*/
  right: 0;
- margin-bottom: -5em;
  left: 0;
- padding: 5px;
+ bottom: 0;
+ /*margin-bottom: -5em;*/
+ /*padding: 5px;*/
+ padding: 1rem;
  background-color: white;
  opacity: 0.7;
  text-align: center;
+ /*display: flex;*/
 }
 .footer p{
   font-size: 10px;
@@ -74,6 +85,8 @@ body {
 .footer a {
   font-size: 20px;
 }
+
+
 .social-nav{
   text-align: center;
   color:  #0d2622;
@@ -95,7 +108,7 @@ body {
   text-decoration: none;
   border-radius: 50%;
 }
-/**/
+/****/
 
 .home p {
   position: absolute;
@@ -113,7 +126,7 @@ body {
   /*border-radius: 25%;*/
 }
 
-/*DASHED LIST*/
+/***DASHED LIST***/
 ul {
   margin: 0;
 }
@@ -130,9 +143,9 @@ ul.dashed > li:before {
 .dashed li {
   line-height: 30px;
 }
-/**/
+/****/
 
-/*ABOUT HTML TAGS*/
+/***ABOUT HTML TAGS***/
 .about h1,h2 {
   font-weight: 200;
   margin: 0.4em 0;
@@ -145,12 +158,17 @@ ul.dashed > li:before {
   font-size: 2em;
 }
 
-/*COMMONLY USED ELEMENTS*/
+/***COMMONLY USED ELEMENTS***/
 .main {
-  background-size: cover;
+  /*background-size: cover;
   background-position: 50%;
   height: 100vh;
-  padding-left: 10px;
+  padding-left: 10px;*/
+
+  margin: 0 auto;
+  padding-top: 64px;
+  /*max-width: 640px;*/
+  width: 94%;
 }
 .large-break {
   line-height: 65px;
@@ -168,7 +186,7 @@ ul.dashed > li:before {
   border-radius: 20px;
 }
 
-/*CONTACT FORM*/
+/***CONTACT FORM***/
 .inline {
   display: inline;
 }
@@ -208,7 +226,7 @@ ul.dashed > li:before {
   font-size: 16px;
   cursor: pointer;
   margin: auto;
-  
+
   display: block;
   border: none;
 }
@@ -235,43 +253,31 @@ ul.dashed > li:before {
   opacity: 1;
   right: 0;
 }
-/**/
+/****/
 
-/*CONTACT PAGE*/
+/***CONTACT PAGE***/
 #contact-container {
   width: 100%;
   display: table;
   table-layout: fixed;
 }
-#left-block {
+.contact-left-block {
   display: table-cell;
-  /*padding: 10px;*/
   text-align: right;
 }
-#middle-block {
+.middle-block {
  display: table-cell;
- /*padding: 5px; */
  text-align: center;
  width: 20px;
 }
-#right-block {
+.contact-right-block {
   display: table-cell;
-  /*padding: 10px;*/
   text-align: left;
 }
-/**/
+/****/
 
 
-
-
-
-
-
-
-
-
-
-/*VIEWING POSTS*/
+/***VIEWING POSTS***/
 .view {
   font-family: 'Lato', sans-serif;
   /*color: #707070;*/
@@ -288,5 +294,58 @@ ul.dashed > li:before {
   letter-spacing: 20px;
   background-color: #9cb0b0;
 }
-/**/
-/*1702 × 676
+/****/
+
+/***PROJECTS***/
+#project-container {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+.project-box {
+  /*display: inline-block;*/
+  display: table-cell;
+  width: 25vh;
+  height: 25vh;
+  min-width: 200px;
+  min-height: 200px;
+  /*max-width: 300px;*/
+  /*max-height: 300px;*/
+  /*background: rgba(, , , );*/
+  background-color: lightgray;
+  margin: auto;
+  padding: 1em 1em 1em 1em;
+  border: 1px solid black;
+}
+.project-middle-block {
+ display: table-cell;
+ text-align: center;
+ width: 22px;
+}
+.project-left-block {
+  align-content: left;
+  display: table-cell;
+}
+.project-right-block {
+  align-content: right;
+  display: table-cell;
+}
+.project-left-text {
+  visibility: hidden;
+  text-align: right;
+  display: table-cell;
+  width: 25vh;
+  height: 25vh;
+  border: 1px solid black;
+  padding-right: 20px;
+}
+.project-right-text {
+  visibility: hidden;
+  text-align: left;
+  display: table-cell;
+  width: 25vh;
+  height: 25vh;
+  border: 1px solid black;
+  padding-left: 20px;
+}
+/****/

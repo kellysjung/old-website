@@ -7,13 +7,13 @@ newHeader('Contact');
 	<div class='container'>
 		<div class='contact-form'>
 			<div id='contact-container'>
-				<div id='left-block'>
+				<div class='left-block'>
 					<p>Email</p>
 					<p></p>
 					<p>aaaaaaaaaaaaaaaaaa</p>
 				</div>
-				<div id='middle-block'></div>
-				<div id='right-block'>
+				<div class='middle-block'></div>
+				<div class='right-block'>
 					<p>bbb</p>
 					<p>bbb</p>
 					<p>bbb</p>

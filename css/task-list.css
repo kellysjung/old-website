@@ -1,21 +1,11 @@
+.center {
+  text-align: center;
+}
+
 #all-lists{
   text-align: left;
 }
 .task-list {
-  /*max-width: 400px;
-  padding: 10px;*/
-  position: absolute;
-  padding: 20px;
-  width: 400px;
-  display: block;
-}
-.test-wrapper {
-  position: relative;
-  margin: auto;
-  float: left;
-}
-/*.task-test {
-  position: absolute;
   padding: 20px;
   width: 400px;
 }
@@ -30,7 +20,7 @@
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
-}*/
+}
 
 * {
   box-sizing: border-box;
@@ -56,6 +46,8 @@ ul {
 }
 
 ul li {
+  text-decoration: none;
+
   cursor: pointer;
   position: relative;
   padding: 12px 40px 12px 40px;
@@ -66,7 +58,7 @@ ul li {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
+  list-style-type: none;
   word-wrap: break-word;
 }
 
@@ -180,15 +172,18 @@ ul li.checked::before {
 
 input {
   border: none;
-  width: 75%;
+  width: 80%;
   padding: 10px;
   float: left;
   font-size: 14px;
 }
+#new-list input {
+  border: 1px solid #d9d9d9;
+}
 
 .add-btn {
   padding: 8.5px;
-  width: 25%;
+  width: 20%;
   background: #d9d9d9;
   color: #555;
   float: left;
@@ -207,33 +202,19 @@ input {
 /*
 */
 
-
 #new-list {
   max-width: 400px;
-  /*vertical-align: middle;*/
   margin: auto;
+  padding: 20px;
+/*  background: rgba(221, 238, 236, 0.4);
+height: 75px;*/
 }
-
 .collapsed ul, .collapsed input, .collapsed button, .collapsed hr {
   display: none;
 }
-
 .completed {
   color: red;
 }
-
-.done {
-  width: 400px;
-  background-color: #9fb8c6;
-  color: white;
-  padding: 2px;
-  text-align: center;
-}
-
-.taskListhr {
-  width: 400px;
-}
-
 #wrap {
   background-color: gray;
   margin: 0 auto;
@@ -251,4 +232,14 @@ input {
 }
 .clear {
   clear: both;
+}
+.list-col {
+  width: 450px;
+  min-height: 100%;
+  margin: auto;
+  padding: 0.5em;
+  display: inline-block;
+  text-align: left;
+  border: 1px solid black;
+  top: 0;
 }

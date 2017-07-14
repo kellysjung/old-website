@@ -62,7 +62,7 @@ if (($action == 'add-list') and ($list != '')) {
 	if ($addList) {
 		$list = dbQuery("SELECT * FROM lists ORDER BY listId DESC LIMIT 1")->fetch();
 		echo "
-		<div class='' id='".$list['listId']."'>
+		<div class='' id='".$list['listId']."' draggable='true'>
 			<div class='list-header' id='list-header-".$list['listId']."' style='background-color: #284E64;'>
 				<span class='del-list fa fa-times' onclick='deleteList(".$list['listId'].");'></span>
 				<span style='display: none;' class='hide-list fa fa-plus' onclick='hideList(".$list['listId'].");'></span>

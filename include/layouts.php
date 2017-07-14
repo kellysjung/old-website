@@ -45,12 +45,10 @@ function navbar($title, $h1, $headerClass) {
 					$('html, body').animate({scrollTop : 0}, 300);
 					return false;
 				});
-
 			});
 		</script>
 
 		<a href='#' class='scrollToTop'><i class='fa fa-arrow-up'></i></a>
-		
 		";
 	}
 
@@ -114,7 +112,49 @@ function navbar($title, $h1, $headerClass) {
 		";
 	}
 
-//<a href='https://www.instagram.com/?hl=en' target='_blank' class='fa fa-instagram'></a>
+
+	function testHeader() {
+		echo "
+		<html>
+		<head>
+			<link rel='stylesheet' href='/css/style.css?Time=".microtime()."'/>
+			<link rel='stylesheet' href='/css/class.css?Time=".microtime()."'/>
+			<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+		</head>
+		<body>
+			<div class='nav' style='background: lightblue'>
+				<a href='index.php'>PUBLIC HOME</a> /
+				<a href='new-post.php'>NEW POST</a> /
+				<a href='admin-page.php'>POSTS</a> /
+				<a href='task-list.php'>TASKS</a> /
+				<a href='admin-view-tags.php'>TAGS</a>
+			</div>
+			<script type='text/javascript'>
+				$(document).ready(function(){
+					$(window).scroll(function(){
+						if ($(this).scrollTop() > 100) {
+							$('.scrollToTop').fadeIn();
+						} else {
+							$('.scrollToTop').fadeOut();
+						}
+					});
+					$('.scrollToTop').click(function(){
+						$('html, body').animate({scrollTop : 0}, 300);
+						return false;
+					});
+
+				});
+			</script>
+
+			<a href='#' class='scrollToTop'><i class='fa fa-arrow-up'></i></a>";
+		}
+
+		function testFooter() {
+			echo "
+		</body>
+		</html>
+		";
+	}
 
 
 
@@ -132,14 +172,17 @@ function navbar($title, $h1, $headerClass) {
 			<link href='https://fonts.googleapis.com/css?family=Pacifico|Rubik' rel='stylesheet'>
 			<link href='https://fonts.googleapis.com/css?family=Lato:100i|Roboto:100' rel='stylesheet'>
 
-			
+			<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+			<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+			<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
+
 		</head>
 		<body>
 			<div class='header'>
 				<div class='header-logo'>
 					<a href='/new/'>kj</a>
 				</div>
-				
+
 				<div class='nav'>
 					<a href='/new/about.php'>ABOUT</a> /
 					<a href='/new/blog.php'>BLOG</a> /
@@ -153,17 +196,18 @@ function navbar($title, $h1, $headerClass) {
 
 		function newFooter() {
 			echo"
-			<div class='footer'>
-				<div class='social-nav'>
-					<a href='https://www.linkedin.com/in/kellysjung' target='_blank' class='fa fa-linkedin'></a>
-					<a href='skype:kelly.jungg?userinfo' target='_blank' class='fa fa-skype'></a>
-					<a href='https://bitbucket.org/kellyjung/' target='_blank' class='fa fa-bitbucket' aria-hidden='true'></a>
-					<a href='https://github.com/kelly-jung' target='_blank' class='fa fa-github' aria-hidden='true'></a>
-				</div>
-				<p>LACRM Coding Fellowship - 2017</p>
-			</div>
-
 		</body>
+		<div class='footer'>
+			<div class='social-nav'>
+				<a href='https://www.linkedin.com/in/kellysjung' target='_blank' class='fa fa-linkedin'></a>
+				<a href='skype:kelly.jungg?userinfo' target='_blank' class='fa fa-skype'></a>
+				<a href='https://bitbucket.org/kellyjung/' target='_blank' class='fa fa-bitbucket' aria-hidden='true'></a>
+				<a href='https://github.com/kelly-jung' target='_blank' class='fa fa-github' aria-hidden='true'></a>
+			</div>
+			<p>Kelly Jung - LACRM Coding Fellowship - 2017</p>
+		</div>
+
+
 		</html>
 		";
 	}
