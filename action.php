@@ -13,14 +13,16 @@ if ($action == 'add-task') {
 			array("task"=>$task, "listId"=>$listId));
 
 		if ($addTask) {
-			$lastEntry = dbQuery("SELECT * FROM tasks ORDER BY taskId DESC LIMIT 1")->fetch();
-			$taskId = $lastEntry['taskId'];
+			$task = dbQuery("SELECT * FROM tasks ORDER BY taskId DESC LIMIT 1")->fetch();
+			$taskId = $task['taskId'];
+			// echo "
+			// <li class='' onclick='addCheck(".$task['taskId'].");' id='".$task['taskId']."'>".$task['task']."
+			// 	<span align='right' class='moveTask' id='".$task['taskId']."'>&#9776;</span>
+			// 	<span class='close' id='".$task['taskId']."'>x</span>
+			// </li>";
 		}
 		$item = array("taskId"=>$taskId, "task"=>$task, "listId"=>$listId);
 		echo json_encode($item);
-
-	} else {
-		echo "New item could not be added.";
 	}
 }
 
@@ -43,16 +45,10 @@ if ($action == 'add-check') {
 	if ($checked == 0) {
 		$addCheck = dbQuery("UPDATE tasks SET checked = 1 WHERE taskId = :taskId",
 			array("taskId"=>$taskId));
-		// if ($addCheck) {
-		// 	echo "check-added";
-		// }
 	}
 	if ($checked == 1) {
 		$removeCheck = dbQuery("UPDATE tasks SET checked = 0 WHERE taskId = :taskId",
 			array("taskId"=>$taskId));
-		// if ($removeCheck) {
-		// 	echo "check-removed";
-		// } 
 	} 
 }
 
@@ -63,7 +59,7 @@ if (($action == 'add-list') and ($list != '')) {
 		$list = dbQuery("SELECT * FROM lists ORDER BY listId DESC LIMIT 1")->fetch();
 		echo "
 		<div class='' id='".$list['listId']."'>
-			<div class='list-header' id='list-header-".$list['listId']."' style='background-color: #284E64;'>
+			<div class='list-header' id='list_header_".$list['listId']."' style='background-color: #284E64;'>
 				<span style='display: none;' class='hide-list fa fa-plus' onclick='hideList(".$list['listId'].");'></span>
 				<span class='hide-list fa fa-minus' onclick='hideList(".$list['listId'].");'></span>
 				<span class='drop-down fa fa-caret-down' onclick='dropdownList(".$list['listId'].");'></span>";
@@ -77,7 +73,7 @@ if (($action == 'add-list') and ($list != '')) {
 				getTasks($list['listId']);
 				echo "
 			</ul>
-			<ul id='ul_done_".$list['listId']."' class='list'>
+			<ul id='ul_done_".$list['listId']."' class='done-list'>
 				";
 				getCheckedTasks($list['listId']);
 				echo "

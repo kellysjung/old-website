@@ -11,17 +11,17 @@ echo "<link rel='stylesheet' href='/css/custom-color-picker.css?Time=".microtime
 // adminNavbar('Tasks | Kelly Jung', 'Tasks', 'headerMain');
 newHeader('Lists');
 ?>
-<div class='med-break'><br><br><br><br></div>
+<div class='large-break'><br><br></div>
 <div class='center'>
     <div id='new-list'>
         <input type='text' id='newList' placeholder='New List'>
         <a href='javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>
     </div><div class='med-break'><br><br></div>
 
-    <div class='list-col' id='col-1'>
+    <div class='list-col' id='col_1'>
         <?php getAllLists(1); ?>
     </div>
-    <div class='list-col' id='col-2'>
+    <div class='list-col' id='col_2'>
         <?php getAllLists(2); ?>
     </div>
 
@@ -62,11 +62,11 @@ function addCheck(taskId) {
             var list = document.getElementById('ul_done_'+listId);
         }
         if (checked == '') {
-           var list = document.getElementById('ul_'+listId);
-       }
-       task.remove();
-       list.appendChild(task);
-   });
+         var list = document.getElementById('ul_'+listId);
+     }
+     task.remove();
+     list.appendChild(task);
+ });
 }
 
 function deleteTask() {
@@ -86,7 +86,7 @@ function addTask(listId) {
     var action = 'add-task';
 
     if (task != '') {
-        $.post('action.php', {listId:listId, task:task, action:action}, function(data){
+        $.post('action.php', {listId:listId, task:task, action:action}, function(data) {
             var jsonItem = JSON.parse(data);
             var taskId = jsonItem['taskId'];
 
@@ -99,8 +99,10 @@ function addTask(listId) {
             newItem.setAttribute('id', taskId);
 
             // ADD THE CLOSE MARK TO THE NEWLY ADDED TASK
-            var span = document.createElement('SPAN');
             var deleteBtn = document.createTextNode('x');
+            // var moveBtn = document.createTextNode('\u2630');
+            var span = document.createElement('SPAN');
+
             span.className = 'close';
             span.id = taskId;
             span.appendChild(deleteBtn);
@@ -126,7 +128,7 @@ function addList() {
     if (list != '') {
         $.post('action.php', {list:list, action:action}, function(data) {
             // var div = document.getElementById('all-lists');
-            var div = document.getElementById('col-1');
+            var div = document.getElementById('col_1');
             var div_task_list = document.createElement('DIV');
             div_task_list.setAttribute('class', 'task-list');
             // div_task_list.setAttribute('draggable', 'true');
@@ -154,7 +156,7 @@ function archiveList(listId) {
 
 function deleteList(listId) {
     if (listId) {
-        var confirm = window.confirm('Delete list?');
+        var confirm = window.confirm('Are you sure you want to delete this list?');
         var action = 'delete-list';
         if (confirm) {
             $.post('action.php', {listId:listId, action:action}, function(data) {
@@ -190,15 +192,15 @@ function hideList(listId) {
 
 function dropdownList(listId) {
     if (listId) {
-        $('#drop-menu-'+listId).toggle();
+        $('#drop_menu_'+listId).toggle();
     }
 }
 
 function dropColorList(listId) {
-    if ($('#color-menu-'+listId).css('visibility') == 'hidden') {
-        $('#color-menu-'+listId).css('visibility', 'visible');
+    if ($('#color_menu_'+listId).css('visibility') == 'hidden') {
+        $('#color_menu_'+listId).css('visibility', 'visible');
     } else {
-        $('#color-menu-'+listId).css('visibility', 'hidden');
+        $('#color_menu_'+listId).css('visibility', 'hidden');
     }
 }
 
@@ -221,7 +223,7 @@ $(function() {
 // ALL COLOR FUNCTIONS
 function changeColor(color, listId) {
     var action = 'change-color';
-    var header = document.getElementById('list-header-'+listId);
+    var header = document.getElementById('list_header_'+listId);
 
     $.post('action.php', {listId:listId, action:action, color:color}, function(data) {
         header.style.backgroundColor = color;
@@ -254,19 +256,22 @@ function matchColorIndexAndListId(colorPickerIndex) {
 // SORTING THE LISTS IN THE COLUMNS
 // SAVES THE ORDER BUT NOT WHEN THE ITEMS MOVE ONLY WITHIN THE SAME LIST
 $(function() {
-    $('#col-1, #col-2').sortable({
+    $('#col_1, #col_2').sortable({
         connectWith: '.list-col',
         handle: '.list-header',
-        placeholder: 'list-placeholder',
+        placeholder: '.list-placeholder',
         cursor: 'move', // THIS DOESN'T REALLY WORK
-        start: function (event, ui) {
+        start: function(event, ui) {
             ui.placeholder.height(ui.helper.height());
         },
+        update: function(event, ui) {
+            console.log('updated within list');
+        },
         receive: function(event, ui) {
-            var column1 = $('#col-1').sortable('toArray');
-            var column2 = $('#col-2').sortable('toArray');
+            var column1 = $('#col_1').sortable('toArray');
+            var column2 = $('#col_2').sortable('toArray');
             var action = 'update-list-order';
-            
+
             $.post('action.php', {column1:column1, column2:column2, action:action}, function(data) {
                 //
                 // DO I NEED TO DO SOMETHING HERE?????
@@ -275,12 +280,47 @@ $(function() {
         }
     }).disableSelection();
 
-    // $('')
+
+    $('#ul_1, #ul_2, #ul_3').sortable({
+        connectWith: '.incomplete-list',
+        placeholder: '.list-placeholder',
+        cursor: 'move',
+        start: function(event, ui) {
+            ui.placeholder.height(ui.helper.height());
+            console.log('started');
+        },
+        receive: function(event, ui) {
+            console.log('received');
+        }
+    }).disableSelection();
+
+
+    // var currentLists = <?php #echo getCurrentLists() ?>;
+    // console.log(currentLists);
+
+    // FOR REORDERING THE TASKS
+    // $('.incomplete-list').sortable({
+    //     connectwith: '.incommplete-list',
+    //     placeholder: 'list-placeholder',
+    //     start: function(event, ui) {
+    //         ui.placeholder.height(ui.helper.height());
+    //         console.log('start');
+    //     },
+    //     receive: function(event, ui) {
+    //         alert('here');
+    //         // var sortedTasks = array();
+
+    //         // for (var i = 0; i < currentLists.length; i++) {
+    //         //     sortedTasks[i] = $('ul_'+currentLists[i]).sortable('toArray');
+    //         // }
+
+    //         // console.log('sorted', sortedTasks);
+    //     }
+    // }).disableSelection();
 
 
 
 });
-
 
 
 
