@@ -120,6 +120,11 @@ function navbar($title, $h1, $headerClass) {
 			<link rel='stylesheet' href='/css/style.css?Time=".microtime()."'/>
 			<link rel='stylesheet' href='/css/class.css?Time=".microtime()."'/>
 			<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+			<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+			<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
+			<script src = 'https://code.jquery.com/ui/1.10.4/jquery-ui.js'></script>
+			
+			<script src='js/customColorPicker.js' type='text/javascript'></script>
 		</head>
 		<body>
 			<div class='nav' style='background: lightblue'>
@@ -175,6 +180,9 @@ function navbar($title, $h1, $headerClass) {
 			<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 			<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
 			<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
+			<script src = 'https://code.jquery.com/ui/1.10.4/jquery-ui.js'></script>
+			
+			<script src='js/customColorPicker.js' type='text/javascript'></script>
 
 		</head>
 		<body>

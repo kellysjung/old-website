@@ -62,23 +62,23 @@ if (($action == 'add-list') and ($list != '')) {
 	if ($addList) {
 		$list = dbQuery("SELECT * FROM lists ORDER BY listId DESC LIMIT 1")->fetch();
 		echo "
-		<div class='' id='".$list['listId']."' draggable='true'>
+		<div class='' id='".$list['listId']."'>
 			<div class='list-header' id='list-header-".$list['listId']."' style='background-color: #284E64;'>
-				<span class='del-list fa fa-times' onclick='deleteList(".$list['listId'].");'></span>
 				<span style='display: none;' class='hide-list fa fa-plus' onclick='hideList(".$list['listId'].");'></span>
 				<span class='hide-list fa fa-minus' onclick='hideList(".$list['listId'].");'></span>
-				<span class='drop-down fa fa-bars' onclick='dropdownList(".$list['listId'].");'></span>";
+				<span class='drop-down fa fa-caret-down' onclick='dropdownList(".$list['listId'].");'></span>";
 				dropdownMenus($list['listId'], '#284E64');
 				echo "
 				<h2>".$list['list']."</h2>
 				<input type='text' id='newTask_".$list['listId']."' placeholder='Add a new item...'>
 				<button class='add-btn'  onclick='addTask(".$list['listId'].");'>Add</button>
 			</div>
-			<ul id='ul_".$list['listId']."' class='list'>".
-				getTasks($list['listId'])."
+			<ul id='ul_".$list['listId']."' class='list'>";
+				getTasks($list['listId']);
+				echo "
 			</ul>
 			<ul id='ul_done_".$list['listId']."' class='list'>
-				<hr>";
+				";
 				getCheckedTasks($list['listId']);
 				echo "
 			</ul>
@@ -134,4 +134,31 @@ if ($action == 'change-color') {
 	
 	$changeColor = dbQuery("UPDATE lists SET color = :color WHERE listId = :listId",
 		array("color"=>$color, "listId"=>$listId));
+}
+
+if ($action == 'update-list-order') {
+	$data = array();
+	$data[1] = $_REQUEST['column1'];
+	$data[2] = $_REQUEST['column2'];
+
+	foreach ($data[1] as $index => $list) {
+		$listId = str_replace('list_', '', $list);
+		$updateColumn1 = dbQuery("UPDATE lists SET listColumn = 1 WHERE listId = :listId",
+			array("listId"=>$listId));
+		
+		$updateOrder = dbQuery("UPDATE lists SET listOrder = :index WHERE listId = :listId",
+			array("index"=>$index, "listId"=>$listId));
+	}
+	foreach ($data[2] as $index => $list) {
+		$listId = str_replace('list_', '', $list);
+		$updateColumn2 = dbQuery("UPDATE lists SET listColumn = 2 WHERE listId = :listId",
+			array("listId"=>$listId));
+
+		$updateOrder = dbQuery("UPDATE lists SET listOrder = :index WHERE listId = :listId",
+			array("index"=>$index, "listId"=>$listId));
+	}
+}
+
+if ($action == 'update-task-order') {
+
 }

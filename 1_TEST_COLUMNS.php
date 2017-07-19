@@ -2,7 +2,7 @@
 include('config/init.php');
 adminNavbar('Tasks | Kelly Jung', 'Tasks', 'headerMain');
 ?>
-<style type="text/css">
+<!-- <style type="text/css">
 	.task-list {
 		position: absolute;
 		background: lightgray;
@@ -86,4 +86,4 @@ adminNavbar('Tasks | Kelly Jung', 'Tasks', 'headerMain');
 		return Math.min.apply(Math, array);
 	};
 
-</script>
+</script> -->

@@ -1,15 +1,17 @@
 .center {
   text-align: center;
+  align-content: center;
 }
 
 #all-lists{
   text-align: left;
 }
 .task-list {
-  padding: 20px;
+  padding: 5px;
   width: 400px;
+  vertical-align: top;
 }
-.task-container {
+/*.task-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -20,26 +22,26 @@
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
-}
+  }*/
 
-* {
-  box-sizing: border-box;
-}
-h2 {
-  display: inline-block;
-  font-size: 20px;
-}
-h4 a{
-  color: #284E64;
-}
-h4:visited a:visited {
- color: #284E64;
-}
+  * {
+    box-sizingzing: border-box;
+  }
+  h2 {
+    display: inline-block;
+    font-size: 20px;
+  }
+  h4 a{
+    color: #284E64;
+  }
+  h4:visited a:visited {
+   color: #284E64;
+ }
 
-/**/
-/* LIST ITEMS */
-/**/
-ul {
+ /**/
+ /* LIST ITEMS */
+ /**/
+ ul {
   margin: 0;
   padding: 0;
   width: 400px;
@@ -110,7 +112,7 @@ ul li.checked::before {
   cursor: pointer;
 }
 .del-list:hover {
- text-shadow: 0 0 7px #ff6666, 0 0 14px #cccccc;
+  text-shadow: 0 0 7px #ff6666, 0 0 14px #cccccc;
 }
 .hide-list {
   display: inline-block;
@@ -132,7 +134,7 @@ ul li.checked::before {
 .drop-menu {
   display: none;
   position: absolute;
-  /*right: 35;*/
+  z-index: 4;
   right: 18;
   top: 35;
   border: 1px solid #BBB;
@@ -215,31 +217,29 @@ height: 75px;*/
 .completed {
   color: red;
 }
-#wrap {
-  background-color: gray;
-  margin: 0 auto;
-  max-width: 900px;
-}
-#column1 {
-  background-color: white;
-  float: left;
-  width: 410px;
-}
-#column2 {
-  background-color: white;
-  float: right;
-  width: 410px;
-}
 .clear {
   clear: both;
 }
 .list-col {
-  width: 450px;
-  min-height: 100%;
-  margin: auto;
-  padding: 0.5em;
+  width: 410px;
+  /*min-height: 70vh;*/
+  margin-right: 10px;
   display: inline-block;
   text-align: left;
-  border: 1px solid black;
-  top: 0;
+  /*border: 1px solid black;*/
+  vertical-align: top;
+  /*float: left;*/
+}
+#archived-lists {
+  max-width: 750px;
+  min-width: 600px;
+  width: 60%;
+  margin: auto;
+}
+.each-archived-list {
+  line-height: 30px;
+}
+.list-placeholder {
+  border: 1.5px dotted black;
+  background-color: #e6e6e6;
 }

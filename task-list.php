@@ -1,9 +1,9 @@
-<link rel='stylesheet' href='/css/task-list.css'>
-<link rel='styleSheet' href='/css/custom-color-picker.css'>
-<script src="js/customColorPicker.js" type="text/javascript"></script>
+
 
 <?php
 include('config/init.php');
+echo "<link rel='stylesheet' href='/css/task-list.css?Time=".microtime()."'/>";
+echo "<link rel='stylesheet' href='/css/custom-color-picker.css?Time=".microtime()."'/>";
 // $userId = $_SESSION['userId'];
 // $user = getUserInfo($userId);
 // $username = $user['username'];
@@ -16,26 +16,24 @@ newHeader('Lists');
     <div id='new-list'>
         <input type='text' id='newList' placeholder='New List'>
         <a href='javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>
-    </div><div class='med-break'><br></div>
+    </div><div class='med-break'><br><br></div>
 
-
-    <div class='list-col origin drop'>
-        <?php getAllLists(); ?>
+    <div class='list-col' id='col-1'>
+        <?php getAllLists(1); ?>
     </div>
-    <div class='list-col origin drop'>
-
+    <div class='list-col' id='col-2'>
+        <?php getAllLists(2); ?>
     </div>
 
-
-<!-- <div id='all-lists' class='task-container'>
-
-</div> -->
-
-<br><br>
-<h4><a href='task-archive.php'>View Archived Lists</a></h4>
+    <div class='clear'></div>
+    <div class='med-break'><br><br></div>
+    
+    <h4><a href='task-archive.php'>View Archived Lists</a></h4>
 </div>
-<div class='med-break'><br></div>
-<?php newFooter(); ?>
+<br>
+<?php
+newFooter();
+?>
 
 
 <script>
@@ -127,10 +125,11 @@ function addList() {
 
     if (list != '') {
         $.post('action.php', {list:list, action:action}, function(data) {
-            var div = document.getElementById('all-lists');
+            // var div = document.getElementById('all-lists');
+            var div = document.getElementById('col-1');
             var div_task_list = document.createElement('DIV');
             div_task_list.setAttribute('class', 'task-list');
-            div_task_list.setAttribute('draggable', 'true');
+            // div_task_list.setAttribute('draggable', 'true');
 
             div_task_list.innerHTML = data;
             div.prepend(div_task_list);
@@ -205,8 +204,8 @@ function dropColorList(listId) {
 
 // TO HIDE THE MENUS WHEN CLICKED ELSEWHERE
 $(function() {
-    $(".drop-down").click(function(event) {
-        $(".drop-menu").click(function(event) {
+    $('.drop-down').click(function(event) {
+        $('.drop-menu').click(function(event) {
             event.stopPropagation();
         });
         event.stopPropagation();
@@ -236,10 +235,10 @@ function OnCustomColorChanged(selectedColor, selectedColorTitle, colorPickerInde
 }
 function rgb2hex(rgb) {
     rgb = rgb.match(/^rgb?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
-    return (rgb && rgb.length === 4) ? "#" +
-    ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-    ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-    ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
+    return (rgb && rgb.length === 4) ? '#' +
+    ('0' + parseInt(rgb[1],10).toString(16)).slice(-2) +
+    ('0' + parseInt(rgb[2],10).toString(16)).slice(-2) +
+    ('0' + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
 }
 function matchColorIndexAndListId(colorPickerIndex) {
     var array = [];
@@ -252,60 +251,35 @@ function matchColorIndexAndListId(colorPickerIndex) {
 }
 
 
-// DRAG AND DROP
-// function allowDrop(event) {
-//     console.log('in allowDrop');
-//     event.preventDefault();
-// }
+// SORTING THE LISTS IN THE COLUMNS
+// SAVES THE ORDER BUT NOT WHEN THE ITEMS MOVE ONLY WITHIN THE SAME LIST
+$(function() {
+    $('#col-1, #col-2').sortable({
+        connectWith: '.list-col',
+        handle: '.list-header',
+        placeholder: 'list-placeholder',
+        cursor: 'move', // THIS DOESN'T REALLY WORK
+        start: function (event, ui) {
+            ui.placeholder.height(ui.helper.height());
+        },
+        receive: function(event, ui) {
+            var column1 = $('#col-1').sortable('toArray');
+            var column2 = $('#col-2').sortable('toArray');
+            var action = 'update-list-order';
+            
+            $.post('action.php', {column1:column1, column2:column2, action:action}, function(data) {
+                //
+                // DO I NEED TO DO SOMETHING HERE?????
+                //
+            });
+        }
+    }).disableSelection();
 
-// function drag(event) {
-//     console.log('in drag');
-//     event.dataTransfer.setData('list', event.target.id);
-// }
-
-// function drop(event) {
-//     console.log('in drop');
-//     var data = event.dataTransfer.getData('list');
-//     event.target.appendChild(document.getElementById(data));
-//     event.preventDefault();
-// }
-
-$('.draggable').draggable({cursor: 'move', revert: 'invalid'});
-// $('.drop').draggable({accept: '.draggable',
-//     drop: function(event, ui) {
-
-//     }
-// });
+    // $('')
 
 
 
-$('.drop').droppable({accept: '.draggable', 
-    drop: function(event, ui) {
-        var foo = this;
-        console.log(foo);
-        $(this).removeClass('border').removeClass('over');
-        var dropped = ui.draggable;
-        var droppedOn = $(this);
-        $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
-    }, 
-    over: function(event, elem) {
-        $(this).addClass('over');
-
-    },
-    out: function(event, elem) {
-        $(this).removeClass('over');
-    }
 });
-$('.drop').sortable();
-
-$('.origin').droppable({ accept: '.draggable', drop: function(event, ui) {
-
-    $(this).removeClass('border').removeClass('over');
-    var dropped = ui.draggable;
-    var droppedOn = $(this);
-    $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
-}});
-
 
 
 
