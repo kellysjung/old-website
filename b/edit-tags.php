@@ -3,7 +3,7 @@ include('config/init.php');
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
 verifyLogged();
-adminNavbar('Edit Tags | Kelly Jung', "Edit Tags", 'headerMain');
+adminNavbar('Edit Tags | KJ Blog');
 $postId = $_REQUEST['postId'];
 $post = getPost($postId);
 

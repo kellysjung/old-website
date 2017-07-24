@@ -3,9 +3,9 @@ include('config/init.php');
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
 verifyLogged();
-adminNavbar('Admin | Kelly Jung', "Admin", 'headerMain');
+adminNavbar('Drafts | KJ Blog');
 ?>
-
+<div class='large-break'><br></div><br>
 <div class="main">
 	<div class='blogPosts'>
 		<?php listAdminDrafts(); ?>

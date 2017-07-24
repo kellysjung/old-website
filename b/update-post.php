@@ -14,7 +14,7 @@ if (isset($_REQUEST['delete']) or $del == 1) {
 	$deletePost = dbQuery("DELETE FROM blog_posts WHERE postId = :postId", array ("postId"=>$postId));
 	
 	if ($deletePost and $deleteComments and $deleteTags) {
-		header('Location:admin-page.php');
+		header('Location:blog-admin.php');
 	} else {
 		echo "Error. Could not delete post. <br>";
 	}
@@ -27,7 +27,7 @@ if (isset($_REQUEST['update']) or $del == 2) {
 	$updatePost = dbQuery("UPDATE blog_posts SET tab = :updatedTab, title = :updatedTitle, body = :updatedBody WHERE postId = :postId", array ("updatedTab"=>$_POST['tab'], "updatedTitle"=>$_POST['title'], "updatedBody"=>$_POST['body'], "postId"=>$postId));
 
 	if ($updatePost) {
-		header('Location:admin-page.php');
+		header('Location:blog-admin.php');
 	} else {
 		echo "Error. Could not update post. <br>";
 	}

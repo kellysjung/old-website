@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-navbar('Login | Kelly Jung', "Login", 'headerMain');
+navbar('Login | Kelly Jung');
 
 if (isset($_REQUEST['login'])) {
 	$errors = array();
@@ -47,7 +47,7 @@ function login() {
 		if (crypt($pwInput, '$7c$14$'.$salt) == $hash) {
 			$_SESSION['userId'] = $userId;
 			$_SESSION['logged'] = true;
-			header("Location:/admin-page.php");
+			header("Location:/blog-admin.php");
 		} else {
 			echo "<span class='error'>Incorrect password. Please try again.</span>";
 		}

@@ -4,7 +4,7 @@ include('config/init.php');
 $postId = $_REQUEST['postId'];
 $specificPost = getPost($postId);
 
-navbar($specificPost['tab'].' | Kelly Jung', $specificPost['title'], 'headerMain');
+navbar_v1($specificPost['tab'].' | Kelly Jung', $specificPost['title'], 'headerMain');
 
 if(isset($_REQUEST['newCommentForm'])) {
 	$errors = array();
@@ -23,6 +23,7 @@ if(isset($_REQUEST['newCommentForm'])) {
 }
 
 echo "
+<div class='large-break'><br></div><br>
 <div class='main'>
 	<div class='blogPosts'>";
 		viewPost($postId);

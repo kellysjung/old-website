@@ -3,7 +3,7 @@ include('config/init.php');
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
 verifyLogged();
-adminNavbar('Admin Tags | Kelly Jung', "Admin Tags", 'headerMain');
+adminNavbar('Admin Tags | KJ Blog');
 
 // $d = $_REQUEST['d'];
 
@@ -22,6 +22,7 @@ if (isset($_REQUEST['delete'])) {
 }
 
 echo "
+<div class='large-break'><br></div><br>
 <div class='main'>  
 	<div class='blogPosts'>";
 		listAdminTags();

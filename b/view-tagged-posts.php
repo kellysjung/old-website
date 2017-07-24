@@ -4,8 +4,9 @@ include('config/init.php');
 $tagId = $_REQUEST['tagId'];
 $specificTag = getTag($tagId);
 
-navbar($specificTag['tagName'].' | Kelly Jung', $specificTag['tagName'].' Posts', 'headerMain');
+navbar_v1($specificTag['tagName'].' | Kelly Jung', $specificTag['tagName'].' Posts', 'headerMain');
 echo "
+<div class='large-break'><br></div><br>
 <div class='main'>".
 	$specificTag['tagDescription']
 	."<hr><div class='blogPosts'>

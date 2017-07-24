@@ -5,9 +5,10 @@ $user = getUserInfo($userId);
 $username = $user['username'];
 verifyLogged();
 
-adminNavbar('Admin | Kelly Jung', "Admin", 'headerMain');
+adminNavbar('Admin | KJ Blog');
 
 echo "
+<div class='large-break'><br></div><br>
 <div class='main'>
 	<div class='blogPosts'>";
 	echo "<div class='smallRight'> Welcome ".$user['firstName']."</div><br><br>";

@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-newHeader('Blog');
+navbar('Blog');
 ?>
 <div class='large-break'><br></div><br>
 <div class='main'>
@@ -9,4 +9,4 @@ newHeader('Blog');
 	?>
 </div>
 <?php
-newFooter();
+footer();

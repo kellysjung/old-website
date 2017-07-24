@@ -3,7 +3,7 @@ include('config/init.php');
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
 verifyLogged();
-adminNavbar('Edit Post | Kelly Jung', 'Edit Post', 'headerMain');
+adminNavbar('Edit Post | KJ Blog');
 
 $postId = $_REQUEST['postId'];
 $post = editPost($postId);
@@ -19,6 +19,7 @@ if (isset($_REQUEST['removeTag'])) {
 }
 
 echo "
+<div class='large-break'><br></div><br>
 <div class='main'>
 	<div class='blogPosts'>
 		<form class='postForm' action='' method='POST'>
@@ -49,7 +50,7 @@ function updatePost() {
 		array ("updatedTab"=>htmlspecialchars($_POST['tab']), "updatedTitle"=>htmlspecialchars($_POST['title']), "updatedBody"=>htmlspecialchars($_POST['body']), "postId"=>$postId));
 
 	if ($updatePost) {
-		header('Location:admin-page.php');
+		header('Location:blog-admin.php');
 	} else {
 		echo "<span class='error'>Error. Could not update post.</span>";
 	}
@@ -69,7 +70,7 @@ function deletePost() {
 	
 
 	if ($deletePost and $deleteComments and $deleteTags) {
-		header('Location:admin-page.php');
+		header('Location:blog-admin.php');
 	} else {
 		echo "<span class='error'>Error. Could not delete post.</span>";
 	}

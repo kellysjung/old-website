@@ -1,44 +1,74 @@
 <?php
 include('config/init.php');
-navbar('Contact | Kelly Jung', 'Get in Touch', 'headerMain');
-
-if (isset($_REQUEST['msg'])) {
-	$errors = array();
-
-	if (!@$_REQUEST['msgName']) {
-		$errors['msgName'] = "Required";
-	}
-	if (!@$_REQUEST['msgEmail']) {
-		$errors['msgEmail'] = "Required";
-	}
-	if (sizeof($errors) == 0) {
-		email();
-	} else {
-		echo "<span class='error'>Please fill out required fields.</span>";
-	}
-}
-
+navbar('Contact');
 ?>
-<div class="main">
-	<div class="container">
-		<div class="contactInfo">
-			<i class="fa fa-map-marker"></i><span style="display:inline-block; width: 8px;"></span> St. Louis, Missouri<br>
-			<i class="fa fa-phone"></i><span style="display:inline-block; width: 2px;"></span> (314) 123 - 4567<br>
-			<i class="fa fa-envelope"></i> kelly.jung@lessannoyingcrm.com
+<div class='large-break'><br></div><br>
+<div class='main'>
+	<div class='container'>
+		<div class='contact-form'>
+			<div id='contact-container'>
+				<div class='left-block'>
+					<p>Email</p>
+					<p></p>
+					<p>aaaaaaaaaaaaaaaaaa</p>
+				</div>
+				<div class='middle-block'></div>
+				<div class='right-block'>
+					<p>bbb</p>
+					<p>bbb</p>
+					<p>bbb</p>
+				</div>
+			</div>	
 		</div>
-		<form class="defaultForm" action="" method="POST">
-			<?php
-			formTextInput('msgName', 'text', '250', 'Your Name');
-			formTextInput('msgEmail', 'email', '', 'Email Address');
-			formTextInput('msgSubject', 'text', '250', 'Subject');
-			formTextArea('defaultFormBody', 'msgBody', 'Message');
-			inputBtn('defaultBtn', 'msg', 'Send Message');
-			?>
-		</form>
+
+		<div class='contact-form'>
+			<form action='' method='post'>
+				<div class='field-form'><label class='largeLabel'>Name *</label><br>
+					<input class='shortInput' type='text' name='firstName' id='firstName'><br>
+					<label class='smallLabel' for='firstName'>First</label>
+				</div>
+				<div class='field-form'>
+					<pre>     </pre>
+				</div>
+				<div class='field-form'>
+					<div class='med-break'><br></div>
+					<input class='shortInput' type='text' name='lastName' id='lastName'><br>
+					<label class='smallLabel' for='lastName'>Last</label><br>
+				</div>
+
+
+
+				<div class='large-break'><br></div>
+				<label class='largeLabel' for='email'>Email Address *</label><br>
+				<input class='longInput' type='email' name='email' id='email'><br>
+
+				<div class='med-break'><br></div>
+				<label class='largeLabel' for='subject'>Subject *</label><br>
+				<input class='longInput' type='text' name='subject' id='subject'><br>
+
+				<div class='med-break'><br></div>
+				<label class='largeLabel' for='message'>Message *</label><br>
+				<textarea class='longInput' name='message' id='message' rows='7'></textarea>
+				
+				<div class='med-break'><br></div>
+				<button class='submitBtn' align='center'><span>Send Message </span></button>
+			</form>
+		</div>
 	</div>
 </div>
-<?php footer();
+</div>
+<?php
+footer();
 
-function email() {
-	echo "here";
+function sendEmail() {
+	$to = 'kelly.jung@lessannoyingcrm.com';
+	$firstName = htmlspecialchars($_POST['firstName']);
+	$lastName = htmlspecialchars($_POST['lastName']);
+	$from = htmlspecialchars($_POST['email']);
+	$subject = htmlspecialchars($_POST['subject']);
+	$message = htmlspecialchars($_POST['message']);
+
+	$headers = 'From: '.$firstName.' '.$lastName.', '.$from;
+
+	mail($to, $subject, $message, $headers);
 }

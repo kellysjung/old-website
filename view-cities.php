@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-newHeader('Blog');
+navbar('Blog');
 $cityId = $_REQUEST['cityId'];
 ?>
 
@@ -13,4 +13,4 @@ $cityId = $_REQUEST['cityId'];
 	</div>
 </div>
 <?php
-newFooter();
+footer();

@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-navbar('Register | Kelly Jung', "Register", 'headerMain');
+navbar('Register | Kelly Jung');
 
 if (isset($_REQUEST['register'])) {
 	$errors = array();

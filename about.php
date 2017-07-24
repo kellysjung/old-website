@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-newHeader('About');
+navbar('About');
 ?>
 <script type='text/javascript'>
 	var TxtRotate = function(el, toRotate, period) {
@@ -86,4 +86,4 @@ newHeader('About');
 	</div>
 </div>
 <?php
-newFooter();
+footer();

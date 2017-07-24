@@ -1,8 +1,9 @@
 <?php
 include('config/init.php');
-navbar('All Tags | Kelly Jung', "All Tags", 'headerMain');
+navbar_v1('All Tags | Kelly Jung', "All Tags", 'headerMain');
 
 echo "
+<div class='large-break'><br></div><br>
 <div class='main'>
 	<div class='blogPosts'>";
 	listTags();

@@ -14,6 +14,6 @@ include('admin/users.php');
 include('admin/tasks.php');
 // include('js/javascript.php');
 // include('login/login.php');
+include('include/layouts-v1.php');
 
-
-include('include/new-functions.php');
+include('admin/cities.php');

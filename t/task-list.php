@@ -8,8 +8,8 @@ echo "<link rel='stylesheet' href='/css/custom-color-picker.css?Time=".microtime
 // $user = getUserInfo($userId);
 // $username = $user['username'];
 // verifyLogged();
-// adminNavbar('Tasks | Kelly Jung', 'Tasks', 'headerMain');
-newHeader('Lists');
+// adminNavbar_v1('Tasks | Kelly Jung', 'Tasks', 'headerMain');
+navbar('Lists');
 ?>
 <div class='large-break'><br><br></div>
 <div class='center'>
@@ -32,7 +32,7 @@ newHeader('Lists');
 </div>
 <br>
 <?php
-newFooter();
+footer();
 ?>
 
 

@@ -1,7 +1,7 @@
 <?php
 include_once('config/init.php');
 
-// LISTS ALL POSTS FOR ADMIN TO EDIT; USED IN admin-page.php
+// LISTS ALL POSTS FOR ADMIN TO EDIT; USED IN blog-admin.php
 function listAdminPosts($username) {
 	$posts = dbQuery("
 		SELECT * FROM blog_posts WHERE author = :username ORDER BY postId DESC",
@@ -32,7 +32,7 @@ function listAdminPosts($username) {
 // 	}
 // }
 
-// LISTS ALL TAGS FOR ADMIN TO EDIT; used in admin-view-tags.php
+// LISTS ALL TAGS FOR ADMIN TO EDIT; used in tags-admin.php
 function listAdminTags() {
 	$tags = dbQuery("
 		SELECT * FROM tags ORDER BY tagId DESC")->fetchAll();

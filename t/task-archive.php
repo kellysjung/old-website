@@ -1,7 +1,7 @@
 <?php
 echo "<link rel='stylesheet' href='/css/task-list.css?Time=".microtime()."'/>";
 include('config/init.php');
-newHeader('Archive');
+navbar('Archive');
 
 echo "
 <div class='large-break'><br></div>
@@ -13,7 +13,7 @@ echo "
 	</div>
 </div>";
 
-newFooter();
+footer();
 ?>
 
 <script>

@@ -13,7 +13,7 @@ $deleteTag = dbQuery("DELETE FROM tags
 
 
 if ($deleteTagLinks and $deleteTag) {
-	header('Location:admin-view-tags.php');
+	header('Location:tags-admin.php');
 } else {
 	echo "Error. Could not delete post. <br>";
 }

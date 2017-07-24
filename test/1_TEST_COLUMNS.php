@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-adminNavbar('Tasks | Kelly Jung', 'Tasks', 'headerMain');
+adminNavbar_v1('Tasks | Kelly Jung', 'Tasks', 'headerMain');
 ?>
 <!-- <style type="text/css">
 	.task-list {
