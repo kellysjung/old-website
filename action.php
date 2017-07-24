@@ -69,11 +69,11 @@ if (($action == 'add-list') and ($list != '')) {
 				<input type='text' id='newTask_".$list['listId']."' placeholder='Add a new item...'>
 				<button class='add-btn'  onclick='addTask(".$list['listId'].");'>Add</button>
 			</div>
-			<ul id='ul_".$list['listId']."' class='list'>";
+			<ul id='ul_".$list['listId']."' class='incomplete-list'>";
 				getTasks($list['listId']);
 				echo "
 			</ul>
-			<ul id='ul_done_".$list['listId']."' class='done-list'>
+			<ul id='ul_done_".$list['listId']."' class='complete-list'>
 				";
 				getCheckedTasks($list['listId']);
 				echo "
@@ -156,5 +156,6 @@ if ($action == 'update-list-order') {
 }
 
 if ($action == 'update-task-order') {
-
+	$data = $_REQUEST['sortedTasks'];
+	// echo $data;
 }

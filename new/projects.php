@@ -2,18 +2,9 @@
 include('config/init.php');
 newHeader('Projects');
 ?>
-<script>
+<
 
-$('.project-box').click(function() {
-	console.log('aaa');
-});
-$('.project-left-text').hover(function() {
-	console.log('bb');
-});
-
-
-</script>
-<!-- <link rel='stylesheet' type='text/css' href='/css/square-hover.css'/> -->
+<link rel='stylesheet' type='text/css' href='/css/square-hover.css'/>
 <div class='large-break'><br></div>
 <div class='main' align='center'>
 <!-- 	<div class='hover-container'>
@@ -30,29 +21,32 @@ $('.project-left-text').hover(function() {
 			</div>
 		</div>
 	</div> -->
-
 	<div class='project-left-block'>
+		<div class='project-box' id='box_1'>
+			<div class='project-image' id='image_1'>
+				<p>1 Text </p>
+				<p>1 Text </p>
+				<p>1 Text </p>
+			</div>
+			<div class='project-text' id='text_1'>
+				<h3>1 Title</h3>
+				<figcaption>1 Caption</figcaption>
+			</div>
+		</div>
 
-		<div class='project-left-text'>
-			<p>1 Text </p>
-			<p>1 Text </p>
-			<p>1 Text </p>
-		</div>
-		<div class='project-box'>
-			<h3>1 Title</h3>
-			<figcaption>1 Caption</figcaption>
-		</div>
 
 		<div class='med-break'><br></div>
 
-		<div class='project-left-text'>
-			<p>2 Text </p>
-			<p>2 Text </p>
-			<p>2 Text </p>
-		</div>
-		<div class='project-box'>
-			<h3>2 Title</h3>
-			<figcaption>2 Caption</figcaption>
+		<div class='project-box' id='box_2'>
+			<div class='project-image' id='image_2'>
+				<h3>2 Title</h3>
+				<figcaption>2 Caption</figcaption>
+			</div>
+			<div class='project-text' id='text_2'>
+				<p>2 Text </p>
+				<p>2 Text </p>
+				<p>2 Text </p>
+			</div>
 		</div>
 	</div>
 
@@ -60,26 +54,30 @@ $('.project-left-text').hover(function() {
 
 	<div class='project-right-block'>
 
-		<div class='project-box'>
-			<h3>3 Title</h3>
-			<figcaption>3 Caption</figcaption>
-		</div>
-		<div class='project-right-text'>
-			<p>3 Text </p>
-			<p>3 Text </p>
-			<p>3 Text </p>
+		<div class='project-box' id='box_3'>
+			<div class='project-image' id='image_3'>
+				<h3>3 Title</h3>
+				<figcaption>3 Caption</figcaption>
+			</div>
+			<div class='project-text' id='text_3'>
+				<p>3 Text </p>
+				<p>3 Text </p>
+				<p>3 Text </p>
+			</div>
 		</div>
 
 		<div class='med-break'><br></div>
 
-		<div class='project-box'>
-			<h3>4 Title</h3>
-			<figcaption>4 Caption</figcaption>
-		</div>
-		<div class='project-right-text'>
-			<p>4 Text </p>
-			<p>4 Text </p>
-			<p>4 Text </p>
+		<div class='project-box' id='box_4'>
+			<div class='project-image' id='image_4'>
+				<h3>4 Title</h3>
+				<figcaption>4 Caption</figcaption>
+			</div>
+			<div class='project-text' id='text_4'>
+				<p>4 Text </p>
+				<p>4 Text </p>
+				<p>4 Text </p>
+			</div>
 		</div>
 
 	</div>
@@ -87,8 +85,50 @@ $('.project-left-text').hover(function() {
 
 
 
+	<div class='large-break'><br></div>
+	<?php
+	newFooter();
+	?>
 
-</div>
-<div class='large-break'><br></div>
-<?php
-newFooter();
+
+	<script>
+
+		// $('.project-box').hover(function(event) {
+		// 	var boxId = $(this).parent().attr('id'); //.split('_').pop();
+
+		// 	$(this).parent().children('.project-text').toggleClass('hidden');
+		// 	// $(this).parent().children('.project-text').css('visibility', 'visible');
+		// });
+
+		
+		// $(function() {
+		// });
+
+		$('.project-box').hover(function(event) {
+			var id = $(this).attr('id').split('_').pop();
+			var textBox = $(this).parent().children('.project-text')['context'];
+			var parent = $(this).parent().attr('class');
+
+			if (parent == 'project-left-block') {
+				$('#text_'+id).animate({'right':'200px'});
+			}
+			if (parent == 'project-right-block') {
+				$('#text_'+id).animate({'left':'200px'});
+			}
+
+		}, function(event) {
+			var id = $(this).attr('id').split('_').pop();
+			var textBox = $(this).parent().children('.project-text')['context'];
+			var parent = $(this).parent().attr('class');
+
+			if (parent == 'project-left-block') {
+				$('#text_'+id).animate({'right':'0px'}, 'fast');
+			}
+			if (parent == 'project-right-block') {
+				$('#text_'+id).animate({'left':'0px'}, 'fast');
+			}
+		}
+		);
+
+
+	</script>

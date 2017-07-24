@@ -46,11 +46,11 @@ function getAllLists($listColumn) {
 						<input type='text' id='newTask_".$list['listId']."' placeholder='Add a new item...'>
 						<button class='add-btn'  onclick='addTask(".$list['listId'].");'>Add</button>
 					</div>
-					<ul id='ul_".$list['listId']."' class='list'>";
+					<ul id='ul_".$list['listId']."' class='incomplete-list'>";
 						getTasks($list['listId']);
 						echo "
 					</ul>
-					<ul id='ul_done_".$list['listId']."' class='done-list'>";
+					<ul id='ul_done_".$list['listId']."' class='complete-list'>";
 						getCheckedTasks($list['listId']);
 						echo "
 					</ul>
@@ -136,7 +136,7 @@ function getArchivedLists() {
 
 
 function getCurrentLists() {
-	$lists = dbquery("SELECT listId FROM lists WHERE archived = 0 ORDER BY listId DESC")->fetchAll();
+	$lists = dbquery("SELECT listId FROM lists WHERE archived = 0 ORDER BY listId ASC")->fetchAll();
 	return json_encode($lists);
 }
 

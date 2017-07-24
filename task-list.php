@@ -62,11 +62,11 @@ function addCheck(taskId) {
             var list = document.getElementById('ul_done_'+listId);
         }
         if (checked == '') {
-         var list = document.getElementById('ul_'+listId);
-     }
-     task.remove();
-     list.appendChild(task);
- });
+           var list = document.getElementById('ul_'+listId);
+       }
+       task.remove();
+       list.appendChild(task);
+   });
 }
 
 function deleteTask() {
@@ -127,31 +127,26 @@ function addList() {
 
     if (list != '') {
         $.post('action.php', {list:list, action:action}, function(data) {
-            // var div = document.getElementById('all-lists');
             var div = document.getElementById('col_1');
             var div_task_list = document.createElement('DIV');
             div_task_list.setAttribute('class', 'task-list');
-            // div_task_list.setAttribute('draggable', 'true');
 
             div_task_list.innerHTML = data;
             div.prepend(div_task_list);
 
             $('#newList').val('');
-
-            deleteTask();
-            deleteList();
-            hideList();
-            dropdownList();
         });
     }
 }
 
 function archiveList(listId) {
-    var action = 'archived';
-    $.post('action.php', {listId:listId, action:action}, function(data) {
+    if (listId) {
+       var action = 'archived';
+       $.post('action.php', {listId:listId, action:action}, function(data) {
         var list = document.getElementById(listId);
         list.remove();
     });
+   }
 }
 
 function deleteList(listId) {
@@ -175,12 +170,12 @@ function hideList(listId) {
             var list = document.getElementById(listId);
 
             if (data == 'list is hidden') {
-                var hideBtn = document.getElementById(listId).getElementsByClassName('hide-list')[1];
-                var showBtn = document.getElementById(listId).getElementsByClassName('hide-list')[0];
+                var hideBtn = list.getElementsByClassName('hide-list')[1];
+                var showBtn = list.getElementsByClassName('hide-list')[0];
             }
             if (data == 'list is shown') {
-                var hideBtn = document.getElementById(listId).getElementsByClassName('hide-list')[0];
-                var showBtn = document.getElementById(listId).getElementsByClassName('hide-list')[1];
+                var hideBtn = list.getElementsByClassName('hide-list')[0];
+                var showBtn = list.getElementsByClassName('hide-list')[1];
             }
 
             $(list).toggleClass('collapsed');
@@ -237,10 +232,7 @@ function OnCustomColorChanged(selectedColor, selectedColorTitle, colorPickerInde
 }
 function rgb2hex(rgb) {
     rgb = rgb.match(/^rgb?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
-    return (rgb && rgb.length === 4) ? '#' +
-    ('0' + parseInt(rgb[1],10).toString(16)).slice(-2) +
-    ('0' + parseInt(rgb[2],10).toString(16)).slice(-2) +
-    ('0' + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
+    return (rgb && rgb.length === 4) ? '#' + ('0' + parseInt(rgb[1],10).toString(16)).slice(-2) + ('0' + parseInt(rgb[2],10).toString(16)).slice(-2) + ('0' + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
 }
 function matchColorIndexAndListId(colorPickerIndex) {
     var array = [];
@@ -259,66 +251,52 @@ $(function() {
     $('#col_1, #col_2').sortable({
         connectWith: '.list-col',
         handle: '.list-header',
-        placeholder: '.list-placeholder',
+        placeholder: 'list-placeholder',
         cursor: 'move', // THIS DOESN'T REALLY WORK
         start: function(event, ui) {
             ui.placeholder.height(ui.helper.height());
         },
         update: function(event, ui) {
-            console.log('updated within list');
-        },
-        receive: function(event, ui) {
             var column1 = $('#col_1').sortable('toArray');
             var column2 = $('#col_2').sortable('toArray');
             var action = 'update-list-order';
-
-            $.post('action.php', {column1:column1, column2:column2, action:action}, function(data) {
-                //
-                // DO I NEED TO DO SOMETHING HERE?????
-                //
-            });
+            // console.log('col1', column1);
+            // console.log('col2', column2);
+            // console.log(' ');
+            $.post('action.php', {column1:column1, column2:column2, action:action});
         }
     }).disableSelection();
 
 
-    $('#ul_1, #ul_2, #ul_3').sortable({
-        connectWith: '.incomplete-list',
-        placeholder: '.list-placeholder',
+    // REORDERING AND MOVING TASKS
+    $('.incomplete-list').sortable({
+        // connectWith: '.incomplete-list',
+        placeholder: 'list-placeholder',
         cursor: 'move',
         start: function(event, ui) {
             ui.placeholder.height(ui.helper.height());
-            console.log('started');
         },
-        receive: function(event, ui) {
-            console.log('received');
+        update: function(event, ui) {
+            var listSorted = $(this).sortable('toArray');
+            console.log(listSorted);
+
+            // var currentLists = <?php echo getCurrentLists() ?>;
+            // var sortedTasks = [];
+            // var action = 'update-task-order';
+            // for (var i = 0; i < currentLists.length; i++) {
+            //     // console.log('listId:', currentLists[i]['listId']);
+            //     // var list = $('ul_'+currentLists[i]['listId']);
+            //     var list = $('ul_'+currentLists[i]['listId']).sortable('serialize');
+            //     // console.log(list);
+            //     // console.log(' ');
+            // }
+            // // console.log(sortedTasks[1]);
+
+            // // $.post('action.php', {sortedTasks:sortedTasks, action:action}, function(data) {
+            // //     console.log('data received from tasks update post', data);
+            // // });
         }
     }).disableSelection();
-
-
-    // var currentLists = <?php #echo getCurrentLists() ?>;
-    // console.log(currentLists);
-
-    // FOR REORDERING THE TASKS
-    // $('.incomplete-list').sortable({
-    //     connectwith: '.incommplete-list',
-    //     placeholder: 'list-placeholder',
-    //     start: function(event, ui) {
-    //         ui.placeholder.height(ui.helper.height());
-    //         console.log('start');
-    //     },
-    //     receive: function(event, ui) {
-    //         alert('here');
-    //         // var sortedTasks = array();
-
-    //         // for (var i = 0; i < currentLists.length; i++) {
-    //         //     sortedTasks[i] = $('ul_'+currentLists[i]).sortable('toArray');
-    //         // }
-
-    //         // console.log('sorted', sortedTasks);
-    //     }
-    // }).disableSelection();
-
-
 
 });
 

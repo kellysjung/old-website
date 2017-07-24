@@ -182,7 +182,7 @@ function navbar($title, $h1, $headerClass) {
 			<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
 			<script src = 'https://code.jquery.com/ui/1.10.4/jquery-ui.js'></script>
 			
-			<script src='js/customColorPicker.js' type='text/javascript'></script>
+			<script src='/js/customColorPicker.js' type='text/javascript'></script>
 
 		</head>
 		<body>
