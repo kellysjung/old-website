@@ -9,7 +9,6 @@ html {
   height: 100%;
   box-sizing: border-box;
 }
-
 body {
  font-family: 'Rubik', sans-serif;
  /*flex-direction: column;*/
@@ -17,6 +16,11 @@ body {
  margin: 0;
  padding-bottom: 6rem;
  min-height: 100%;
+}
+
+.center {
+  text-align: center;
+  align-content: center;
 }
 
 /***HEADER***/
@@ -194,7 +198,6 @@ ul.dashed > li:before {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  /*width: 50%;*/
   margin: auto;
   padding: 1em 1em 1em 1em;
   display: block;
@@ -297,7 +300,6 @@ ul.dashed > li:before {
 /****/
 
 /***PROJECTS***/
-
 .project-left-block {
   align-content: left;
   display: table-cell;
@@ -336,7 +338,3 @@ ul.dashed > li:before {
   position: relative;
   z-index: 5;
 }
-/*.hidden {
-  visibility: hidden;
-  }*/
-  /****/

@@ -1,0 +1,28 @@
+.loginForm {
+  margin: auto;
+}
+.loginForm input{
+  width: 300px;
+  max-width: 300px;
+  margin: auto;
+  font-size: 14px;
+  border:1px solid #92ADB6;
+  padding: 3px;
+}
+.loginFormBody{
+  width: 300px;
+  margin: auto;
+  font-size: 14px;
+  border:1px solid #92ADB6;
+  padding: 3px;
+  font-family: Arial, sans-serif;
+}
+.loginBtn{
+  background-color: #7E9CA4;
+  color: white;
+  border:1px solid white;
+}
+.main a {
+  text-decoration: none;
+  color: black;
+}

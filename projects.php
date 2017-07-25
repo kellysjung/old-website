@@ -3,7 +3,6 @@ include('config/init.php');
 navbar('Projects');
 ?>
 
-<link rel='stylesheet' type='text/css' href='/css/square-hover.css'/>
 <div class='large-break'><br></div><br>
 <div class='main' align='center'>
 <!-- 	<div class='hover-container'>
@@ -32,7 +31,6 @@ navbar('Projects');
 				<figcaption>1 Caption</figcaption>
 			</div>
 		</div>
-
 
 		<div class='med-break'><br></div>
 

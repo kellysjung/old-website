@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-navbar('Login | Kelly Jung');
+adminNavbar('Login');
 
 if (isset($_REQUEST['login'])) {
 	$errors = array();
@@ -20,15 +20,17 @@ if (isset($_REQUEST['login'])) {
 }
 
 echo "
-<div class='main'>
+<link rel='stylesheet' href='/css/account.css?Time=".microtime()."'/>
+<div class='main center'>
 	<h4>Login</h4>
-	<form class='defaultForm' action='' method='POST'>";
+	<form class='loginForm' action='' method='POST'>";
 		formTextInput('username', 'text', '25', 'Username');
 		formTextInput('password', 'password', '', 'Password');
-		inputBtn('defaultBtn', 'login', 'Login');
+		inputBtn('loginBtn', 'login', 'Login');
 		echo "
 	</form>
-	<h5><a href='/login/register.php'>Don't have an account? Make one here!</a></h5>
+	<div class='med-break'><br></div>
+	<a href='/login/register.php'>Don't have an account? Make one here!</a>
 </div>";
 
 footer();

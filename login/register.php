@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-navbar('Register | Kelly Jung');
+navbar('Register');
 
 if (isset($_REQUEST['register'])) {
 	$errors = array();
@@ -50,7 +50,7 @@ if (isset($_REQUEST['register'])) {
 	}
 }
 echo "
-<div class='main'>
+<div class='main center'>
 	<h4>Register</h4>
 	<form class='defaultForm' action='' method='POST'>";
 		formTextInput('newUsername', 'text', '25', 'New Username');
