@@ -3,7 +3,9 @@ include('config/init.php');
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
 verifyLogged();
-adminNavbar('New Post | KJ Blog');
+navbar('New Post');
+echo "<div class='large-break'><br></div><br><hr>";
+phpProjectsNavbar();
 
 if (isset($_REQUEST['newPostForm'])) {
 	$errors = array();

@@ -3,7 +3,9 @@ include('config/init.php');
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
 verifyLogged();
-adminNavbar('Edit Tags | KJ Blog');
+navbar('Edit Tags');
+echo "<div class='large-break'><br></div><br><hr>";
+phpProjectsNavbar();
 $postId = $_REQUEST['postId'];
 $post = getPost($postId);
 

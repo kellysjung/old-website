@@ -3,7 +3,9 @@ include('config/init.php');
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
 verifyLogged();
-adminNavbar('Admin Tags | KJ Blog');
+navbar('Tags');
+echo "<div class='large-break'><br></div><br><hr>";
+phpProjectsNavbar();
 
 // $d = $_REQUEST['d'];
 

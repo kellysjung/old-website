@@ -1,6 +1,8 @@
 <?php
 include('config/init.php');
-navbar_v1('Posts | Kelly Jung', 'Posts', 'headerMain');
+navbar('Blog App');
+echo "<div class='large-break'><br></div><br><hr>";
+phpProjectsNavbar();
 
 echo "<div class='large-break'><br></div><br><div class='main'>";
 listTags();

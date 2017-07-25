@@ -49,7 +49,7 @@ function login() {
 		if (crypt($pwInput, '$7c$14$'.$salt) == $hash) {
 			$_SESSION['userId'] = $userId;
 			$_SESSION['logged'] = true;
-			header("Location:/blog-admin.php");
+			header("Location:/b/blog-admin.php");
 		} else {
 			echo "<span class='error'>Incorrect password. Please try again.</span>";
 		}

@@ -7,7 +7,7 @@ function navbar($title) {
 		// echo "<link rel='stylesheet' type='text/css' href='/css/square-hover.css'/>";
 		echo "<link rel='stylesheet' href='/css/new.css?Time=".microtime()."'/>";
 		echo "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-		<link href='https://fonts.googleapis.com/csazass?family=Pacifico|Rubik' rel='stylesheet'>
+		<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
 		<link href='https://fonts.googleapis.com/css?family=Lato:100i|Roboto:100' rel='stylesheet'>
 
 		<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
@@ -65,11 +65,19 @@ function navbar($title) {
 					<a href='/t/task-list.php'>TASK LIST</a>
 				</div>
 			</div>
-
 			";
 		}
 
-
+		function phpProjectsNavbar() {
+			echo "
+			<div class='php-projects-nav'>
+				<a href='/t/task-list.php'>TASK LIST</a> /
+				<a href='/b/blog-posts.php'>BLOG APP</a> /
+				<a href='/b/new-post.php'>NEW POST</a> /
+				<a href='/b/blog-admin.php'>YOUR POSTS</a> /
+				<a href='/b/tags-admin.php'>YOUR TAGS</a>
+			</div>";
+		}
 
 		function footer() {
 			echo"

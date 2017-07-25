@@ -4,7 +4,9 @@ include('config/init.php');
 $postId = $_REQUEST['postId'];
 $specificPost = getPost($postId);
 
-navbar_v1($specificPost['tab'].' | Kelly Jung', $specificPost['title'], 'headerMain');
+navbar('Blog App');
+echo "<div class='large-break'><br></div><br><hr>";
+phpProjectsNavbar();
 
 if(isset($_REQUEST['newCommentForm'])) {
 	$errors = array();

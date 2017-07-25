@@ -20,7 +20,7 @@ footer();
 	function unarchiveList(listId) {
 		var action = 'archived';
 
-		$.post('action.php', {listId:listId, action:action}, function(data) {
+		$.post('task-action.php', {listId:listId, action:action}, function(data) {
 			var list = document.getElementById(listId);
 			list.remove();
 

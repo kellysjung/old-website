@@ -5,10 +5,11 @@ $user = getUserInfo($userId);
 $username = $user['username'];
 verifyLogged();
 
-adminNavbar('Admin | KJ Blog');
+navbar('Blog App');
+echo "<div class='large-break'><br></div><br><hr>";
+phpProjectsNavbar();
 
 echo "
-<div class='large-break'><br></div><br>
 <div class='main'>
 	<div class='blogPosts'>";
 	echo "<div class='smallRight'> Welcome ".$user['firstName']."</div><br><br>";

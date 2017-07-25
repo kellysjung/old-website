@@ -51,7 +51,7 @@ $(function() {
 function addCheck(taskId) {
     var action = 'add-check';
 
-    $.post('action.php', {taskId:taskId, action:action}, function(data) {
+    $.post('task-action.php', {taskId:taskId, action:action}, function(data) {
         var task = document.getElementById(taskId);
         var listId = data;
 
@@ -74,7 +74,7 @@ function deleteTask() {
         var taskId = event.target.id;
         var action = 'delete-task';
 
-        $.post('action.php', {taskId:taskId, action:action}, function(data) {
+        $.post('task-action.php', {taskId:taskId, action:action}, function(data) {
             var taskToDelete = document.getElementById(taskId);
             taskToDelete.remove();
         });
@@ -86,7 +86,7 @@ function addTask(listId) {
     var action = 'add-task';
 
     if (task != '') {
-        $.post('action.php', {listId:listId, task:task, action:action}, function(data) {
+        $.post('task-action.php', {listId:listId, task:task, action:action}, function(data) {
             var jsonItem = JSON.parse(data);
             var taskId = jsonItem['taskId'];
 
@@ -126,7 +126,7 @@ function addList() {
     var action = 'add-list';
 
     if (list != '') {
-        $.post('action.php', {list:list, action:action}, function(data) {
+        $.post('task-action.php', {list:list, action:action}, function(data) {
             var div = document.getElementById('col_1');
             var div_task_list = document.createElement('DIV');
             div_task_list.setAttribute('class', 'task-list');
@@ -142,7 +142,7 @@ function addList() {
 function archiveList(listId) {
     if (listId) {
        var action = 'archived';
-       $.post('action.php', {listId:listId, action:action}, function(data) {
+       $.post('task-action.php', {listId:listId, action:action}, function(data) {
         var list = document.getElementById(listId);
         list.remove();
     });
@@ -154,7 +154,7 @@ function deleteList(listId) {
         var confirm = window.confirm('Are you sure you want to delete this list?');
         var action = 'delete-list';
         if (confirm) {
-            $.post('action.php', {listId:listId, action:action}, function(data) {
+            $.post('task-action.php', {listId:listId, action:action}, function(data) {
                 var listToDelete = document.getElementById(listId).parentElement;
                 listToDelete.remove();
             });
@@ -166,7 +166,7 @@ function hideList(listId) {
     if (listId) {
         var action = 'collapsed';
 
-        $.post('action.php', {listId:listId, action:action}, function(data) {
+        $.post('task-action.php', {listId:listId, action:action}, function(data) {
             var list = document.getElementById(listId);
 
             if (data == 'list is hidden') {
@@ -220,7 +220,7 @@ function changeColor(color, listId) {
     var action = 'change-color';
     var header = document.getElementById('list_header_'+listId);
 
-    $.post('action.php', {listId:listId, action:action, color:color}, function(data) {
+    $.post('task-action.php', {listId:listId, action:action, color:color}, function(data) {
         header.style.backgroundColor = color;
     });
 }
@@ -263,7 +263,7 @@ $(function() {
             // console.log('col1', column1);
             // console.log('col2', column2);
             // console.log(' ');
-            $.post('action.php', {column1:column1, column2:column2, action:action});
+            $.post('task-action.php', {column1:column1, column2:column2, action:action});
         }
     }).disableSelection();
 
@@ -292,7 +292,7 @@ $(function() {
             // }
             // // console.log(sortedTasks[1]);
 
-            // // $.post('action.php', {sortedTasks:sortedTasks, action:action}, function(data) {
+            // // $.post('task-action.php', {sortedTasks:sortedTasks, action:action}, function(data) {
             // //     console.log('data received from tasks update post', data);
             // // });
         }
