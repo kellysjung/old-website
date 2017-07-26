@@ -17,7 +17,7 @@ echo "
 		echo "
 		<br>
 	</div>
-	<form action='login/logout.php' method='POST'>
+	<form action='/login/logout.php' method='POST'>
 		<input class='defaultBtn' type='submit' name='logout' value='Logout'>
 	</form>
 </div>";

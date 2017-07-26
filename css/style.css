@@ -325,15 +325,15 @@ ul.dashed > li:before {
 /****/
 
 /***PROJECTS***/
-.project-left-block {
+.project-left-column {
   align-content: left;
   display: table-cell;
 }
-.project-right-block {
+.project-right-column {
   align-content: right;
   display: table-cell;
 }
-.project-middle-block {
+.project-middle-column {
   display: table-cell;
   text-align: center;
   width: 22px;

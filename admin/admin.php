@@ -36,7 +36,7 @@ function listAdminPosts($username) {
 function listAdminTags() {
 	$tags = dbQuery("
 		SELECT * FROM tags ORDER BY tagId DESC")->fetchAll();
-	echo '<ul class="columns">';
+	echo '<ul class="tag-columns">';
 	foreach($tags as $tag) {
 		echo '<li><a href="#" name="delete" type="button" class="fa fa-trash" onclick="confirmDeleteTag('.$tag['tagId'].')"></a>';
 		echo '<a href="view-tagged-posts.php?tagId='.$tag['tagId'].'">'.$tag['tagName'].'</a></li>';

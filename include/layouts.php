@@ -1,7 +1,8 @@
 <?php
-function includeLinks(){
+function includeLinks() {
 	// echo "<link rel='stylesheet' type='text/css' href='/css/square-hover.css'/>";
-	echo "<link rel='stylesheet' href='/css/new.css?Time=".microtime()."'/>";
+	echo "<link rel='stylesheet' href='/css/style.css?Time=".microtime()."'/>";
+	echo "<link rel='stylesheet' href='/css/blog.css?Time=".microtime()."'/>";
 	echo "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Lato:100i|Roboto:100' rel='stylesheet'>
@@ -13,7 +14,7 @@ function includeLinks(){
 
 	<script src='/js/customColorPicker.js' type='text/javascript'></script>
 
-	<link rel='icon' href='images/kj-logo.png'>
+	<link rel='icon' href='/images/kj-logo.png'>
 	";
 }
 function navbar($title) {
@@ -21,7 +22,6 @@ function navbar($title) {
 	<html>
 	<head>
 		<title>$title | Kelly Jung</title>";
-		// echo "<link rel='stylesheet' type='text/css' href='/css/square-hover.css'/>";
 		includeLinks();
 		echo "
 	</head>

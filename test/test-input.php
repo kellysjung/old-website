@@ -1,7 +1,7 @@
 <?php
 include('config/init.php');
 $postId = 6;
-echo "<link rel='stylesheet' href='/css/style.css?Time=".microtime()."'/>
+echo "<link rel='stylesheet' href='/css/style-old.css?Time=".microtime()."'/>
 <link rel='stylesheet' href='/css/class.css?Time=".microtime()."'/>";
 
 // echo "

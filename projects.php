@@ -19,16 +19,17 @@ navbar('Projects');
 			</div>
 		</div>
 	</div> -->
-	<div class='project-left-block'>
+
+	<div class='project-left-column'>
 		<div class='project-box' id='box_1'>
 			<div class='project-image' id='image_1'>
-				<p>1 Text </p>
-				<p>1 Text </p>
-				<p>1 Text </p>
-			</div>
-			<div class='project-text' id='text_1'>
 				<h3>1 Title</h3>
 				<figcaption>1 Caption</figcaption>
+			</div>
+			<div class='project-text' id='text_1'>
+				<p>1 Text</p>
+				<p>1 Text</p>
+				<p>1 Text</p>
 			</div>
 		</div>
 
@@ -40,26 +41,26 @@ navbar('Projects');
 				<figcaption>2 Caption</figcaption>
 			</div>
 			<div class='project-text' id='text_2'>
-				<p>2 Text </p>
-				<p>2 Text </p>
-				<p>2 Text </p>
+				<p>2 Text</p>
+				<p>2 Text</p>
+				<p>2 Text</p>
 			</div>
 		</div>
 	</div>
 
-	<div class='project-middle-block'></div>
+	<div class='project-middle-column'>
+	</div>
 
-	<div class='project-right-block'>
-
+	<div class='project-right-column'>
 		<div class='project-box' id='box_3'>
 			<div class='project-image' id='image_3'>
 				<h3>3 Title</h3>
 				<figcaption>3 Caption</figcaption>
 			</div>
 			<div class='project-text' id='text_3'>
-				<p>3 Text </p>
-				<p>3 Text </p>
-				<p>3 Text </p>
+				<p>3 Text</p>
+				<p>3 Text</p>
+				<p>3 Text</p>
 			</div>
 		</div>
 
@@ -71,12 +72,11 @@ navbar('Projects');
 				<figcaption>4 Caption</figcaption>
 			</div>
 			<div class='project-text' id='text_4'>
-				<p>4 Text </p>
-				<p>4 Text </p>
-				<p>4 Text </p>
+				<p>4 Text</p>
+				<p>4 Text</p>
+				<p>4 Text</p>
 			</div>
 		</div>
-
 	</div>
 
 
@@ -90,42 +90,31 @@ navbar('Projects');
 
 	<script>
 
-		// $('.project-box').hover(function(event) {
-		// 	var boxId = $(this).parent().attr('id'); //.split('_').pop();
-
-		// 	$(this).parent().children('.project-text').toggleClass('hidden');
-		// 	// $(this).parent().children('.project-text').css('visibility', 'visible');
-		// });
-
-		
-		// $(function() {
-		// });
-
 		$('.project-box').hover(function(event) {
 			var id = $(this).attr('id').split('_').pop();
-			var textBox = $(this).parent().children('.project-text')['context'];
+			// var textBox = $(this).parent().children('.project-text')['context'];
 			var parent = $(this).parent().attr('class');
+			event.stopPropagation();
 
-			if (parent == 'project-left-block') {
-				$('#text_'+id).animate({'right':'200px'});
+			if (parent == 'project-left-column') {
+				$('#text_'+id).animate({right:'100%'}, 300);
 			}
-			if (parent == 'project-right-block') {
-				$('#text_'+id).animate({'left':'200px'});
+			if (parent == 'project-right-column') {
+				$('#text_'+id).animate({left:'100%'}, 300);
 			}
-
 		}, function(event) {
 			var id = $(this).attr('id').split('_').pop();
-			var textBox = $(this).parent().children('.project-text')['context'];
 			var parent = $(this).parent().attr('class');
+			event.stopPropagation();
 
-			if (parent == 'project-left-block') {
-				$('#text_'+id).animate({'right':'0px'}, 'fast');
+			if (parent == 'project-left-column') {
+				$('#text_'+id).animate({right:'0'}, 300);
 			}
-			if (parent == 'project-right-block') {
-				$('#text_'+id).animate({'left':'0px'}, 'fast');
+			if (parent == 'project-right-column') {
+				$('#text_'+id).animate({left:'0'}, 300);
 			}
-		}
-		);
+		});
 
-
+		
 	</script>
+

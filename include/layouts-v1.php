@@ -5,7 +5,7 @@ function navbar_v1($title, $h1, $headerClass) {
 	<html>
 	<head>
 		<title>$title</title>
-		<link rel='stylesheet' href='/css/style.css?Time=".microtime()."'/>
+		<link rel='stylesheet' href='/css/style-old.css?Time=".microtime()."'/>
 		<link rel='stylesheet' href='/css/class.css?Time=".microtime()."'/>
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>		
@@ -57,7 +57,7 @@ function navbar_v1($title, $h1, $headerClass) {
 		<html>
 		<head>
 			<title>$title</title>
-			<link rel='stylesheet' href='/css/style.css?Time=".microtime()."'/>
+			<link rel='stylesheet' href='/css/style-old.css?Time=".microtime()."'/>
 			<link rel='stylesheet' href='/css/class.css?Time=".microtime()."'/>
 			<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100' rel='stylesheet'>

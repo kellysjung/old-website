@@ -7,7 +7,7 @@ include('config/init.php');
 <link rel="shortcut icon" href="http://designshack.net/favicon.ico">
 <link rel="icon" href="http://designshack.net/favicon.ico">
 <link rel="stylesheet" type="text/css" media="all" href="/css/modal.css">
-<!-- <link rel="stylesheet" type="text/css" media="all" href="/css/style.css"> -->
+<!-- <link rel="stylesheet" type="text/css" media="all" href="/css/style-old.css"> -->
 <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jquery.leanModal.min.js"></script>
 <!-- jQuery plugin leanModal under MIT License http://leanmodal.finelysliced.com.au/ -->

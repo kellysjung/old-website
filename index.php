@@ -5,8 +5,7 @@ navbar('Hello');
 <style type="text/css">
 	.homePage {
 		text-align: center;
-		background: #141414 url(https://source.unsplash.com/OGeyUVT_p3U);
-		/*background: #141414 url(https://source.unsplash.com/photos/wc9avd2RaN0);*/
+		background-image: url('/images/new-home.jpg');
 		background-size: cover;
 		background-position: 50%;
 		height: 100vh;

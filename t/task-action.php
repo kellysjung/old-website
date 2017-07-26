@@ -53,8 +53,12 @@ if ($action == 'add-check') {
 }
 
 if (($action == 'add-list') and ($list != '')) {
-	$addList = dbQuery("INSERT INTO lists (list) VALUES (:list)",
-		array("list"=>$list));
+	$created = taskTimeCreated();
+	$createdString = taskTimeCreatedString();
+
+
+	$addList = dbQuery("INSERT INTO lists (list, created, createdString) VALUES (:list, :created, :createdString)",
+		array("list"=>$list, "created"=>$created, "createdString"=>$createdString));
 	if ($addList) {
 		$list = dbQuery("SELECT * FROM lists ORDER BY listId DESC LIMIT 1")->fetch();
 		echo "
@@ -73,7 +77,7 @@ if (($action == 'add-list') and ($list != '')) {
 				getTasks($list['listId']);
 				echo "
 			</ul>
-			<ul id='ul_done_".$list['listId']."' class='complete-list'>
+			<ul id='ul_done_".$list['listId']."' class='complete-list' style='border-top: 2px solid ".$list['color'].";'>
 				";
 				getCheckedTasks($list['listId']);
 				echo "
@@ -156,6 +160,10 @@ if ($action == 'update-list-order') {
 }
 
 if ($action == 'update-task-order') {
-	$data = $_REQUEST['sortedTasks'];
-	// echo $data;
+	$sortedTasks = $_REQUEST['sortedTasks'];
+
+	foreach ($sortedTasks as $index => $taskId) {
+		$updateTaskOrder = dbQuery("UPDATE tasks SET taskOrder = :index, listId = :listId WHERE taskId = :taskId",
+			array("index"=>$index, "listId"=>$listId, "taskId"=>$taskId));
+	}
 }

@@ -27,7 +27,7 @@ phpProjectsNavbar();
     </div>
 
     <div class='clear'></div>
-    <div class='med-break'><br><br></div>
+    <div class='med-break'><br></div>
     
     <h4><a href='task-archive.php'>View Archived Lists</a></h4>
 </div>
@@ -63,11 +63,11 @@ function addCheck(taskId) {
             var list = document.getElementById('ul_done_'+listId);
         }
         if (checked == '') {
-         var list = document.getElementById('ul_'+listId);
-     }
-     task.remove();
-     list.appendChild(task);
- });
+           var list = document.getElementById('ul_'+listId);
+       }
+       task.remove();
+       list.appendChild(task);
+   });
 }
 
 function deleteTask() {
@@ -142,12 +142,12 @@ function addList() {
 
 function archiveList(listId) {
     if (listId) {
-     var action = 'archived';
-     $.post('task-action.php', {listId:listId, action:action}, function(data) {
-        var list = document.getElementById(listId);
-        list.remove();
-    });
- }
+        var action = 'archived';
+        $.post('task-action.php', {listId:listId, action:action}, function(data) {
+            var list = document.getElementById(listId);
+            list.remove();
+        });
+    }
 }
 
 function deleteList(listId) {
@@ -220,9 +220,11 @@ $(function() {
 function changeColor(color, listId) {
     var action = 'change-color';
     var header = document.getElementById('list_header_'+listId);
+    var borderLine = document.getElementById('ul_done_'+listId);
 
     $.post('task-action.php', {listId:listId, action:action, color:color}, function(data) {
         header.style.backgroundColor = color;
+        borderLine.style.borderColor = color;
     });
 }
 function OnCustomColorChanged(selectedColor, selectedColorTitle, colorPickerIndex) {
@@ -261,41 +263,25 @@ $(function() {
             var column1 = $('#col_1').sortable('toArray');
             var column2 = $('#col_2').sortable('toArray');
             var action = 'update-list-order';
-            // console.log('col1', column1);
-            // console.log('col2', column2);
-            // console.log(' ');
+
             $.post('task-action.php', {column1:column1, column2:column2, action:action});
         }
     }).disableSelection();
 
-
     // REORDERING AND MOVING TASKS
     $('.incomplete-list').sortable({
-        // connectWith: '.incomplete-list',
+        connectWith: '.incomplete-list',
         placeholder: 'list-placeholder',
         cursor: 'move',
         start: function(event, ui) {
             ui.placeholder.height(ui.helper.height());
         },
         update: function(event, ui) {
-            var listSorted = $(this).sortable('toArray');
-            console.log(listSorted);
+            var sortedTasks = $(this).sortable('toArray');
+            var listId = $(this).parent()['context'].id.split('_').pop();
+            var action = 'update-task-order';
 
-            // var currentLists = <?php echo getCurrentLists() ?>;
-            // var sortedTasks = [];
-            // var action = 'update-task-order';
-            // for (var i = 0; i < currentLists.length; i++) {
-            //     // console.log('listId:', currentLists[i]['listId']);
-            //     // var list = $('ul_'+currentLists[i]['listId']);
-            //     var list = $('ul_'+currentLists[i]['listId']).sortable('serialize');
-            //     // console.log(list);
-            //     // console.log(' ');
-            // }
-            // // console.log(sortedTasks[1]);
-
-            // // $.post('task-action.php', {sortedTasks:sortedTasks, action:action}, function(data) {
-            // //     console.log('data received from tasks update post', data);
-            // // });
+            $.post('task-action.php', {sortedTasks:sortedTasks, listId:listId, action:action});
         }
     }).disableSelection();
 

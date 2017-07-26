@@ -66,15 +66,15 @@ navbar('About');
 		<h1>I am
 			<span class='txt-rotate' data-period='2000' data-rotate='[ "majoring in psychology.", "learning to code.", "graduating in May 2018." ]'></span>
 		</h1>
-		<h2>About Me</h2>
+		<h2>Few Things About Me</h2>
 		<ul class='dashed'>
 			<li>My name is Kelly Jung.</li>
-			<li>I grew up on Long Island in Jericho, New York.</li>
+			<li>I am originally from Long Island, New York.</li>
 			<li>I attend Washington University in St. Louis, where I'm studying psychology.</li>
 			<li>During the year, I work at the Career Center, advising my college peers on job searching, job application writing, interviewing, and networking.</li>
 			<li>At LessAnnoyingCRM, I learned how to code and created this website!</li>
 		</ul>
-		<br>
+		<!-- <br>
 		<h2>Just For Fun</h2>
 		<ul class='dashed'>
 			<li></li>
@@ -82,7 +82,7 @@ navbar('About');
 			<li></li>
 			<li></li>
 			<li></li>
-		</ul>
+		</ul> -->
 	</div>
 </div>
 <?php

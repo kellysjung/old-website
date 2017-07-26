@@ -21,17 +21,6 @@ function listTags() {
 	}
 }
 
-// function returnTagList() {
-// 	$tags = dbQuery("SELECT * FROM tags")->fetchAll();
-// 	foreach ($tags as $tag) {
-// 		$count = dbQuery("
-// 			SELECT COUNT(*) FROM blogPost_tag_link WHERE tagId = :tagId",
-// 			array("tagId"=>$tag['tagId']))->fetchAll();
-// 		var_dump($count);
-// 		echo "<br>";
-// 	}
-// }
-
 function returnTagList() {
 	$count = dbQuery("
 		SELECT COUNT(*), tags.* FROM tags
@@ -40,9 +29,6 @@ function returnTagList() {
 		array("tagId"=>$tag['tagId']))->fetchAll();
 	var_dump($count);
 }
-
-
-
 
 // LISTS ALL POSTS PERTAINING TO TAG; USED IN view-tagged-posts.php
 function listTaggedPosts($tagId) {

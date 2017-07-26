@@ -2,41 +2,31 @@
   text-align: left;
 }
 .task-list {
-  padding: 5px;
+  padding: 10px;
   width: 400px;
   vertical-align: top;
 }
-/*.task-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  margin: auto;
-  padding: .5em;
+* {
+  box-sizing: border-box;
+}
+h2 {
+  display: inline-block;
+  font-size: 20px;
+}
+h4 a{
+  color: #284E64;
+}
+h4:visited a:visited {
+ color: #284E64;
+}
+a {
+  text-decoration: none;
+}
 
-  -webkit-column-count: 2;
-  -moz-column-count: 2;
-  column-count: 2;
-  }*/
-
-  * {
-    box-sizingzing: border-box;
-  }
-  h2 {
-    display: inline-block;
-    font-size: 20px;
-  }
-  h4 a{
-    color: #284E64;
-  }
-  h4:visited a:visited {
-   color: #284E64;
- }
-
- /**/
- /* LIST ITEMS */
- /**/
- ul {
+/**/
+/* LIST ITEMS */
+/**/
+ul {
   margin: 0;
   padding: 0;
   width: 400px;
@@ -44,7 +34,6 @@
 
 ul li {
   text-decoration: none;
-
   cursor: pointer;
   position: relative;
   padding: 12px 26px 12px 36px;
@@ -86,6 +75,9 @@ ul li.checked::before {
   transform: rotate(45deg);
   height: 14px;
   width: 7px;
+}
+.complete-list {
+  border-top: 1px solid black;
 }
 
 .close {
@@ -227,6 +219,7 @@ height: 75px;*/
   text-align: left;
   /*border: 1px solid black;*/
   vertical-align: top;
+  padding-bottom: 60px;
   /*float: left;*/
 }
 #archived-lists {

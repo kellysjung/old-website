@@ -24,7 +24,7 @@ function getAllLists($listColumn) {
 						getTasks($list['listId']);
 						echo "
 					</ul>
-					<ul id='ul_done_".$list['listId']."' class='complete-list'>";
+					<ul id='ul_done_".$list['listId']."' class='complete-list' style='border-top: 2px solid ".$list['color'].";'>";
 						getCheckedTasks($list['listId']);
 						echo "
 					</ul>
@@ -50,7 +50,7 @@ function getAllLists($listColumn) {
 						getTasks($list['listId']);
 						echo "
 					</ul>
-					<ul id='ul_done_".$list['listId']."' class='complete-list'>";
+					<ul id='ul_done_".$list['listId']."' class='complete-list' style='border-top: 2px solid ".$list['color'].";'>";
 						getCheckedTasks($list['listId']);
 						echo "
 					</ul>
@@ -92,7 +92,7 @@ function dropdownMenus($listId, $color) {
 }
 
 function getTasks($listId) {
-	$tasks = dbQUery("SELECT * FROM tasks WHERE listId = :listId AND checked = 0 ORDER BY taskId ASC",
+	$tasks = dbQUery("SELECT * FROM tasks WHERE listId = :listId AND checked = 0 ORDER BY taskOrder ASC",
 		array("listId"=>$listId))->fetchAll();
 	foreach ($tasks as $task) {
 		echo "<li class='' onclick='addCheck(".$task['taskId'].");' id='".$task['taskId']."'>".$task['task']."<span class='close' id='".$task['taskId']."'>x</span></li>";
@@ -102,7 +102,7 @@ function getTasks($listId) {
 function getCheckedTasks($listId) {
 	$tasks = dbQUery("SELECT * FROM tasks WHERE listId = :listId AND checked = 1 ORDER BY taskId ASC",
 		array("listId"=>$listId))->fetchAll();
-	echo "<hr>";
+	// echo "<hr>";
 	foreach ($tasks as $task) {
 		echo "<li class='checked' onclick='addCheck(".$task['taskId'].");' id='".$task['taskId']."'>".$task['task']."<span class='close' id='".$task['taskId']."'>x</span></li>";
 	}
@@ -143,11 +143,11 @@ function getCurrentLists() {
 
 
 function taskTimeCreated() {
-	$taskCreated = date('Y-m-d H:i:s');
-	return $dbCreated;
+	$created = date('Y-m-d H:i:s');
+	return $created;
 }
 function taskTimeCreatedString() {
 	$taskTime = taskTimeCreated();
-	$viewCreated = date('n\/j\/y \a\t h:i A', strtotime($taskTime));
-	return $viewCreated;
+	$createdString = date('n\/j\/y \a\t h:i A', strtotime($taskTime));
+	return $createdString;
 }
