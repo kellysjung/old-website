@@ -1,6 +1,14 @@
 <?php
 include('config/init.php');
 navbar('Register');
+echo "
+<link rel='stylesheet' href='/css/account.css?Time=".microtime()."'/>
+<div class='large-break'><br></div><br><hr>
+<div class='php-projects-nav'>
+	<a href='/t/task-list.php'>TASK LIST</a> /
+	<a href='/b/blog-posts.php'>BLOG APP</a>
+</div>
+";
 
 if (isset($_REQUEST['register'])) {
 	$errors = array();
@@ -52,7 +60,7 @@ if (isset($_REQUEST['register'])) {
 echo "
 <div class='main center'>
 	<h4>Register</h4>
-	<form class='defaultForm' action='' method='POST'>";
+	<form class='loginForm' action='' method='POST'>";
 		formTextInput('newUsername', 'text', '25', 'New Username');
 		formTextInput('newEmail', 'email', '250', 'Email Address');
 		formTextInput('newPassword1', 'password', '', 'New Password');

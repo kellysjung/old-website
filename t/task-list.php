@@ -1,5 +1,3 @@
-
-
 <?php
 include('config/init.php');
 echo "<link rel='stylesheet' href='/css/task-list.css?Time=".microtime()."'/>";
@@ -10,8 +8,11 @@ echo "<link rel='stylesheet' href='/css/custom-color-picker.css?Time=".microtime
 // verifyLogged();
 // adminNavbar_v1('Tasks | Kelly Jung', 'Tasks', 'headerMain');
 navbar('Lists');
+echo "
+<div class='large-break'><br></div><br><hr>";
+phpProjectsNavbar();
 ?>
-<div class='large-break'><br><br></div>
+<br>
 <div class='center'>
     <div id='new-list'>
         <input type='text' id='newList' placeholder='New List'>
@@ -62,11 +63,11 @@ function addCheck(taskId) {
             var list = document.getElementById('ul_done_'+listId);
         }
         if (checked == '') {
-           var list = document.getElementById('ul_'+listId);
-       }
-       task.remove();
-       list.appendChild(task);
-   });
+         var list = document.getElementById('ul_'+listId);
+     }
+     task.remove();
+     list.appendChild(task);
+ });
 }
 
 function deleteTask() {
@@ -141,12 +142,12 @@ function addList() {
 
 function archiveList(listId) {
     if (listId) {
-       var action = 'archived';
-       $.post('task-action.php', {listId:listId, action:action}, function(data) {
+     var action = 'archived';
+     $.post('task-action.php', {listId:listId, action:action}, function(data) {
         var list = document.getElementById(listId);
         list.remove();
     });
-   }
+ }
 }
 
 function deleteList(listId) {

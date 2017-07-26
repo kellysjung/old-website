@@ -1,6 +1,15 @@
 <?php
 include('config/init.php');
-adminNavbar('Login');
+navbar('Login');
+echo "
+<link rel='stylesheet' href='/css/account.css?Time=".microtime()."'/>
+<div class='large-break'><br></div><br><hr>
+<div class='php-projects-nav'>
+	<a href='/t/task-list.php'>TASK LIST</a> /
+	<a href='/b/blog-posts.php'>BLOG APP</a>
+</div>
+";
+
 
 if (isset($_REQUEST['login'])) {
 	$errors = array();
@@ -20,7 +29,7 @@ if (isset($_REQUEST['login'])) {
 }
 
 echo "
-<link rel='stylesheet' href='/css/account.css?Time=".microtime()."'/>
+
 <div class='main center'>
 	<h4>Login</h4>
 	<form class='loginForm' action='' method='POST'>";

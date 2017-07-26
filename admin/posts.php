@@ -22,8 +22,8 @@ function listPosts() {
 		SELECT * FROM blog_posts ORDER BY postId DESC")->fetchAll();
 	foreach ($posts as $post) {
 		if ($post['draft'] == 0) {
-			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a>';
-			echo " by ".$post['author'];
+			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br>';
+			echo "&nbsp; &nbsp by ".$post['author'];
 			echo "<br><br>";
 		}
 	}

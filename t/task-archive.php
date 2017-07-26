@@ -1,10 +1,10 @@
 <?php
 echo "<link rel='stylesheet' href='/css/task-list.css?Time=".microtime()."'/>";
 include('config/init.php');
-navbar('Archive');
-
+navbar('List Archive');
+echo "<div class='large-break'><br></div><br><hr>";
+phpProjectsNavbar();
 echo "
-<div class='large-break'><br></div>
 <div class='large-break'><br></div>
 <div class='main'>
 	<div id='archived-lists'>";
