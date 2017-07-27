@@ -40,7 +40,8 @@ echo "
 		listPostsTags($postId);
 		echo "
 	</div>
-</div>";
+</div>
+<div class='large-break'><br></div>";
 footer();
 
 function updatePost() {

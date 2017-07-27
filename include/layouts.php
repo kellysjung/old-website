@@ -1,6 +1,6 @@
 <?php
 function includeLinks() {
-	// echo "<link rel='stylesheet' type='text/css' href='/css/square-hover.css'/>";
+	// echo "<link rel='stylesheet' href='/css/square-hover.css?Time=".microtime()."'/>";
 	echo "<link rel='stylesheet' href='/css/style.css?Time=".microtime()."'/>";
 	echo "<link rel='stylesheet' href='/css/blog.css?Time=".microtime()."'/>";
 	echo "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
@@ -12,6 +12,7 @@ function includeLinks() {
 	<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
 	<script src = 'https://code.jquery.com/ui/1.10.4/jquery-ui.js'></script>
 
+	<script src = '/js/blog-app.js' type='text/javascript'></script>
 	<script src='/js/customColorPicker.js' type='text/javascript'></script>
 
 	<link rel='icon' href='/images/kj-logo.png'>
@@ -49,7 +50,23 @@ function navbar($title) {
 			<a href='/b/new-post.php'>NEW POST</a> /
 			<a href='/b/blog-admin.php'>YOUR POSTS</a> /
 			<a href='/b/tags-admin.php'>YOUR TAGS</a>
-		</div>";
+		</div>
+		<script type='text/javascript'>
+			$(document).ready(function(){
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 100) {
+						$('.scrollToTop').fadeIn();
+					} else {
+						$('.scrollToTop').fadeOut();
+					}
+				});
+				$('.scrollToTop').click(function(){
+					$('html, body').animate({scrollTop : 0}, 300);
+					return false;
+				});
+			});
+		</script>
+		<a href='#' class='scrollToTop'><i class='fa fa-arrow-up'></i></a>";
 	}
 
 	function footer() {

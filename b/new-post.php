@@ -50,7 +50,8 @@ echo "
 			inputBtn('defaultBtn', 'newPostForm', 'Publish Post');
 			echo "</form>
 		</div>
-	</div>";
+	</div>
+	<div class='large-break'><br></div>";
 	footer();
 
 	function addPost($user) {

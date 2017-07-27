@@ -8,56 +8,45 @@ function getAllLists($listColumn) {
 		if ($list['collapsed'] == 0) {
 			echo "
 			<div class='task-list' id='list_".$list['listId']."'>
-				<div class='' id='".$list['listId']."'>
-					<div class='list-header' id='list_header_".$list['listId']."' style='background-color: ".$list['color'].";'>
-						<span style='display: none;' class='hide-list fa fa-plus' onclick='hideList(".$list['listId'].");'></span>
-						<span class='hide-list fa fa-minus' onclick='hideList(".$list['listId'].");'></span>
-						<span class='drop-down fa fa-caret-down' onclick='dropdownList(".$list['listId'].");'></span>
-						";
-						dropdownMenus($list['listId'], $list['color']);
-						echo "
-						<h2>".$list['list']."</h2>
-						<input type='text' id='newTask_".$list['listId']."' placeholder='Add a new item...'>
-						<button class='add-btn'  onclick='addTask(".$list['listId'].");'>Add</button>
-					</div>
-					<ul id='ul_".$list['listId']."' class='incomplete-list'>";
-						getTasks($list['listId']);
-						echo "
-					</ul>
-					<ul id='ul_done_".$list['listId']."' class='complete-list' style='border-top: 2px solid ".$list['color'].";'>";
-						getCheckedTasks($list['listId']);
-						echo "
-					</ul>
+				<div class='' id='".$list['listId']."'>";
+					getList($list['listId'], $list['list'], $list['color']);
+					echo"
 				</div>
 			</div>";
 		}
 		if ($list['collapsed'] == 1) {
 			echo "
 			<div class='task-list' id='list_".$list['listId']."'>
-				<div class='collapsed' id='".$list['listId']."'>
-					<div class='list-header' id='list_header_".$list['listId']."' style='background-color: ".$list['color'].";'>
-						<span class='hide-list fa fa-plus' onclick='hideList(".$list['listId'].");'></span>
-						<span style='display: none;' class='hide-list fa fa-minus' onclick='hideList(".$list['listId'].");'></span>
-						<span class='drop-down fa fa-caret-down' onclick='dropdownList(".$list['listId'].");'></span>
-						";
-						dropdownMenus($list['listId'], $list['color']);
-						echo "
-						<h2>".$list['list']."</h2>
-						<input type='text' id='newTask_".$list['listId']."' placeholder='Add a new item...'>
-						<button class='add-btn'  onclick='addTask(".$list['listId'].");'>Add</button>
-					</div>
-					<ul id='ul_".$list['listId']."' class='incomplete-list'>";
-						getTasks($list['listId']);
-						echo "
-					</ul>
-					<ul id='ul_done_".$list['listId']."' class='complete-list' style='border-top: 2px solid ".$list['color'].";'>";
-						getCheckedTasks($list['listId']);
-						echo "
-					</ul>
+				<div class='collapsed' id='".$list['listId']."'>";
+					getList($list['listId'], $list['list'], $list['color']);
+					echo"
 				</div>
 			</div>";
 		}
 	}
+}
+
+function getList($listId, $list, $color) {
+	echo "
+	<div class='list-header' id='list_header_".$listId."' style='background-color: ".$color.";'>
+		<span style='display: none;' class='hide-list fa fa-plus' onclick='hideList(".$listId.");'></span>
+		<span class='hide-list fa fa-minus' onclick='hideList(".$listId.");'></span>
+		<span class='drop-down fa fa-caret-down' onclick='dropdownList(".$listId.");'></span>
+		";
+		dropdownMenus($listId, $color);
+		echo "
+		<h2>".$list."</h2>
+		<input type='text' id='newTask_".$listId."' placeholder='Add a new item...'>
+		<button class='add-btn'  onclick='addTask(".$listId.");'>Add</button>
+	</div>
+	<ul id='ul_".$listId."' class='incomplete-list'>";
+		getTasks($listId);
+		echo "
+	</ul>
+	<ul id='ul_done_".$listId."' class='complete-list' style='border-top: 2px solid ".$color.";'>";
+		getCheckedTasks($listId);
+		echo "
+	</ul>";
 }
 
 function dropdownMenus($listId, $color) {
@@ -139,8 +128,6 @@ function getCurrentLists() {
 	$lists = dbquery("SELECT listId FROM lists WHERE archived = 0 ORDER BY listId ASC")->fetchAll();
 	return json_encode($lists);
 }
-
-
 
 function taskTimeCreated() {
 	$created = date('Y-m-d H:i:s');

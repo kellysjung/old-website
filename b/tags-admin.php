@@ -31,7 +31,7 @@ echo "
 		echo "
 	</div>
 	<div class='blogPosts'>
-		<form action='' method='POST'>
+		<form class='defaultForm' action='' method='POST'>
 			<h3>Create a new tag:</h3>
 			<p>TAG NAME - Up to 250 characters.</p>
 			<input name='tagName' type='text' maxlength='250' placeholder='New Tag' alue='".(@$_REQUEST['tagName'] ? $_REQUEST['tagName'] : "")."'/>
@@ -42,7 +42,8 @@ echo "
 			<input class='defaultBtn' type='submit' name='new' value='Create Tag'>
 		</form>
 	</div>
-</div>";
+</div>
+<div class='large-break'><br></div>";
 footer();
 
 function createNewTag() {

@@ -62,26 +62,9 @@ if (($action == 'add-list') and ($list != '')) {
 	if ($addList) {
 		$list = dbQuery("SELECT * FROM lists ORDER BY listId DESC LIMIT 1")->fetch();
 		echo "
-		<div class='' id='".$list['listId']."'>
-			<div class='list-header' id='list_header_".$list['listId']."' style='background-color: #284E64;'>
-				<span style='display: none;' class='hide-list fa fa-plus' onclick='hideList(".$list['listId'].");'></span>
-				<span class='hide-list fa fa-minus' onclick='hideList(".$list['listId'].");'></span>
-				<span class='drop-down fa fa-caret-down' onclick='dropdownList(".$list['listId'].");'></span>";
-				dropdownMenus($list['listId'], '#284E64');
-				echo "
-				<h2>".$list['list']."</h2>
-				<input type='text' id='newTask_".$list['listId']."' placeholder='Add a new item...'>
-				<button class='add-btn'  onclick='addTask(".$list['listId'].");'>Add</button>
-			</div>
-			<ul id='ul_".$list['listId']."' class='incomplete-list'>";
-				getTasks($list['listId']);
-				echo "
-			</ul>
-			<ul id='ul_done_".$list['listId']."' class='complete-list' style='border-top: 2px solid ".$list['color'].";'>
-				";
-				getCheckedTasks($list['listId']);
-				echo "
-			</ul>
+		<div class='' id='".$list['listId']."'>";
+			getList($list['listId'], $list['list'], '#284E64');
+			echo "
 		</div>";
 	}
 }

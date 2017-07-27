@@ -7,13 +7,15 @@ $specificTag = getTag($tagId);
 navbar_v1($specificTag['tagName'].' | Kelly Jung', $specificTag['tagName'].' Posts', 'headerMain');
 echo "
 <div class='large-break'><br></div><br>
-<div class='main'>".
-	$specificTag['tagDescription']
-	."<hr><div class='blogPosts'>
-	<ul>";
-		listTaggedPosts($tagId);
-		echo"
-	</ul>
+<div class='main'>
+	<div class='blogPosts'>".
+		$specificTag['tagDescription']
+		."<hr><div class='blogPosts'>
+		<ul>";
+			listTaggedPosts($tagId);
+			echo"
+		</ul>
+	</div>
 </div>
-</div>";
+<div class='large-break'><br></div>";
 footer();

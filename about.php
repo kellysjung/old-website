@@ -68,11 +68,11 @@ navbar('About');
 		</h1>
 		<h2>Few Things About Me</h2>
 		<ul class='dashed'>
-			<li>My name is Kelly Jung.</li>
-			<li>I am originally from Long Island, New York.</li>
-			<li>I attend Washington University in St. Louis, where I'm studying psychology.</li>
-			<li>During the year, I work at the Career Center, advising my college peers on job searching, job application writing, interviewing, and networking.</li>
-			<li>At LessAnnoyingCRM, I learned how to code and created this website!</li>
+			<li>&nbsp; My name is Kelly Jung.</li>
+			<li>&nbsp;I am originally from Long Island, New York.</li>
+			<li>&nbsp;I attend Washington University in St. Louis, where I'm majoring in psychology and minoring in computer science.</li>
+			<li>&nbsp; During the year, I work at the Career Center, advising my college peers on job searching, job application writing, interviewing, and networking.</li>
+			<li>&nbsp; At LessAnnoyingCRM, I learned how to code and created this website!</li>
 		</ul>
 		<!-- <br>
 		<h2>Just For Fun</h2>

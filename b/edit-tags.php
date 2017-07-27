@@ -61,7 +61,8 @@ echo "
 			<input class='defaultBtn' type='submit' name='new' value='Create'>
 		</form>
 	</div>
-</div>";
+</div>
+<div class='large-break'><br></div>";
 footer();
 
 function addExistingTag() {

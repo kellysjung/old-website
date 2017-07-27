@@ -47,7 +47,7 @@ echo "
 		listComments($postId);
 		echo "<br>
 		<div id='popUpForm'>
-			<form class='defaultForm' action='' method='POST'>
+			<form class='defaultForm' action='' method='POST' style='margin-left: 10px;'>
 				<input type='hidden' name='postId' value='".$postId."'>";
 				formTextInput('commentUser', 'text', '100', 'Name');
 				formTextArea('defaultFormBody', 'commentBody', 'Comment');
@@ -57,7 +57,8 @@ echo "
 			</form>
 		</div>
 	</div>
-</div>";
+</div>
+<div class='large-break'><br></div>";
 
 footer();
 
