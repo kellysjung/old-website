@@ -8,16 +8,23 @@ function getTag($tagId) {
 		array ("tagId"=>$tagId));
 	return $getSpecificTag->fetch();
 	foreach ($getSpecificTag as $tag) {
-		echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><hr>';
+		echo "<a href='view-post.php?postId=".$post['postId']."'>".$post['title']."</a><hr>";
 	}
 }
 
 // LISTS ALL THE TAG NAMES; USED IN blog-posts.php
 function listTags() {
 	$tags = dbQuery("SELECT * FROM tags")->fetchAll();
-	echo '| ';
+	echo "| ";
 	foreach ($tags as $tag) {
-		echo '<a href="view-tagged-posts.php?tagId='.$tag['tagId'].'">'.$tag['tagName'].'</a> | ';
+		echo "<a href='view-tagged-posts.php?tagId=".$tag['tagId']."'>".$tag['tagName']."</a> | ";
+	}
+}
+
+function listAllTags() {
+	$allTags = dbQuery("SELECT * FROM tags")->fetchAll();
+	foreach ($allTags as $tag) {
+		echo "<a href='view-tagged-posts.php?tagId=".$tag['tagId']."'>".$tag['tagName']."</a> | &nbsp;&nbsp;&nbsp; ";
 	}
 }
 
@@ -43,7 +50,7 @@ function listTaggedPosts($tagId) {
 	}
 	foreach ($taggedPosts as $post) {
 		if ($post['draft'] == 0) {
-			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br><br>';
+			echo "<a href='view-post.php?postId=".$post['postId']."'>".$post['title']."</a><br><br>";
 		}
 	}
 }
@@ -56,8 +63,8 @@ function listPostsTags($postId) {
 		INNER JOIN blog_posts ON blog_posts.postId=blogPost_tag_link.postId
 		WHERE blog_posts.postId = :postId", array ("postId"=>$postId))->fetchAll();
 	foreach ($tags as $tag) {
-		echo ' #';
-		echo '<a href="view-tagged-posts.php?tagId='.$tag['tagId'].'">'.$tag['tagName'].'</a>';
+		echo " #";
+		echo "<a href='view-tagged-posts.php?tagId=".$tag['tagId']."'>".$tag['tagName']."</a>";
 		// echo $tag['tagName'];
 	}
 }

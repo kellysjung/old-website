@@ -69,9 +69,9 @@ navbar('About');
 		<h2>Few Things About Me</h2>
 		<ul class='dashed'>
 			<li>&nbsp; My name is Kelly Jung.</li>
-			<li>&nbsp;I am originally from Long Island, New York.</li>
-			<li>&nbsp;I attend Washington University in St. Louis, where I'm majoring in psychology and minoring in computer science.</li>
-			<li>&nbsp; During the year, I work at the Career Center, advising my college peers on job searching, job application writing, interviewing, and networking.</li>
+			<li>&nbsp; Originally, I am from Long Island, New York.</li>
+			<li>&nbsp; I attend Washington University in St. Louis, where I'm majoring in psychology and minoring in computer science.</li>
+			<li>&nbsp; During the year, I work at the Washington University Career Center, advising my college peers on job searching, job application writing, interviewing, and networking.</li>
 			<li>&nbsp; At LessAnnoyingCRM, I learned how to code and created this website!</li>
 		</ul>
 		<!-- <br>
@@ -85,5 +85,6 @@ navbar('About');
 		</ul> -->
 	</div>
 </div>
+<div class='large-break'><br></div>
 <?php
 footer();

@@ -1,6 +1,6 @@
 <?php
 include('config/init.php');
-navbar_v1('All Tags | Kelly Jung', "All Tags", 'headerMain');
+navbar('All Tags');
 
 echo "
 <div class='large-break'><br></div><br>
@@ -8,7 +8,7 @@ echo "
 	<div class='blogPosts'>";
 		listTags();
 		echo "<hr>";
-		returnTagList();
+		// returnTagList();
 		echo "
 	</div>
 </div>

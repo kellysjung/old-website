@@ -56,7 +56,7 @@ navbar('Contact');
 		</div>
 	</div>
 </div>
-</div>
+<div class='large-break'><br></div>
 <?php
 footer();
 

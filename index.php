@@ -20,7 +20,7 @@ navbar('Hello');
 	}
 </style>
 
-<div class='homePage'>
+<div class='homePage' style='overflow: hidden;'>
 	<link href='https://fonts.googleapis.com/css?family=Cabin+Condensed:700' rel='stylesheet' type='text/css'>
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="900px" height="240px" xml:space="preserve">

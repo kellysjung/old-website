@@ -8,5 +8,6 @@ navbar('Blog');
 		// listCities();
 	?>
 </div>
+<div class='large-break'><br></div>
 <?php
 footer();
