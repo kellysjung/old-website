@@ -123,12 +123,6 @@ function getArchivedLists() {
 	echo "<div class='center'><h4><a href='task-list.php'>Create lists here</a></h4></div>";
 }
 
-
-function getCurrentLists() {
-	$lists = dbquery("SELECT listId FROM lists WHERE archived = 0 ORDER BY listId ASC")->fetchAll();
-	return json_encode($lists);
-}
-
 function taskTimeCreated() {
 	$created = date('Y-m-d H:i:s');
 	return $created;
