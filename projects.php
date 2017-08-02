@@ -75,8 +75,21 @@ navbar('Projects');
 			<p>4 Text</p>
 		</div>
 	</div> -->
-</div>
 
+	<div class="holdingbox">
+		<div class='title'>
+			aaa
+		</div>
+		<span class="leftbox">
+			bbb
+			<span class="content">ccc
+			</span>
+		</span>
+		<span class="rightbox">></span>
+	</div>
+
+
+</div>
 <div class='large-break'><br></div>
 <?php
 footer();
@@ -114,34 +127,41 @@ footer();
 	// 		}
 	// 	});
 
-	$('.project-box').hover(
-		function(event) {
-			var id = $(this).attr('id').split('_').pop();
-			var textBox = $(this).parent().children('.project-text')['context'];
-			// var parent = $(this).parent().attr('class');
-			// var image = $(this).closest().children('.project-image');
-			var imageWidth = $('#image_'+id).width();
+	// $('.project-box').hover(
+	// 	function(event) {
+	// 		var id = $(this).attr('id').split('_').pop();
+	// 		var textBox = $(this).parent().children('.project-text')['context'];
+	// 		// var parent = $(this).parent().attr('class');
+	// 		// var image = $(this).closest().children('.project-image');
+	// 		var imageWidth = $('#image_'+id).width();
 
-			// $('#image_'+id).show().animate({right:'100%'}, 300);
-			
-			// $('#image_'+id).show('slide', {direction: 'left'}, 500);
-			// $('#image_'+id).show('slide', {direction: 'left'}, 500);
-			$('#text_'+id).animate({right: '300px'}, 500);
-			
+	// 		// $('#image_'+id).show().animate({right:'100%'}, 300);
 
-			console.log();
+	// 		$('#image_'+id).show('slide', {direction: 'left'}, 500);
+	// 		// $('#text_'+id).animate({right: '300px'}, 500);
+	// 		$('#text_'+id).show('slide', {direction: 'left'}, 500);
 
-		}, function(event) {
-			var id = $(this).attr('id').split('_').pop();
-			event.stopPropagation();
 
-			$('#image_'+id).hide('slide', {direction: 'left'}, 500);
+	// 		console.log();
 
-		// },
-		// function(event) {
-		// 	var id = $(this).attr('id').split('_').pop();
-		// 	var parent = $(this).parent().attr('class');
-		// 	event.stopPropagation();
+	// 	}, function(event) {
+	// 		var id = $(this).attr('id').split('_').pop();
+	// 		event.stopPropagation();
+
+	// 		$('#image_'+id).hide('slide', {direction: 'left'}, 500);
+
+	// 	// },
+	// 	// function(event) {
+	// 	// 	var id = $(this).attr('id').split('_').pop();
+	// 	// 	var parent = $(this).parent().attr('class');
+	// 	// 	event.stopPropagation();
+	// });
+
+	$('.holdingbox').hover(function(){
+		// $('.leftbox').animate({width: '500px'}, 300);
+		$('.leftbox').animate({width: '500px'}, 300);
+	}, function(){
+		$('.leftbox').animate({width: '0'}, 300);
 	});
 
 
