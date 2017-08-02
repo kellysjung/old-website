@@ -7,10 +7,10 @@ navbar('Contact');
 	<div class='container'>
 		<div class='contact-form'>
 			<!-- <div id='contact-container'> -->
-				<div class='contact-left-column'>
-					<p>Email</p>
-					<p>Phone</p>
-					<p>LinkedIn<p>
+			<div class='contact-left-column'>
+				<p>Email</p>
+				<p>Phone</p>
+				<p>LinkedIn<p>
 				</div>
 				<div class='middle-column'></div>
 				<div class='contact-right-column'>
@@ -18,13 +18,14 @@ navbar('Contact');
 					<p>(516) 350 - 0009</p>
 					<p>linkedin.com/in/kellysjung</p>
 				</div>
-			<!-- </div>	 -->
-		</div>
+				<!-- </div>	 -->
+			</div>
 
-		<div class='contact-form'>
-			<form action='' method='post'>
-				<div class='field-form'><label class='largeLabel'>Name *</label><br>
+			<div class='contact-form'>
+				<form action='' method='post'>
+				<!-- <div class='field-form'><label class='largeLabel'>Name *</label><br>
 					<input class='shortInput' type='text' name='firstName' id='firstName'><br>
+					<div class='small-break'><br></div>
 					<label class='smallLabel' for='firstName'>First</label>
 				</div>
 				<div class='field-form'>
@@ -33,12 +34,14 @@ navbar('Contact');
 				<div class='field-form'>
 					<div class='med-break'><br></div>
 					<input class='shortInput' type='text' name='lastName' id='lastName'><br>
+					<div class='small-break'><br></div>
 					<label class='smallLabel' for='lastName'>Last</label><br>
-				</div>
+				</div> -->
 
+				<label class='largeLabel'>Name *</label><br>
+				<input class='longInput' type='text' name='firstName' id='firstName'><br>
 
-
-				<div class='large-break'><br></div>
+				<div class='med-break'><br><!-- <br><br><br> --></div>
 				<label class='largeLabel' for='email'>Email Address *</label><br>
 				<input class='longInput' type='email' name='email' id='email'><br>
 

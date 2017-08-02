@@ -9,6 +9,8 @@ navbar('Hello');
 		background-size: cover;
 		background-position: 50%;
 		height: 100vh;
+		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 	svg {
 		position: absolute;
