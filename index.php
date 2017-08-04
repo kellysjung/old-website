@@ -9,15 +9,16 @@ navbar('Hello');
 		background-size: cover;
 		background-position: 50%;
 		height: 100vh;
-		min-height: 700px;
+		min-height: 800px;
 		overflow-y: scroll;
-		overflow-x: hidden;
+		/*overflow-x: hidden;*/
 	}
 	svg {
-		/*position: relative;*/
-		margin-top: 40%;
+		position: relative;
+		margin-top: 300px;
 		/*left: 36.3%;*/
-		left: 40%;
+		/*left: 10%;*/
+		align-content: center;
 		/*margin-left: -225px;*/
 	}
 </style>
@@ -31,7 +32,7 @@ navbar('Hello');
 			<path fill="#000" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"/>
 		</pattern>
 
-		<text id="text" transform="translate(2,116)" font-family="'Cabin Condensed'" font-size="120">&nbsp; &nbsp; Hi, I'm Kelly Jung!</text>
+		<text id="text" transform="translate(2,116)" font-family="Cabin Condensed" font-size="120" style='background-color: rgba(255, 255, 255, 0.0;'>&nbsp; &nbsp; &nbsp;Hi, I'm Kelly Jung!</text>
 		<mask id="text-mask">
 			<use x="0" y="0" xlink:href="#text" opacity="1" fill="#ffffff"/>
 		</mask>

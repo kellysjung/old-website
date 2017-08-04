@@ -185,8 +185,10 @@ ul.dashed > li:before {
   font-size: 20px;
   line-height: 40px;
 }
-.about ul {
-  max-width: 700px;
+.about img {
+  max-height: 300px;
+  max-width: 300px;
+  border-radius: 50%;
 }
 
 /***COMMONLY USED ELEMENTS***/
