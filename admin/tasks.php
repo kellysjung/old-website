@@ -1,5 +1,5 @@
 <?php
-include_once('config/init.php');
+include_once('init.php');
 
 function getAllLists($listColumn) {
 	$lists = dbQuery("SELECT * FROM lists WHERE archived = 0 AND listColumn = :listColumn ORDER BY listOrder ASC",

@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 $postId = 6;
 echo "<link rel='stylesheet' href='/css/style-old.css?Time=".microtime()."'/>
 <link rel='stylesheet' href='/css/class.css?Time=".microtime()."'/>";

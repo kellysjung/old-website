@@ -1,5 +1,5 @@
 <?php
-include_once('config/init.php');
+include_once('init.php');
 
 // LISTS ALL POSTS FOR ADMIN TO EDIT; USED IN blog-admin.php
 function listAdminPosts($username) {

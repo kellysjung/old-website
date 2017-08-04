@@ -1,5 +1,5 @@
 <?php
-include_once('config/init.php');
+include_once('init.php');
 
 // GETS THE SPECIFIC TAG AND POSTS ASSOCIATED; USED IN view-tagged-posts.php
 function getTag($tagId) {

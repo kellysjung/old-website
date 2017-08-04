@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 navbar('Blog');
 $cityId = $_REQUEST['cityId'];
 ?>

@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 
 $tagId = $_REQUEST['tagId'];
 $specificTag = getTag($tagId);

@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 navbar('About');
 ?>
 <script type='text/javascript'>

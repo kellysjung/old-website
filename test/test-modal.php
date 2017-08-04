@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 ?>
 
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">

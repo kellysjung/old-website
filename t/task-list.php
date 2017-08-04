@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 echo "<link rel='stylesheet' href='/css/task-list.css?Time=".microtime()."'/>";
 echo "<link rel='stylesheet' href='/css/custom-color-picker.css?Time=".microtime()."'/>";
 // $userId = $_SESSION['userId'];

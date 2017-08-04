@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 navbar('Contact | Kelly Jung', 'Get in Touch', 'headerMain');
 
 if (isset($_REQUEST['msg'])) {

@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 navbar('About | Kelly Jung', 'About Me', 'headerMain');
 ?>
 <div class="main">
