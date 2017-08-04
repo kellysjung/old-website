@@ -20,7 +20,7 @@ function getCity($cityId) {
 
 function viewCity($cityId) {
 	$city = getCity($cityId);
-	echo "<h1>".$city['name']."<h2>";
+	echo "<h2>".$city['name']."<h2>";
 }
 
 // 

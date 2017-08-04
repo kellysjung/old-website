@@ -49,7 +49,7 @@ function listComments($postId) {
 }
 
 function listPersonalPosts() {
-	$posts = dbQuery("SELECT * FROM personal_blog")->fetchAll();
+	$posts = dbQuery("SELECT * FROM personal_blog WHERE draft = 1")->fetchAll();
 	foreach ($posts as $post) {
 		echo "<a href='post.php?id=".$post['postId']."'>".$post['title']."</a><span style='float: right; font-size: 12px'>".$post['createdString']."</span>";
 		echo "<br><hr><br>";

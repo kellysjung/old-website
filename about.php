@@ -64,30 +64,37 @@ navbar('About');
 <div class='main'>
 	<div class='about'>
 		<h1>I am
-			<span class='txt-rotate' data-period='2000' data-rotate='[ "majoring in psychology.", "learning to code.", "graduating in May 2018." ]'></span>
+			<span class='txt-rotate' data-period='2000' data-rotate='["majoring in psychology at WashU.", "learning to code.", "graduating in May 2018." ]'></span>
 		</h1>
+		
 		<h2>Few Things About Me</h2>
 		<ul class='dashed'>
 			<li>&nbsp; My name is Kelly Jung.</li>
-			<li>&nbsp; Originally, I am from Long Island, New York.</li>
+			<li>&nbsp; I grew up on Long Island, New York.</li>
 			<li>&nbsp; I attend Washington University in St. Louis, where I'm majoring in psychology and minoring in computer science.</li>
-			<li>&nbsp; During the school year, I work at the Washington University Career Center, advising my college peers on job searching, job application writing, interviewing, and networking.</li>
+			<li>&nbsp; During the school year, I work at the Washington University Career Center, advising my peers on job searches, application writing, interviewing, and networking.</li>
 			<li>&nbsp; At LessAnnoyingCRM, I learned how to code and created this website!</li>
-		</ul>
+			<li>&nbsp; On the projects page, you can see the other things I worked on at LACRM.</li>
+		</ul>	
 
 		<div class='med-break'><br></div>
 		<h2>Contact</h2>
 		<div id='contact-container center'>
-			<div class='contact-left-column'>
-				<p>Email</p>
-				<p>Phone</p>
-				<p>LinkedIn</p>
-			</div>
-			<div class='middle-column'></div>
-			<div class='contact-right-column'>
-				<p>kellyjung@wustl.edu</p>
-				<p>(516) 350 - 0009</p>
-				<p>linkedin.com/in/kellysjung</p>
+			<div class='contact-form'>
+				<div class='contact-left-column'>
+					<p>Email</p>
+					<p>Phone</p>
+					<p>LinkedIn</p>
+				</div>
+				<div class='middle-column'></div>
+				<div class='contact-right-column'>
+					<p>kellyjung@wustl.edu</p>
+					<p>(516) 350 - 0009</p>
+					<p>linkedin.com/in/kellysjung</p>
+				</div>
+				
+				
+				<!-- <img src='/images/me.jpg' alt='Picture of Kelly Jung'> -->
 			</div>
 		</div>
 	</div>
