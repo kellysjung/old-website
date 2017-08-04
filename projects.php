@@ -5,16 +5,14 @@ navbar('Projects');
 
 <div class='large-break'><br></div><br>
 <div class='main' align='center'>
-
-	<div class='project-box' id='box_0' style='background-image: url(/images/task-lists.png);'>
-		<!-- <div class='project-title-image' style='background-image: url(/images/task-lists.png); '> -->
-		<a href='/t/task-list.php'><div class='project-title' id='title_0' >
-			<h3>Task List</h3>
-			<figcaption>Javascript, PHP, MySQL</figcaption>
-		</div></a>
-		<!-- </div> -->
-		
-		<!-- style='background-image: url(/images/task-lists.png);' -->
+	
+	<div class='project-box' id='box_0' style='background-image: url(/images/task-lists.PNG);'>
+		<a href='/t/task-list.php'>
+			<div class='project-title' id='title_0' >
+				<h3>Task List</h3>
+				<figcaption>Javascript, PHP, MySQL</figcaption>
+			</div>
+		</a>
 		<div class='project-image' id='image_0' >
 			<span class='project-description' id='description_0'>
 				<p><strong>Main features include:</strong></p>
@@ -30,15 +28,15 @@ navbar('Projects');
 		</div>
 	</div>
 
-	<!-- <div class='middle-column'></div> -->
 	<div class='med-break'><br></div>
 
-	<a href='/b/blog-posts.php'><div class='project-box' id='box_1' style='background-image: url(/images/blog-app.PNG);'>
-		<div class='project-title' id='title_1'>
-			<h3>Simple Blogging Platform</h3>
-			<figcaption>PHP, MySQL</figcaption>
-		</div></a>
-		
+	<div class='project-box' id='box_1' style='background-image: url(/images/blog-app.PNG);'>
+		<a href='/b/blog-posts.php'>
+			<div class='project-title' id='title_1'>
+				<h3>Simple Blogging Platform</h3>
+				<figcaption>PHP, MySQL</figcaption>
+			</div>
+		</a>
 		<div class='project-image' id='image_1'>
 			<span class='project-description' id='description_1'>
 				<p><strong>Main features include:</strong></p>
