@@ -26,7 +26,8 @@ $post = viewPersonalPost($postId);
 
 echo "
 <div class='main'>
-	<h3>".$post['title']."</h3>
+	<h3 style='text-align: center;'>".$post['title']."</h3>
+	<div class='smallRight'>Posted: ".$post['createdString']."</div>
 	<br>
 	<div class='blogPosts'>"
 		.$post['body']."
