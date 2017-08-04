@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 testHeader();
 ?>
 <!-- <link href='https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css' rel='stylesheet'> -->

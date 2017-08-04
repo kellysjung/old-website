@@ -1,6 +1,6 @@
 <?php
 echo "<link rel='stylesheet' href='/css/task-list.css?Time=".microtime()."'/>";
-include('config/init.php');
+include('init.php');
 navbar('List Archive');
 echo "<div class='large-break'><br></div><br><hr>";
 phpProjectsNavbar();

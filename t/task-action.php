@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 
 $task = @$_REQUEST['task'];
 $list = @$_REQUEST['list'];

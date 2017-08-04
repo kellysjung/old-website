@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 
 session_destroy();
 // $_SESSION = array();

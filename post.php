@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 
 $postId = $_REQUEST['id'];
 $specificPost = getPersonalPost($postId);

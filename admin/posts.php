@@ -1,5 +1,5 @@
 <?php
-include_once('config/init.php');
+include_once('init.php');
 
 // FOR GETTING JUST THE POSTS IN LARGE LIST (NO CATEGORIES INVOLVED)
 function getPost($postId) {

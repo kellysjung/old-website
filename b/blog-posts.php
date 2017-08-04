@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 navbar('Blog App');
 echo "<div class='large-break'><br></div><br><hr>";
 phpProjectsNavbar();

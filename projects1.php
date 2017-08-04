@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 navbar('Projects');
 echo "<link rel='stylesheet' href='/css/projects.css?Time=".microtime()."'/>";
 ?>

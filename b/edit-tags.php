@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
 verifyLogged();

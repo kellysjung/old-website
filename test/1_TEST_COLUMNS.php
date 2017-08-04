@@ -1,5 +1,5 @@
 <?php
-include('config/init.php');
+include('init.php');
 adminNavbar_v1('Tasks | Kelly Jung', 'Tasks', 'headerMain');
 ?>
 <!-- <style type="text/css">
