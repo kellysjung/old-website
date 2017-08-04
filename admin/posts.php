@@ -64,6 +64,7 @@ function getPersonalPost($postId) {
 
 function viewPersonalPost($postId) {
 	$post = getPersonalPost($postId);
-	echo "<div class='smallRight'>Posted: ".$post['createdString']."</div>";
-	echo "<p>".$post['body']."</p>";	
+	return $post;
+	// echo "<div class='smallRight'>Posted: ".$post['createdString']."</div>";
+	// echo "<p>".$post['body']."</p>";	
 }

@@ -4,7 +4,7 @@ include('init.php');
 $postId = $_REQUEST['id'];
 $specificPost = getPersonalPost($postId);
 navbar($specificPost['tab']);
-echo "<div class='large-break'><br></div><br><hr>";
+echo "<div class='large-break'><br></div><br>";
 
 if(isset($_REQUEST['newCommentForm'])) {
 	$errors = array();
@@ -22,11 +22,14 @@ if(isset($_REQUEST['newCommentForm'])) {
 	}
 }
 
+$post = viewPersonalPost($postId);
+
 echo "
 <div class='main'>
-	<div class='blogPosts'>";
-		viewPersonalPost($postId);
-		echo "
+	<h3>".$post['title']."</h3>
+	<br>
+	<div class='blogPosts'>"
+		.$post['body']."
 	</div>
 </div>
 <br>
