@@ -1,0 +1,169 @@
+.blog-project{
+
+}
+
+ul.tag-columns {
+	-moz-column-count: 4;
+	-moz-column-gap: 2s0px;
+	-webkit-column-count: 4;
+	-webkit-column-gap: 20px;
+	column-count: 4;
+	column-gap: 20px;
+	text-decoration: none;
+}
+li {
+	list-style-type: none;
+}
+
+.blogPosts {
+	text-align: left;
+	max-width: 900px;
+	margin: auto;
+	background-color: white;
+}
+.blogPosts a{
+	font-size: 18px;
+}
+
+.smallRight{
+	font-size: 12px;
+	text-align: right;
+}
+.defaultForm {
+	margin: auto;
+}
+.postForm input{
+	width: 600px;
+	margin: auto;
+	font-size: 14px;
+	border:1px solid #92ADB6;
+	padding: 10px;
+	border-radius: 10px;
+}
+.postFormBody{
+	width: 600px;
+	max-width: 600px;
+	margin: auto;
+	font-size: 14px;
+	border:1px solid #92ADB6;
+	padding: 10px;
+	font-family: Arial, sans-serif;
+	border-radius: 10px;
+}
+.defaultForm input{
+	width: 300px;
+	max-width: 300px;
+	margin: auto;
+	font-size: 14px;
+	border:1px solid #92ADB6;
+	padding: 10px;
+	border-radius: 10px;
+}
+.defaultFormBody{
+	width: 300px;
+	margin: auto;
+	font-size: 14px;
+	border:1px solid #92ADB6;
+	padding: 10px;
+	font-family: Arial, sans-serif;
+	border-radius: 10px;
+}
+.defaultBtn{
+	background-color: #92ADB6;
+	color: white;
+	border:1px solid white;
+	border-radius: 10px;
+	padding: 10px;
+}
+.redBtn{
+	background-color: #ff6666;
+	color: white;
+	border:1px solid white;
+	border-radius: 10px;
+}
+.greenBtn{
+	background-color: #66cc66;
+	color: white;
+	border:1px solid white;
+	border-radius: 10px;
+}
+.datetime{
+	font-size: 11px;
+	display: inline-block;
+}
+.newCommentUser {
+	font-weight: bold;
+	margin-left: 10px;
+	margin-top: 5px;
+	margin-right: 20px;
+	display: inline-block;
+	/*border-right: 1px solid gray;*/
+	word-wrap: break-word;
+}
+.newCommentBody {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px solid #1A5771;
+	padding: 15px;
+	word-wrap: break-word;
+	border-radius: 10px;
+}
+
+.hoverBox{
+	position: relative;
+	display: inline-block;
+	text-align: right;
+}
+.hoverBox .hoverText{
+	visibility: hidden;
+	width: 110px;
+	background-color: #123c54;
+	color: white;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -20px;
+}
+.hoverBox:hover .hoverText{
+	visibility: visible;
+}
+.fa{
+	padding: 8px;
+	font-size: 8px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 50%;
+}
+.fa-arrow-up{
+	font-size: 20px;
+	text-align: center;
+	text-decoration: none;
+	color: 	#1a4c44;
+	z-index: 10;
+}
+.scrollToTop{
+	background: white;
+	color: 	#1a4c44;
+	opacity: 0.9;
+	font-size: 40px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 50%;
+
+	bottom: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	position:fixed;
+	text-align: bottom;
+	right: 20px;
+	display:none;
+}
+.scrollToTop:hover{
+	text-decoration:none;
+}

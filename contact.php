@@ -1,45 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Contact | Kelly's Site</title>
-	<link rel="stylesheet" href="style.css?Time=<?php echo microtime()?>"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-	<header>Contact Kelly</header>
-	<div class="nav">
-		<a href="index.php">Home</a>
-		<a href="about-me.php">About Me</a>
-		<a href="blog-posts.php">Posts</a>
-		<a href="projects.php">Projects</a>
-		<a href="contact.php">Contact</a>
-	</div><br>
-	<div class="main">
-		<h2>Get in touch with me!</h2>
-		
-		<div class="container">
-			<div class="contactInfo">
-				<i class="fa fa-map-marker"></i><span style="display:inline-block; width: 8px;"></span> St. Louis, Missouri
-				<br>
-				<i class="fa fa-phone"></i><span style="display:inline-block; width: 2px;"></span> (314) 123 - 4567
-				<br>
-				<i class="fa fa-envelope"></i> kelly.jung@lessannoyingcrm.com
-			</div>
-			<!-- FORM IS NOT FUNCTIONAL -->
-			<div class="contactForm">
-				<input class="contactName" type="text" placeholder="Name" required name="Name"><br><br>
-				<input class="contactEmail" type="text" placeholder="Email" required name="Email"><br><br>
-				<input class="contactSubject" type="text" placeholder="Subject" required name="Subject"><br><br>
-				<textarea class="contactComment" type="text" placeholder="Comment" required name="Comment"></textarea><br>
-				<button class="contactButton" type="submit">Send Message</button>
-			</div>
+<?php
+include('config/init.php');
+// include('init.php');
+navbar('Contact');
+?>
+<div class='large-break'><br></div><br>
+<div class='main'>
+	<div id='contact-container center'>
+		<div class='contact-left-column'>
+			<p>Email</p>
+			<p>Phone</p>
+			<p>LinkedIn</p>
 		</div>
-		<a href="https://www.linkedin.com/in/kellysjung" target="_blank" class="fa fa-linkedin"></a>
-		<a href="https://www.instagram.com/?hl=en" target="_blank" class="fa fa-instagram"></a>
-		<a href="https://hatscripts.com/addskype/?kelly.jungg" target="_blank" class="fa fa-skype"></a>
-	</div>
-	<br>
-	<footer>LACRM Coding Bootcamp - 2017</footer>
-</body>
-</html>
+		<div class='middle-column'></div>
+		<div class='contact-right-column'>
+			<p>kellyjung@wustl.edu</p>
+			<p>(516) 350 - 0009</p>
+			<p>linkedin.com/in/kellysjung</p>
+		</div>
+	</div>	
+</div>
+<div class='large-break'><br></div>
+<?php
+footer();
+
+function sendEmail() {
+	$to = 'kelly.jung@lessannoyingcrm.com';
+	$firstName = htmlspecialchars($_POST['firstName']);
+	$lastName = htmlspecialchars($_POST['lastName']);
+	$from = htmlspecialchars($_POST['email']);
+	$subject = htmlspecialchars($_POST['subject']);
+	$message = htmlspecialchars($_POST['message']);
+
+	$headers = 'From: '.$firstName.' '.$lastName.', '.$from;
+
+	$send =	mail($to, $subject, $message, $from, $headers);
+
+	if ($send) {
+		echo "<script type='text/javascript'>alert('Message sent!');</script>";
+	}
+}
+
+// <div class='contact-form'>
+// 				<form action='' method='post'>
+// 					<div class='field-form'><label class='largeLabel'>Name *</label><br>
+// 						<input class='shortInput' type='text' name='firstName' id='firstName'><br>
+// 						<div class='small-break'><br></div>
+// 						<label class='smallLabel' for='firstName'>First</label>
+// 					</div>
+// 					<div class='field-form'>
+// 						<pre>     </pre>
+// 					</div>
+// 					<div class='field-form'>
+// 						<div class='med-break'><br></div>
+// 						<input class='shortInput' type='text' name='lastName' id='lastName'><br>
+// 						<div class='small-break'><br></div>
+// 						<label class='smallLabel' for='lastName'>Last</label><br>
+// 					</div>
+
+// 					<label class='largeLabel'>Name *</label><br>
+// 					<input class='longInput' type='text' name='firstName' id='firstName'><br>
+
+// 					<div class='med-break'><br></div>
+// 					<label class='largeLabel' for='email'>Email Address *</label><br>
+// 					<input class='longInput' type='email' name='email' id='email'><br>
+
+// 					<div class='med-break'><br></div>
+// 					<label class='largeLabel' for='subject'>Subject *</label><br>
+// 					<input class='longInput' type='text' name='subject' id='subject'><br>
+
+// 					<div class='med-break'><br></div>
+// 					<label class='largeLabel' for='message'>Message *</label><br>
+// 					<textarea class='longInput' name='message' id='message' rows='7'></textarea>
+
+// 					<div class='med-break'><br></div>
+// 					<button class='submitBtn' align='center'><span>Send Message </span></button>
+// 				</form>
+// 			</div>
