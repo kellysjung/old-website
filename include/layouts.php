@@ -26,19 +26,19 @@ function navbar($title) {
 		includeLinks();
 		echo "
 	</head>
-	<body>
-		<div class='header'>
-			<div class='header-logo'>
-				<a href='/index.php' title='Home'>kj</a>
-			</div>
-
-			<div class='nav'>
-				<a href='/about.php'>ABOUT</a> /
-				<a href='/blog.php'>BLOG</a> /
-				<a href='/projects.php'>PROJECTS</a> /
-				<a href='/contact.php'>CONTACT</a><span style='display: inline-block; width: 16px;''></span>
-			</div>
+	
+	<div class='header'>
+		<div class='header-logo'>
+			<a href='/index.php' title='Home'>kj</a>
 		</div>
+
+		<div class='nav'>
+			<a href='/about.php'>ABOUT</a> /
+			<a href='/blog.php'>BLOG</a> /
+			<a href='/projects.php'>PROJECTS</a><span style='display: inline-block; width: 16px;''></span>
+		</div>
+	</div>
+	<body>
 		";
 	}
 

@@ -6,18 +6,18 @@ navbar('Contact');
 <div class='large-break'><br></div><br>
 <div class='main'>
 	<div id='contact-container center'>
-				<div class='contact-left-column'>
-					<p>Email</p>
-					<p>Phone</p>
-					<p>LinkedIn</p>
-				</div>
-				<div class='middle-column'></div>
-				<div class='contact-right-column'>
-					<p>kellyjung@wustl.edu</p>
-					<p>(516) 350 - 0009</p>
-					<p>linkedin.com/in/kellysjung</p>
-				</div>
-			</div>	
+		<div class='contact-left-column'>
+			<p>Email</p>
+			<p>Phone</p>
+			<p>LinkedIn</p>
+		</div>
+		<div class='middle-column'></div>
+		<div class='contact-right-column'>
+			<p>kellyjung@wustl.edu</p>
+			<p>(516) 350 - 0009</p>
+			<p>linkedin.com/in/kellysjung</p>
+		</div>
+	</div>	
 </div>
 <div class='large-break'><br></div>
 <?php

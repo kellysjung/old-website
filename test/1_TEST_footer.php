@@ -28,7 +28,7 @@
 		.demo h1 {
 			margin-top: 0;
 		}
-		.footer {
+		.footertest {
 			position: absolute;
 			right: 0;
 			bottom: 0;
@@ -52,6 +52,6 @@
 		<p>This is to prevent the footer from overlapping the content above it, since it is being removed from the document flow with <code>position: absolute;</code>.</p>
 	</div>
 
-	<div class="footer">This footer will always be positioned at the bottom of the page, but <strong>not fixed</strong>.</div>
+	<div class="footertest">This footer will always be positioned at the bottom of the page, but <strong>not fixed</strong>.</div>
 </body>
 </html>

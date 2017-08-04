@@ -71,18 +71,25 @@ navbar('About');
 			<li>&nbsp; My name is Kelly Jung.</li>
 			<li>&nbsp; Originally, I am from Long Island, New York.</li>
 			<li>&nbsp; I attend Washington University in St. Louis, where I'm majoring in psychology and minoring in computer science.</li>
-			<li>&nbsp; During the year, I work at the Washington University Career Center, advising my college peers on job searching, job application writing, interviewing, and networking.</li>
+			<li>&nbsp; During the school year, I work at the Washington University Career Center, advising my college peers on job searching, job application writing, interviewing, and networking.</li>
 			<li>&nbsp; At LessAnnoyingCRM, I learned how to code and created this website!</li>
 		</ul>
-		<!-- <br>
-		<h2>Just For Fun</h2>
-		<ul class='dashed'>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul> -->
+
+		<div class='med-break'><br></div>
+		<h2>Contact</h2>
+		<div id='contact-container center'>
+			<div class='contact-left-column'>
+				<p>Email</p>
+				<p>Phone</p>
+				<p>LinkedIn</p>
+			</div>
+			<div class='middle-column'></div>
+			<div class='contact-right-column'>
+				<p>kellyjung@wustl.edu</p>
+				<p>(516) 350 - 0009</p>
+				<p>linkedin.com/in/kellysjung</p>
+			</div>
+		</div>
 	</div>
 </div>
 <div class='large-break'><br></div>

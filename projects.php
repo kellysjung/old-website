@@ -8,10 +8,10 @@ navbar('Projects');
 
 	<div class='project-box' id='box_0' style='background-image: url(/images/task-lists.png);'>
 		<!-- <div class='project-title-image' style='background-image: url(/images/task-lists.png); '> -->
-		<div class='project-title' id='title_0' >
+		<a href='/t/task-list.php'><div class='project-title' id='title_0' >
 			<h3>Task List</h3>
 			<figcaption>Javascript, PHP, MySQL</figcaption>
-		</div>
+		</div></a>
 		<!-- </div> -->
 		
 		<!-- style='background-image: url(/images/task-lists.png);' -->
@@ -25,19 +25,19 @@ navbar('Projects');
 				<br><br><br>
 			</span>
 			<span class='project-text' id='text_0'>
-				<a href='/t/task-list.php'>View</a>
+				<p>Details</p>
 			</span>
 		</div>
 	</div>
 
-<!-- <div class='middle-column'></div> -->
+	<!-- <div class='middle-column'></div> -->
 	<div class='med-break'><br></div>
 
-	<div class='project-box' id='box_1' style='background-image: url(/images/blog-app.PNG);'>
+	<a href='/b/blog-posts.php'><div class='project-box' id='box_1' style='background-image: url(/images/blog-app.PNG);'>
 		<div class='project-title' id='title_1'>
 			<h3>Simple Blogging Platform</h3>
 			<figcaption>PHP, MySQL</figcaption>
-		</div>
+		</div></a>
 		
 		<div class='project-image' id='image_1'>
 			<span class='project-description' id='description_1'>
@@ -49,20 +49,22 @@ navbar('Projects');
 				<br><br><br>
 			</span>
 			<span class='project-text' id='text_1'>
-				<a href='/b/blog-posts.php'>View</a>
+				<p>Details</p>
 			</span>
 		</div>
 	</div>
 </div>
+<div class='large-break'><br></div><br>
+<?php
+footer();
+?>
 
 <script>
-
 	$(function() {
-
 		var topOffsets = [];
 		$('.project-box').each(function(index) {
 			var divHeight = $('div#image_'+index).height();
-			topOffsets[index] = -(divHeight - 40);
+			topOffsets[index] = -(divHeight - 50);
 
 			$('div#image_'+index).css('top', topOffsets[index]);
 		});
@@ -78,6 +80,4 @@ navbar('Projects');
 			$('div#image_'+id).css({'top': topOffsets[id]});
 		});
 	});
-
-
 </script>
