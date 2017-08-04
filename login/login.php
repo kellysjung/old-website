@@ -40,6 +40,13 @@ echo "
 	</form>
 	<div class='med-break'><br></div>
 	<a href='/login/register.php'>Don't have an account? Make one here!</a>
+	<br><br><br>
+	<span style='font-size: 10px; color: gray;'>
+		<p> - DEMO ACCOUNT - </p>
+		<p>Username: demo</p>
+		<p>Password: demo</p>
+	</span>
+	<br>
 </div>";
 
 footer();

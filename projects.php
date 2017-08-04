@@ -6,7 +6,7 @@ navbar('Projects');
 <div class='large-break'><br></div><br>
 <div class='main' align='center'>
 
-	<div class='project-box' id='box_0'>
+	<div class='project-box' id='box_0' style='background-image: url(/images/task-lists.png);'>
 		<!-- <div class='project-title-image' style='background-image: url(/images/task-lists.png); '> -->
 		<div class='project-title' id='title_0' >
 			<h3>Task List</h3>
@@ -22,7 +22,7 @@ navbar('Projects');
 				<p>- Drag and drops for lists and tasks to rearrange</p>
 				<p>- Ability to hide (archive) or minimize lists</p>
 				<p>- Connection to database to save elements and their orders</p>
-				<br><br><br><br>
+				<br><br><br>
 			</span>
 			<span class='project-text' id='text_0'>
 				<a href='/t/task-list.php'>View</a>
@@ -30,23 +30,26 @@ navbar('Projects');
 		</div>
 	</div>
 
+<!-- <div class='middle-column'></div> -->
 	<div class='med-break'><br></div>
 
-	<div class='project-box' id='box_1'>
+	<div class='project-box' id='box_1' style='background-image: url(/images/blog-app.PNG);'>
 		<div class='project-title' id='title_1'>
 			<h3>Simple Blogging Platform</h3>
 			<figcaption>PHP, MySQL</figcaption>
 		</div>
 		
-		<div class='project-image' id='image_1' style='background-image: url('');'>
+		<div class='project-image' id='image_1'>
 			<span class='project-description' id='description_1'>
 				<p><strong>Main features include:</strong></p>
-				<p>- User management</p>
-				<p>- Post creation, revision, deletion</p>
+				<p>- User account management</p>
+				<p>- Post creation, revision, and deletion</p>
 				<p>- Customizable tags and management</p>
+				<p>- Ability to comment on posts</p>
+				<br><br><br>
 			</span>
 			<span class='project-text' id='text_1'>
-				<a href='/b/blog-admin.php'>View</a>
+				<a href='/b/blog-posts.php'>View</a>
 			</span>
 		</div>
 	</div>
@@ -59,7 +62,7 @@ navbar('Projects');
 		var topOffsets = [];
 		$('.project-box').each(function(index) {
 			var divHeight = $('div#image_'+index).height();
-			topOffsets[index] = -(divHeight - 30);
+			topOffsets[index] = -(divHeight - 40);
 
 			$('div#image_'+index).css('top', topOffsets[index]);
 		});

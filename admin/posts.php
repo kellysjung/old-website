@@ -22,7 +22,7 @@ function listPosts() {
 		SELECT * FROM blog_posts ORDER BY postId DESC")->fetchAll();
 	foreach ($posts as $post) {
 		if ($post['draft'] == 0) {
-			echo '<a href="view-post.php?postId='.$post['postId'].'">'.$post['title'].'</a><br>';
+			echo "<a href='view-post.php?postId=".$post['postId']."'>".$post['title']."</a><br>";
 			echo "&nbsp; &nbsp by ".$post['author'];
 			echo "<br><br>";
 		}
@@ -46,4 +46,24 @@ function listComments($postId) {
 		echo "<div class='newCommentBody'>".$c['commentBody']."</div>";
 		echo "<div style='height:10px;'>&nbsp;</div>";
 	}
+}
+
+function listPersonalPosts() {
+	$posts = dbQuery("SELECT * FROM personal_blog")->fetchAll();
+	foreach ($posts as $post) {
+		echo "<a href='post.php?id=".$post['postId']."'>".$post['title']."</a><br>";
+		echo "<br><hr><br>";
+	}
+}
+
+function getPersonalPost($postId) {
+		$getSpecificPersonalPost = dbQuery("SELECT * FROM personal_blog WHERE postId = :postId",
+		array ("postId"=>$postId));
+	return $getSpecificPersonalPost->fetch();
+}
+
+function viewPersonalPost($postId) {
+	$post = getPersonalPost($postId);
+	echo "<div class='smallRight'>Posted: ".$post['createdString']."</div>";
+	echo "<p>".$post['body']."</p>";	
 }

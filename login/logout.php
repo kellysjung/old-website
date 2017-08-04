@@ -4,5 +4,5 @@ include('config/init.php');
 session_destroy();
 // $_SESSION = array();
 
-header("Location:/index.php");
+header("Location:/login/login.php");
 exit;

@@ -1,16 +1,15 @@
 <?php
 include('config/init.php');
+// include('init.php');
 navbar('Contact');
 ?>
 <div class='large-break'><br></div><br>
 <div class='main'>
-	<div class='container'>
-		<div class='contact-form'>
-			<!-- <div id='contact-container'> -->
-			<div class='contact-left-column'>
-				<p>Email</p>
-				<p>Phone</p>
-				<p>LinkedIn<p>
+	<div id='contact-container center'>
+				<div class='contact-left-column'>
+					<p>Email</p>
+					<p>Phone</p>
+					<p>LinkedIn</p>
 				</div>
 				<div class='middle-column'></div>
 				<div class='contact-right-column'>
@@ -18,46 +17,7 @@ navbar('Contact');
 					<p>(516) 350 - 0009</p>
 					<p>linkedin.com/in/kellysjung</p>
 				</div>
-				<!-- </div>	 -->
-			</div>
-
-			<div class='contact-form'>
-				<form action='' method='post'>
-				<!-- <div class='field-form'><label class='largeLabel'>Name *</label><br>
-					<input class='shortInput' type='text' name='firstName' id='firstName'><br>
-					<div class='small-break'><br></div>
-					<label class='smallLabel' for='firstName'>First</label>
-				</div>
-				<div class='field-form'>
-					<pre>     </pre>
-				</div>
-				<div class='field-form'>
-					<div class='med-break'><br></div>
-					<input class='shortInput' type='text' name='lastName' id='lastName'><br>
-					<div class='small-break'><br></div>
-					<label class='smallLabel' for='lastName'>Last</label><br>
-				</div> -->
-
-				<label class='largeLabel'>Name *</label><br>
-				<input class='longInput' type='text' name='firstName' id='firstName'><br>
-
-				<div class='med-break'><br><!-- <br><br><br> --></div>
-				<label class='largeLabel' for='email'>Email Address *</label><br>
-				<input class='longInput' type='email' name='email' id='email'><br>
-
-				<div class='med-break'><br></div>
-				<label class='largeLabel' for='subject'>Subject *</label><br>
-				<input class='longInput' type='text' name='subject' id='subject'><br>
-
-				<div class='med-break'><br></div>
-				<label class='largeLabel' for='message'>Message *</label><br>
-				<textarea class='longInput' name='message' id='message' rows='7'></textarea>
-				
-				<div class='med-break'><br></div>
-				<button class='submitBtn' align='center'><span>Send Message </span></button>
-			</form>
-		</div>
-	</div>
+			</div>	
 </div>
 <div class='large-break'><br></div>
 <?php
@@ -73,5 +33,46 @@ function sendEmail() {
 
 	$headers = 'From: '.$firstName.' '.$lastName.', '.$from;
 
-	mail($to, $subject, $message, $headers);
+	$send =	mail($to, $subject, $message, $from, $headers);
+
+	if ($send) {
+		echo "<script type='text/javascript'>alert('Message sent!');</script>";
+	}
 }
+
+// <div class='contact-form'>
+// 				<form action='' method='post'>
+// 					<div class='field-form'><label class='largeLabel'>Name *</label><br>
+// 						<input class='shortInput' type='text' name='firstName' id='firstName'><br>
+// 						<div class='small-break'><br></div>
+// 						<label class='smallLabel' for='firstName'>First</label>
+// 					</div>
+// 					<div class='field-form'>
+// 						<pre>     </pre>
+// 					</div>
+// 					<div class='field-form'>
+// 						<div class='med-break'><br></div>
+// 						<input class='shortInput' type='text' name='lastName' id='lastName'><br>
+// 						<div class='small-break'><br></div>
+// 						<label class='smallLabel' for='lastName'>Last</label><br>
+// 					</div>
+
+// 					<label class='largeLabel'>Name *</label><br>
+// 					<input class='longInput' type='text' name='firstName' id='firstName'><br>
+
+// 					<div class='med-break'><br></div>
+// 					<label class='largeLabel' for='email'>Email Address *</label><br>
+// 					<input class='longInput' type='email' name='email' id='email'><br>
+
+// 					<div class='med-break'><br></div>
+// 					<label class='largeLabel' for='subject'>Subject *</label><br>
+// 					<input class='longInput' type='text' name='subject' id='subject'><br>
+
+// 					<div class='med-break'><br></div>
+// 					<label class='largeLabel' for='message'>Message *</label><br>
+// 					<textarea class='longInput' name='message' id='message' rows='7'></textarea>
+
+// 					<div class='med-break'><br></div>
+// 					<button class='submitBtn' align='center'><span>Send Message </span></button>
+// 				</form>
+// 			</div>

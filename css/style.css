@@ -139,8 +139,8 @@ li {
 /****/
 
 .home p {
-  position: absolute;
-  bottom: 35%;
+  /*position: absolute;*/
+  /*top: 52%;*/
   right: 0;
   left: 0;
   padding: 20px;
@@ -153,6 +153,8 @@ li {
   opacity: 0.5;
   /*border-radius: 25%;*/
 }
+
+
 
 /***DASHED LIST***/
 ul {
@@ -343,69 +345,61 @@ ul.dashed > li:before {
 /***PROJECTS***/
 
 .project-box {
-  width: 500px;
+  width: 400px;
   overflow: hidden;
   display: table-cell;
+
+  background-size: 400px auto;
+  background-repeat: no-repeat;
+  background-position: 50% 0%; 
 }
 .project-title-image {
-  background-size: 500px auto;
+  background-size: 400px auto;
   background-repeat: no-repeat;
   background-position: 50% 0%; 
 }
 .project-title {
-  height: 80px;
-  width: 500px;
+  height: 90px;
+  width: 400px;
   padding: .5em 1em .5em 1em;
   position: relative;
-  /*z-index: 1;*/
-  color: white;
-  /*background-color: rgba(100, 125, 125, 0.9);*/
-  background-color: #647D7D;
-  border: 1px solid #647D7D;
+  color: #647D7D;
+  /*background-color: rgba(226, 233, 233, 0.9);*/
+  /*background-color: #647D7D;*/
+  background-color: #e2e9e9;
+  border: 1px solid #e2e9e9;
   z-index: 1;
 }
 .project-image {
-  min-height: 200px;
-  width: 500px;
+  min-height: 250px;
+  width: 400px;
   padding: .5em 1em .5em 1em;
   text-align: left;
-  /*display: none;*/
   position: relative;
-  /*top: -182px;*/
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #647D7D;
 
   -webkit-transition: top 1s;
   -moz-transition: top 1s;
   -o-transition: top 1s;
   transition: top 1s;
-  
-
-  background-size: 500px auto;
-  background-repeat: no-repeat;
-  background-position: 50% 70%; 
-
-  border: 1px solid #647D7D;
 }
-/*.project-image:before {
-  background-color: white;
-  opacity: 0.3;
-  }*/
-  .project-description {
-    width: 500px;
-    top: 0;
-    background-color: green;
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.8);
-    z-index: -1;
-  }
-  .project-text {
-    min-height: 30px;
-    width: 500px;
-    padding: .5em 1em .5em 1em;
-    background-color: rgba(255, 255, 255, 0.8);
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    text-align: center;
-
-    z-index: 1;
-  }
+.project-description {
+  width: 400px;
+  top: 0;
+  background-color: green;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: -1;
+}
+.project-text {
+  min-height: 30px;
+  width: 400px;
+  padding: .5em 1em .5em 1em;
+  background-color: rgba(255, 255, 255, 0.7);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+}
