@@ -79,7 +79,7 @@ navbar('About');
 		</div>
 		<div class='med-break'><br></div>
 		<h2>Contact</h2>
-		<div id='contact-container center'>
+		<div id='contact-container'>
 			<div class='contact-form'>
 				<div class='contact-left-column'>
 					<p>Email</p>
@@ -92,9 +92,10 @@ navbar('About');
 					<p>(516) 350 - 0009</p>
 					<p>linkedin.com/in/kellysjung</p>
 				</div>
+				<div class='contact-form'>
 
-
-				<!-- <img src='/images/me.jpg' alt='Picture of Kelly Jung'> -->
+					<img src='/images/me.jpg' alt='Picture of Kelly Jung'>
+				</div>
 			</div>
 		</div>
 	</div>
