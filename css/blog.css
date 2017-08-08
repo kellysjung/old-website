@@ -15,6 +15,12 @@ li {
 	list-style-type: none;
 }
 
+.blog-image img{
+	max-height: 300px;
+	display: block;
+	margin: 0 auto;
+}
+
 .blogPosts {
 	text-align: left;
 	max-width: 900px;

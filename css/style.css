@@ -402,3 +402,7 @@ ul.dashed > li:before {
   text-align: center;
   z-index: 1;
 }
+.error {
+  color: #ff6666;
+  text-align: center;  
+}
