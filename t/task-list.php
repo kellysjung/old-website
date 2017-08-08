@@ -12,22 +12,22 @@ navbar('Lists');
 echo "
 <div class='large-break'><br></div><br><hr>";
 phpProjectsNavbar();
-echo "<br><br><h5>".$user['firstName']."'s Lists</h5>";
+echo "<span class='center'><h3>".$user['firstName']."'s Lists</h3></span>";
 ?>
 
 <br>
 <div class='center'>
-<br><br>
+    <br><br>
     <div id='new-list'>
         <input type='text' id='newList' placeholder='New List'>
         <a href='javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>
     </div><div class='med-break'><br><br></div>
 
     <div class='list-col' id='col_1'>
-        <?php getAllLists(1); ?>
+        <?php getAllLists($username, 1); ?>
     </div>
     <div class='list-col' id='col_2'>
-        <?php getAllLists(2); ?>
+        <?php getAllLists($username, 2); ?>
     </div>
 
     <div class='clear'></div>
@@ -35,7 +35,10 @@ echo "<br><br><h5>".$user['firstName']."'s Lists</h5>";
     
     <h4><a href='task-archive.php'>View Archived Lists</a></h4>
 </div>
-<br>
+<br><br>
+<form action='/login/logout.php' method='POST'>
+    <input class='defaultBtn' type='submit' name='logout' value='Logout' style='width: 150px;'>
+</form>
 <?php
 footer();
 ?>
