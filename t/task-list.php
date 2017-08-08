@@ -14,7 +14,7 @@ echo "
 <div class='large-break'><br></div><br><hr>";
 phpProjectsNavbar();
 echo "<br><br><h5>".$user['firstName']."'s Lists</h5>";
-
+echo "here";
 ?>
 <br>
 <div class='center'>
