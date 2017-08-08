@@ -2,18 +2,22 @@
 include('init.php');
 echo "<link rel='stylesheet' href='/css/task-list.css?Time=".microtime()."'/>";
 echo "<link rel='stylesheet' href='/css/custom-color-picker.css?Time=".microtime()."'/>";
-// $userId = $_SESSION['userId'];
-// $user = getUserInfo($userId);
-// $username = $user['username'];
-// verifyLogged();
-// adminNavbar_v1('Tasks | Kelly Jung', 'Tasks', 'headerMain');
+
+
+$userId = $_SESSION['userId'];
+$user = getUserInfo($userId);
+$username = $user['username'];
+verifyLogged();
+
 navbar('Lists');
 echo "
 <div class='large-break'><br></div><br><hr>";
 phpProjectsNavbar();
+echo "<br><br><h5>".$user['firstName']."'s Lists</h5>"
 ?>
 <br>
 <div class='center'>
+<br><br>
     <div id='new-list'>
         <input type='text' id='newList' placeholder='New List'>
         <a href='javascript://' onclick='addList();'><button class='add-btn'>Create</button></a>

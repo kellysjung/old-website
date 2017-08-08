@@ -26,7 +26,11 @@ $post = viewPersonalPost($postId);
 
 echo "
 <div class='main'>
-	<h3 style='text-align: center;'>".$post['title']."</h3>
+
+	<div class='blog-image'>
+		<img src='/images/c_1.png' alt='".$post['title']."'>
+	</div>
+	<br>
 	<div class='smallRight'>Posted: ".$post['createdString']."</div>
 	<br>
 	<div class='blogPosts'>"

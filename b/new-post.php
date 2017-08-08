@@ -37,7 +37,7 @@ echo "
 			formTextInput('title', 'text', '250', 'Post Title');
 			echo "TAB - This will be part of the tab title. (Character limit: 24)<br>";
 			formTextInput('tab', 'text', '24', 'Tab Title');
-			echo "BODY - Remember to put in '&lt;p&gt&lt;/p&gt' whenever you want a new paragraph.";
+			echo "BODY - This is the content of your blog post.";
 			formTextArea('postFormBody', 'body', 'Post Body');
 
 			echo "<br><hr><h3>Add tag:</h3>";
