@@ -1,9 +1,9 @@
 <?php
 include_once('init.php');
 
-function getAllLists($listColumn) {
-	$lists = dbQuery("SELECT * FROM lists WHERE archived = 0 AND listColumn = :listColumn ORDER BY listOrder ASC",
-		array("listColumn"=>$listColumn))->fetchAll();
+function getAllLists($username, $listColumn) {
+	$lists = dbQuery("SELECT * FROM lists WHERE archived = 0 AND user = :username AND listColumn = :listColumn ORDER BY listOrder ASC",
+		array("username"=>$username, "listColumn"=>$listColumn))->fetchAll();
 	foreach ($lists as $list) {
 		if ($list['collapsed'] == 0) {
 			echo "
