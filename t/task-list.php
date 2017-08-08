@@ -3,7 +3,6 @@ include('init.php');
 echo "<link rel='stylesheet' href='/css/task-list.css?Time=".microtime()."'/>";
 echo "<link rel='stylesheet' href='/css/custom-color-picker.css?Time=".microtime()."'/>";
 
-
 $userId = $_SESSION['userId'];
 $user = getUserInfo($userId);
 $username = $user['username'];
@@ -14,8 +13,8 @@ echo "
 <div class='large-break'><br></div><br><hr>";
 phpProjectsNavbar();
 echo "<br><br><h5>".$user['firstName']."'s Lists</h5>";
-echo "here";
 ?>
+
 <br>
 <div class='center'>
 <br><br>
